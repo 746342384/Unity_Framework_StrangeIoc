@@ -15,10 +15,6 @@ namespace Root
         {
         }
 
-        public GameContext(MonoBehaviour view, ContextStartupFlags flags) : base(view, flags)
-        {
-        }
-
         protected override void mapBindings()
         {
             base.mapBindings();
@@ -29,7 +25,7 @@ namespace Root
         protected override void addCoreComponents()
         {
             base.addCoreComponents();
-            injectionBinder.Bind<IUIRoot>().To<UIRoot>();
+            injectionBinder.Bind<IUIRoot>().To<UIRoot>().CrossContext().ToSingleton();
             injectionBinder.Bind<IResourceSystemService>().To<ResourceSystemService>().CrossContext().ToSingleton();
             injectionBinder.Bind<IResourcesLoader>().To<ResourcesLoader>().CrossContext().ToSingleton();
             injectionBinder.Bind<IPanelSystem>().To<PanelSystem>().CrossContext().ToSingleton();

@@ -8,18 +8,22 @@ namespace framework.framework.ui.impl
     public class PanelSystem : IPanelSystem
     {
         private readonly IResourceSystemService _resourceSystemService;
+        private readonly IUIRoot _uiRoot;
         private List<IUIPanel> _panels;
 
-        public PanelSystem(IResourceSystemService resourceSystemService)
+        public PanelSystem(IResourceSystemService resourceSystemService,
+            IUIRoot uiRoot)
         {
             _resourceSystemService = resourceSystemService;
+            _uiRoot = uiRoot;
         }
 
         public bool IsInitialized { get; set; }
 
-        public void Init()
+        public void OnInit()
         {
             if (IsInitialized) return;
+            _uiRoot.Init();
             _panels = new List<IUIPanel>();
             LoadPanels();
             IsInitialized = true;
@@ -27,7 +31,6 @@ namespace framework.framework.ui.impl
 
         private void LoadPanels()
         {
-            
         }
 
         public void OpenPanel(string panelName, object data = null)
