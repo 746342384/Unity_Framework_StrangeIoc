@@ -42,8 +42,8 @@ namespace strange.extensions.context.impl
 		/// A Binder that handles dependency injection binding and instantiation
 		public ICrossContextInjectionBinder injectionBinder
 		{
-			get { return _injectionBinder ?? (_injectionBinder = new CrossContextInjectionBinder()); }
-		    set { _injectionBinder = value; }
+			get { return _injectionBinder ??= new CrossContextInjectionBinder(); }
+		    set => _injectionBinder = value;
 		}
 
 		/// A specific instance of EventDispatcher that communicates 

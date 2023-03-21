@@ -8,7 +8,12 @@ namespace Root
         private void Awake()
         {
             Debug.Log($"GameRoot.Awake");
-            context = new GameContext(this);
+            context = new GameContext();
+        }
+
+        private void Start()
+        {
+            context.Launch();
         }
     }
 }

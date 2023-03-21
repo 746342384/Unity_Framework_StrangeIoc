@@ -16,6 +16,7 @@ namespace framework.framework.ui.impl
         {
             _resourceSystemService = resourceSystemService;
             _uiRoot = uiRoot;
+            OnInit();
         }
 
         public bool IsInitialized { get; set; }

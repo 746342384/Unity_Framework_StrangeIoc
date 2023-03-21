@@ -244,17 +244,13 @@ namespace strange.extensions.context.impl
 		protected override void instantiateCoreComponents()
 		{
 			base.instantiateCoreComponents();
-			if (contextView == null)
-			{
-				throw new ContextException("MVCSContext requires a ContextView of type MonoBehaviour", ContextExceptionType.NO_CONTEXT_VIEW);
-			}
-			injectionBinder.Bind<GameObject>().ToValue(contextView).ToName(ContextKeys.CONTEXT_VIEW);
-			commandBinder = injectionBinder.GetInstance<ICommandBinder>() as ICommandBinder;
 			
-			dispatcher = injectionBinder.GetInstance<IEventDispatcher>(ContextKeys.CONTEXT_DISPATCHER) as IEventDispatcher;
-			mediationBinder = injectionBinder.GetInstance<IMediationBinder>() as IMediationBinder;
-			sequencer = injectionBinder.GetInstance<ISequencer>() as ISequencer;
-			implicitBinder = injectionBinder.GetInstance<IImplicitBinder>() as IImplicitBinder;
+			commandBinder = injectionBinder.GetInstance<ICommandBinder>();
+			
+			dispatcher = injectionBinder.GetInstance<IEventDispatcher>(ContextKeys.CONTEXT_DISPATCHER);
+			mediationBinder = injectionBinder.GetInstance<IMediationBinder>();
+			sequencer = injectionBinder.GetInstance<ISequencer>();
+			implicitBinder = injectionBinder.GetInstance<IImplicitBinder>();
 
 			(dispatcher as ITriggerProvider).AddTriggerable(commandBinder as ITriggerable);
 			(dispatcher as ITriggerProvider).AddTriggerable(sequencer as ITriggerable);
@@ -265,7 +261,7 @@ namespace strange.extensions.context.impl
 			//It's possible for views to fire their Awake before bindings. This catches any early risers and attaches their Mediators.
 			mediateViewCache();
 			//Ensure that all Views underneath the ContextView are triggered
-			mediationBinder.Trigger(MediationEvent.AWAKE, (contextView as GameObject).GetComponent<ContextView>());
+			// mediationBinder.Trigger(MediationEvent.AWAKE, (contextView as GameObject).GetComponent<ContextView>());
 		}
 
 		/// Fires ContextEvent.START
