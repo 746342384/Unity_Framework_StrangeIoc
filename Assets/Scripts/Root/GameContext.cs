@@ -14,6 +14,8 @@ namespace Root
     {
         private Framework.framework.system.impl.System _system;
 
+        public ICrossContextInjectionBinder InjectionBinder { get; set; }
+
         public GameContext()
         {
             InjectionBinder = injectionBinder;
@@ -27,8 +29,23 @@ namespace Root
 
         public override void Launch()
         {
+            InitSystem();
+            BindCustomSystem();
             OnInit();
             base.Launch();
+        }
+
+        private void InitSystem()
+        {
+            injectionBinder.Bind<Framework.framework.system.impl.System>().To<Framework.framework.system.impl.System>();
+            _system = injectionBinder.GetInstance<Framework.framework.system.impl.System>();
+            _system.Init(this);
+            injectionBinder.Unbind<Framework.framework.system.impl.System>();
+        }
+
+        private void BindCustomSystem()
+        {
+            _system.BindSystem<IPanelSystem, PanelSystem>();
         }
 
         protected override void addCoreComponents()
@@ -43,19 +60,7 @@ namespace Root
 
         private void OnInit()
         {
-            injectionBinder.Bind<Framework.framework.system.impl.System>().To<Framework.framework.system.impl.System>();
-            _system = injectionBinder.GetInstance<Framework.framework.system.impl.System>();
-            _system.Init(this);
-            injectionBinder.Unbind<Framework.framework.system.impl.System>();
-            BindSystem<IPanelSystem, PanelSystem>();
             _system.OnInit();
         }
-
-        private void BindSystem<TISystem, TSystem>() where TISystem : ISystem
-        {
-            _system.BindSystem<TISystem, TSystem>();
-        }
-
-        public ICrossContextInjectionBinder InjectionBinder { get; set; }
     }
 }
