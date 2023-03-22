@@ -1,27 +1,17 @@
 using System.Collections.Generic;
 using Framework.framework.system.api;
 using Root;
-using strange.extensions.injector.api;
 
 namespace Framework.framework.system.impl
 {
     public class System
     {
-        private readonly ICrossContextInjectionBinder _injectionBinder;
-        private readonly IGameContext _context;
-        private List<ISystem> _systems = new List<ISystem>();
+        private readonly List<ISystem> _systems = new();
+        private IGameContext _gameContext { get; set; }
 
-        public System(IGameContext context)
+        public void Init(IGameContext gameContext)
         {
-            _context = context;
-            _injectionBinder = _context.ContextInjectionBinder;
-        }
-
-        public void BindSystem<TSystem, TSystemImpl>() where TSystemImpl : ISystem
-        {
-            _injectionBinder.Bind<TSystem>().To<TSystemImpl>().CrossContext().ToSingleton();
-            var system = _injectionBinder.GetInstance<TSystemImpl>();
-            _systems.Add(system);
+            _gameContext = gameContext;
         }
 
         public void OnInit()
@@ -30,6 +20,13 @@ namespace Framework.framework.system.impl
             {
                 system.OnInit();
             }
+        }
+
+        public void BindSystem<TISystem, TSystem>() where TISystem : ISystem
+        {
+            _gameContext.InjectionBinder.Bind<TISystem>().To<TSystem>().ToSingleton();
+            var system = _gameContext.InjectionBinder.GetInstance<TISystem>();
+            _systems.Add(system);
         }
     }
 }

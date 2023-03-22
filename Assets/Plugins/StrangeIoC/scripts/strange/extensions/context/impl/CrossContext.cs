@@ -58,19 +58,7 @@ namespace strange.extensions.context.impl
 		/// dispatcher and you'll receive it.
 	    protected IEventDispatcher _crossContextDispatcher;
 
-        
 		public CrossContext() : base()
-		{}
-
-		public CrossContext(object view) : base(view)
-		{
-		}
-
-		public CrossContext(object view, ContextStartupFlags flags) : base(view, flags)
-		{
-		}
-
-		public CrossContext(object view, bool autoMapping) : base(view, autoMapping)
 		{
 		}
 

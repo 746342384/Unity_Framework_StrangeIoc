@@ -16,7 +16,7 @@ namespace Root
 
         public GameContext()
         {
-            ContextInjectionBinder = injectionBinder;
+            InjectionBinder = injectionBinder;
         }
 
         protected override void mapBindings()
@@ -27,10 +27,8 @@ namespace Root
 
         public override void Launch()
         {
-            base.Launch();
-
-            BindSystem<PanelSystem, IPanelSystem>();
             OnInit();
+            base.Launch();
         }
 
         protected override void addCoreComponents()
@@ -38,26 +36,26 @@ namespace Root
             base.addCoreComponents();
 
             injectionBinder.Bind<IGameContext>().To<GameContext>().ToSingleton();
-            injectionBinder.Bind<IUIRoot>().To<UIRoot>();
+            injectionBinder.Bind<IUIRoot>().To<UIRoot>().ToSingleton();
             injectionBinder.Bind<IResourceSystemService>().To<ResourceSystemService>().ToSingleton();
             injectionBinder.Bind<IResourcesLoader>().To<ResourcesLoader>().ToSingleton();
-            injectionBinder.Bind<IPanelSystem>().To<PanelSystem>().ToSingleton();
-
-            injectionBinder.Bind<Framework.framework.system.impl.System>().To<Framework.framework.system.impl.System>();
-            _system = injectionBinder.GetInstance<Framework.framework.system.impl.System>();
-            injectionBinder.Unbind<Framework.framework.system.impl.System>();
-        }
-
-        private void BindSystem<TSystem, TSystemImpl>() where TSystemImpl : ISystem
-        {
-            _system.BindSystem<TSystem, TSystemImpl>();
         }
 
         private void OnInit()
         {
+            injectionBinder.Bind<Framework.framework.system.impl.System>().To<Framework.framework.system.impl.System>();
+            _system = injectionBinder.GetInstance<Framework.framework.system.impl.System>();
+            _system.Init(this);
+            injectionBinder.Unbind<Framework.framework.system.impl.System>();
+            BindSystem<IPanelSystem, PanelSystem>();
             _system.OnInit();
         }
 
-        public ICrossContextInjectionBinder ContextInjectionBinder { get; set; }
+        private void BindSystem<TISystem, TSystem>() where TISystem : ISystem
+        {
+            _system.BindSystem<TISystem, TSystem>();
+        }
+
+        public ICrossContextInjectionBinder InjectionBinder { get; set; }
     }
 }

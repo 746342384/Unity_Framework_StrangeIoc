@@ -7,8 +7,8 @@ namespace Framework.framework.resources.api
     {
         void Clear();
         object Load(string path,Type type);
-        T Load<T>(string path, Type type) where T: class;
+        T Load<T>(string path) where T: class;
         Task<object> LoadAsync(string path, Type type);
-        Task<T> LoadAsync<T>(string path, Type type) where T : class;
+        Task<T> LoadAsync<T>(string path) where T : class;
     }
 }

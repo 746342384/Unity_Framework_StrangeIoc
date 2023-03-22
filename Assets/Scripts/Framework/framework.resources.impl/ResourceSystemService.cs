@@ -25,7 +25,7 @@ namespace Framework.framework.resources.impl
             return _cache.TryGetValue(path, out var obj) ? obj : _resourcesLoader.Load(path, type);
         }
 
-        public T Load<T>(string path, Type type) where T : class
+        public T Load<T>(string path) where T : class
         {
             return _cache.TryGetValue(path, out var obj) ? obj as T : _resourcesLoader.Load<T>(path);
         }
@@ -35,7 +35,7 @@ namespace Framework.framework.resources.impl
             return _cache.TryGetValue(path, out var obj) ? obj : await _resourcesLoader.LoadAsync(path, type);
         }
 
-        public async Task<T> LoadAsync<T>(string path, Type type) where T : class
+        public async Task<T> LoadAsync<T>(string path) where T : class
         {
             return _cache.TryGetValue(path, out var obj) ? obj as T : await _resourcesLoader.LoadAsync<T>(path);
         }

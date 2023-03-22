@@ -13,6 +13,7 @@ namespace Root
 
         private void Start()
         {
+            context.Start();
             context.Launch();
         }
     }

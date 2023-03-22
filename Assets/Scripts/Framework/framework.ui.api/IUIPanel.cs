@@ -1,8 +1,14 @@
-﻿namespace framework.framework.ui.api
+﻿using framework.framework.ui.impl;
+
+namespace framework.framework.ui.api
 {
     public interface IUIPanel
     {
-        string PanelName { get; set; }
-        string Path { get; set; }
+        string PanelName { get; }
+        string Path { get; }
+        UILayer Layer { get; }
+
+        void Show();
+        void Hide();
     }
 }

@@ -2,9 +2,28 @@
 
 namespace framework.framework.ui.impl
 {
-    public class UIPanel:IUIPanel
+    public abstract class UIPanel : IUIPanel
     {
-        public string PanelName { get; set; }
-        public string Path { get; set; }
+        public abstract string PanelName { get; }
+        public abstract string Path { get; }
+        public virtual UILayer Layer => UILayer.Normal;
+
+        public void Show()
+        {
+            OnShow();
+        }
+
+        protected virtual void OnShow()
+        {
+        }
+
+        public void Hide()
+        {
+            OnHide();
+        }
+
+        protected virtual void OnHide()
+        {
+        }
     }
 }

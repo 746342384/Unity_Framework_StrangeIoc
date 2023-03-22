@@ -4,6 +4,6 @@ namespace Root
 {
     public interface IGameContext
     {
-        public ICrossContextInjectionBinder ContextInjectionBinder { get; set; }
+        public ICrossContextInjectionBinder InjectionBinder { get; set; }
     }
 }
