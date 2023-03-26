@@ -14,14 +14,6 @@
  *		limitations under the License.
  */
 
-/**
- * @class strange.extensions.mediation.impl.Mediator
- * 
- * Base class for all Mediators.
- * 
- * @see strange.extensions.mediation.api.IMediationBinder
- */
-
 using strange.extensions.context.api;
 using strange.extensions.mediation.api;
 using UnityEngine;
@@ -31,8 +23,8 @@ namespace strange.extensions.mediation.impl
 	public class Mediator : MonoBehaviour, IMediator
 	{
 
-		[Inject(ContextKeys.CONTEXT_VIEW)]
-		public GameObject contextView{get;set;}
+		// [Inject(ContextKeys.CONTEXT_VIEW)]
+		// public GameObject contextView{get;set;}
 
 		public Mediator ()
 		{
@@ -41,7 +33,7 @@ namespace strange.extensions.mediation.impl
 		/**
 		 * Fires directly after creation and before injection
 		 */
-		virtual public void PreRegister()
+		public virtual void PreRegister()
 		{
 		}
 
@@ -50,7 +42,7 @@ namespace strange.extensions.mediation.impl
 		 *
 		 * Override and place your initialization code here.
 		 */
-		virtual public void OnRegister()
+		public virtual void OnRegister()
 		{
 		}
 
@@ -59,7 +51,7 @@ namespace strange.extensions.mediation.impl
 		 *
 		 * Override and place your cleanup code here
 		 */
-		virtual public void OnRemove()
+		public virtual void OnRemove()
 		{
 		}
 	}

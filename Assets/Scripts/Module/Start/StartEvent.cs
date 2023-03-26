@@ -1,0 +1,7 @@
+namespace Module.Start
+{
+    public enum StartEvent
+    {
+        Start
+    }
+}

@@ -67,9 +67,9 @@ namespace strange.extensions.command.impl
 			IsClean = false;
 		}
 
-		virtual public void Execute()
+		public virtual void Execute()
 		{
-			throw new CommandException ("You must override the Execute method in every Command", CommandExceptionType.EXECUTE_OVERRIDE);
+			
 		}
 
 		public virtual void Retain()

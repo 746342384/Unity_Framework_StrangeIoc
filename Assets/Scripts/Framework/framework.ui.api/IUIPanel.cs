@@ -7,6 +7,7 @@ namespace framework.framework.ui.api
         string PanelName { get; }
         string Path { get; }
         UILayer Layer { get; }
+        string ContextNmae { get; }
 
         void Show();
         void Hide();

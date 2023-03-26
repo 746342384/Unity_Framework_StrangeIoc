@@ -6,6 +6,7 @@ namespace framework.framework.ui.impl
     {
         public abstract string PanelName { get; }
         public abstract string Path { get; }
+        public abstract string ContextNmae { get; }
         public virtual UILayer Layer => UILayer.Normal;
 
         public void Show()

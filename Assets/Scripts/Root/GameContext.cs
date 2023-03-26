@@ -1,8 +1,10 @@
 ﻿using Framework.framework.resources.api;
 using Framework.framework.resources.impl;
-using Framework.framework.system.api;
 using framework.framework.ui.api;
 using framework.framework.ui.impl;
+using Module.Start;
+using Module.Start.Commands;
+using Module.Start.View;
 using Root.Commands;
 using strange.extensions.context.api;
 using strange.extensions.context.impl;
@@ -25,6 +27,8 @@ namespace Root
         {
             base.mapBindings();
             commandBinder.Bind(ContextEvent.START).To<StartCommand>();
+            commandBinder.Bind(StartEvent.Start).To<GameStartCommand>();
+            mediationBinder.Bind<StartView>().To<StartMediator>();
         }
 
         public override void Launch()

@@ -62,13 +62,7 @@ namespace framework.framework.ui.impl
         public void OpenPanel(string panelName, object data = null)
         {
             if (!_panels.TryGetValue(panelName, out var uiPanel)) return;
-            if (!_panelCache.TryGetValue(panelName, out var panel))
-            {
-                var prefab = _resourceSystemService.Load<GameObject>(uiPanel.Path);
-                panel = Object.Instantiate(prefab);
-                _panelCache.Add(panelName, panel);
-            }
-
+            if (_panelCache.TryGetValue(panelName, out var panel)) return;
             var uiRootNormalRoot = uiPanel.Layer switch
             {
                 UILayer.Top => _uiRoot.TopRoot,
@@ -76,8 +70,12 @@ namespace framework.framework.ui.impl
                 UILayer.PopUp => _uiRoot.PopUpRoot,
                 _ => throw new ArgumentOutOfRangeException()
             };
+            var context = uiPanel.ContextNmae;
 
-            panel.transform.SetParent(uiRootNormalRoot);
+            var prefab = _resourceSystemService.Load<GameObject>(uiPanel.Path);
+            panel = Object.Instantiate(prefab, uiRootNormalRoot, true);
+            _panelCache.Add(panelName, panel);
+
             var rectTransform = panel.transform as RectTransform;
             rectTransform.FitParent();
             panel.transform.localScale = Vector3.one;

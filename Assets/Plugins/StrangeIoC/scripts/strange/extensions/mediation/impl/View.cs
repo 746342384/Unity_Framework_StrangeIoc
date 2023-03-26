@@ -14,15 +14,6 @@
  *		limitations under the License.
  */
 
-/**
- * @class strange.extensions.mediation.impl.View
- * 
- * Parent class for all your Views. Extends MonoBehaviour.
- * Bubbles its Awake, Start and OnDestroy events to the
- * ContextView, which allows the Context to know when these
- * critical moments occur in the View lifecycle.
- */
-
 using UnityEngine;
 using strange.extensions.context.api;
 using strange.extensions.context.impl;
@@ -92,7 +83,7 @@ namespace strange.extensions.mediation.impl
 		/// Recurses through Transform.parent to find the GameObject to which ContextView is attached
 		/// Has a loop limit of 100 levels.
 		/// By default, raises an Exception if no Context is found.
-		virtual protected void bubbleToContext(MonoBehaviour view, bool toAdd, bool finalTry)
+		protected virtual void bubbleToContext(MonoBehaviour view, bool toAdd, bool finalTry)
 		{
 			const int LOOP_MAX = 100;
 			int loopLimiter = 0;
