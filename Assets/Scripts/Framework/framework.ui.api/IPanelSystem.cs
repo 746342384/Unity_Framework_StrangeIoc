@@ -10,5 +10,7 @@ namespace framework.framework.ui.api
         Task OpenPanelAsync(string panelName, object data = null);
         void ClosePanel(string panelName);
         Task ClosePanelAsync(string panelName);
+        void UnLoadAllPanel();
+        void UnLoadPanel(string panelName);
     }
 }

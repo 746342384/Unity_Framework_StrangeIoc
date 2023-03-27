@@ -23,6 +23,10 @@ namespace framework.framework.ui.impl
             OnHide();
         }
 
+        public virtual void UnLoad()
+        {
+        }
+
         protected virtual void OnHide()
         {
         }

@@ -2,6 +2,9 @@
 using Framework.framework.resources.impl;
 using framework.framework.ui.api;
 using framework.framework.ui.impl;
+using Module.Main;
+using Module.Main.Commands;
+using Module.Main.View;
 using Module.Start;
 using Module.Start.Commands;
 using Module.Start.View;
@@ -28,7 +31,9 @@ namespace Root
             base.mapBindings();
             commandBinder.Bind(ContextEvent.START).To<StartCommand>();
             commandBinder.Bind(StartEvent.Start).To<GameStartCommand>();
+            commandBinder.Bind(MainEvent.Back).To<BackStartPanelCommand>();
             mediationBinder.Bind<StartView>().To<StartMediator>();
+            mediationBinder.Bind<MainView>().To<MainMediator>();
         }
 
         public override void Launch()

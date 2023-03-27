@@ -62,7 +62,7 @@ namespace framework.framework.ui.impl
         public void OpenPanel(string panelName, object data = null)
         {
             if (!_panels.TryGetValue(panelName, out var uiPanel)) return;
-            if (_panelCache.TryGetValue(panelName, out var panel)) return;
+
             var uiRootNormalRoot = uiPanel.Layer switch
             {
                 UILayer.Top => _uiRoot.TopRoot,
@@ -70,12 +70,15 @@ namespace framework.framework.ui.impl
                 UILayer.PopUp => _uiRoot.PopUpRoot,
                 _ => throw new ArgumentOutOfRangeException()
             };
+
+            if (!_panelCache.TryGetValue(panelName, out var panel))
+            {
+                var prefab = _resourceSystemService.Load<GameObject>(uiPanel.Path);
+                panel = Object.Instantiate(prefab, uiRootNormalRoot, true);
+                _panelCache.Add(panelName, panel);
+            }
+
             var context = uiPanel.ContextNmae;
-
-            var prefab = _resourceSystemService.Load<GameObject>(uiPanel.Path);
-            panel = Object.Instantiate(prefab, uiRootNormalRoot, true);
-            _panelCache.Add(panelName, panel);
-
             var rectTransform = panel.transform as RectTransform;
             rectTransform.FitParent();
             panel.transform.localScale = Vector3.one;
@@ -103,6 +106,38 @@ namespace framework.framework.ui.impl
             ClosePanel(panelName);
 
             return Task.CompletedTask;
+        }
+
+        public void UnLoadAllPanel()
+        {
+            foreach (var keyValuePair in _panels)
+            {
+                keyValuePair.Value.UnLoad();
+            }
+
+            _panels.Clear();
+
+            foreach (var keyValuePair in _panelCache)
+            {
+                Object.DestroyImmediate(keyValuePair.Value);
+            }
+
+            _panelCache.Clear();
+        }
+
+        public void UnLoadPanel(string panelName)
+        {
+            if (_panels.TryGetValue(panelName, out var panel))
+            {
+                panel.UnLoad();
+                _panels.Remove(panelName);
+            }
+
+            if (_panelCache.TryGetValue(panelName, out var gameObject))
+            {
+                Object.DestroyImmediate(gameObject);
+                _panelCache.Remove(panelName);
+            }
         }
     }
 }

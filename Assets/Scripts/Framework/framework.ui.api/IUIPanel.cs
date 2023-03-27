@@ -11,5 +11,6 @@ namespace framework.framework.ui.api
 
         void Show();
         void Hide();
+        void UnLoad();
     }
 }
