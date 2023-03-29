@@ -64,7 +64,7 @@ namespace Root
             injectionBinder.Bind<IGameContext>().To<GameContext>().ToSingleton();
             injectionBinder.Bind<IUIRoot>().To<UIRoot>().ToSingleton();
             injectionBinder.Bind<IResourceSystemService>().To<ResourceSystemService>().ToSingleton();
-            injectionBinder.Bind<IResourcesLoader>().To<ResourcesLoader>().ToSingleton();
+            injectionBinder.Bind<IResourcesLoader>().To<AddressableLoader>().ToSingleton();
         }
 
         private void OnInit()

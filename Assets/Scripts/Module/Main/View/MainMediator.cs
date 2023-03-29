@@ -4,8 +4,6 @@ namespace Module.Main.View
 {
     public class MainMediator : UGameMediator<MainView>
     {
-        [Inject] public MainView View { get; set; }
-
         public override void OnRegister()
         {
             base.OnRegister();

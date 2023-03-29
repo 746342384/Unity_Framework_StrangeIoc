@@ -38,11 +38,12 @@ MonoBehaviour:
   m_RemoteCatalogLoadPath:
     m_Id: 638d490cb4624c64faf5104c8f54e8ad
   m_ContentStateBuildPath: 
-  m_BuildAddressablesWithPlayerBuild: 0
+  m_BuildAddressablesWithPlayerBuild: 1
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: 8f7d4bc97be00a84dbf5a67554d241b4, type: 2}
   - {fileID: 11400000, guid: 6f99be65eb57f6649b0f28c4ca4b28dc, type: 2}
+  - {fileID: 11400000, guid: fe0fa0e12debba44da79252590663773, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -57,9 +58,23 @@ MonoBehaviour:
       - m_Id: 33b93271c8417524ab646273c9105cfc
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: 4c015d9ff5bf55f4487a86f11c491903
-        m_Value: F:/UnityProject/StrangeIoc/Assets/ResourcesPackage
+        m_Value: E:\Project\StrangeIoc\ResourcesPackage
       - m_Id: f8605b8aa2c9f9c45b34ef165c39af84
-        m_Value: F:/UnityProject/StrangeIoc/Assets/ResourcesPackage
+        m_Value: E:\Project\StrangeIoc\ResourcesPackage
+      - m_Id: f7f3819f145c4ca4dbb96a502b038bf5
+        m_Value: ServerData/[BuildTarget]
+      - m_Id: 638d490cb4624c64faf5104c8f54e8ad
+        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+    - m_InheritedParent: 
+      m_Id: 57873073ee3e9d544aa8fc7af62c05d3
+      m_ProfileName: Develop
+      m_Values:
+      - m_Id: 33b93271c8417524ab646273c9105cfc
+        m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
+      - m_Id: 4c015d9ff5bf55f4487a86f11c491903
+        m_Value: E:\Project\StrangeIoc\ResourcesPackage
+      - m_Id: f8605b8aa2c9f9c45b34ef165c39af84
+        m_Value: E:\Project\StrangeIoc\ResourcesPackage
       - m_Id: f7f3819f145c4ca4dbb96a502b038bf5
         m_Value: ServerData/[BuildTarget]
       - m_Id: 638d490cb4624c64faf5104c8f54e8ad
@@ -85,6 +100,8 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Prefabs
+    - Prefabs1
+    - Common
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 364de110479252143b97f33bef0ebad0, type: 2}
@@ -98,9 +115,38 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 1c05c809800b4ac4c93bfe39c8dfb167, type: 2}
   - {fileID: 11400000, guid: 8baab6ca74e1b5342a86e2ce8591a162, type: 2}
   - {fileID: 11400000, guid: 186fa6a007ec3974f9b8b93dde815da4, type: 2}
-  m_ActiveProfileId: b2ce6bc33bcb2594f9eaf735d05445cf
+  m_ActiveProfileId: 57873073ee3e9d544aa8fc7af62c05d3
   m_HostingServicesManager:
-    m_HostingServiceInfos: []
+    m_HostingServiceInfos:
+    - classRef: UnityEditor.AddressableAssets.HostingServices.HttpHostingService,
+        Unity.Addressables.Editor
+      dataStore:
+        m_SerializedData:
+        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          m_ClassName: System.Int32
+          m_Data: 0
+          m_Key: HostingServicePort
+        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          m_ClassName: System.Int32
+          m_Data: 0
+          m_Key: HostingServiceUploadSpeed
+        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          m_ClassName: System.String
+          m_Data: E:\Project\StrangeIoc\ResourcesPackage
+          m_Key: ContentRoot
+        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          m_ClassName: System.Boolean
+          m_Data: False
+          m_Key: IsEnabled
+        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          m_ClassName: System.String
+          m_Data: Local Hosting 0
+          m_Key: DescriptiveName
+        - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+          m_ClassName: System.Int32
+          m_Data: 0
+          m_Key: InstanceId
     m_Settings: {fileID: 11400000}
-    m_NextInstanceId: 0
-    m_RegisteredServiceTypeRefs: []
+    m_NextInstanceId: 1
+    m_RegisteredServiceTypeRefs:
+    - UnityEditor.AddressableAssets.HostingServices.HttpHostingService, Unity.Addressables.Editor

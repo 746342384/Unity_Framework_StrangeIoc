@@ -59,7 +59,7 @@ namespace framework.framework.ui.impl
             }
         }
 
-        public void OpenPanel(string panelName, object data = null)
+        public async void OpenPanel(string panelName, object data = null)
         {
             if (!_panels.TryGetValue(panelName, out var uiPanel)) return;
 
@@ -73,7 +73,7 @@ namespace framework.framework.ui.impl
 
             if (!_panelCache.TryGetValue(panelName, out var panel))
             {
-                var prefab = _resourceSystemService.Load<GameObject>(uiPanel.Path);
+                var prefab = await _resourceSystemService.LoadAsync<GameObject>(uiPanel.Path);
                 panel = Object.Instantiate(prefab, uiRootNormalRoot, true);
                 _panelCache.Add(panelName, panel);
             }
