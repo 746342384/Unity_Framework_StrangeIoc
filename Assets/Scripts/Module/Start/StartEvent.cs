@@ -2,6 +2,7 @@ namespace Module.Start
 {
     public enum StartEvent
     {
-        Start
+        Start,
+        Update
     }
 }

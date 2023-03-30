@@ -1,4 +1,5 @@
-﻿using Framework.framework.resources.api;
+﻿using Framework.framework.addressable.api;
+using Framework.framework.resources.api;
 using Framework.framework.resources.impl;
 using framework.framework.ui.api;
 using framework.framework.ui.impl;
@@ -30,6 +31,7 @@ namespace Root
         {
             base.mapBindings();
             commandBinder.Bind(ContextEvent.START).To<StartCommand>();
+            commandBinder.Bind(StartEvent.Update).To<UpdateResourcesCommand>();
             commandBinder.Bind(StartEvent.Start).To<GameStartCommand>();
             commandBinder.Bind(MainEvent.Back).To<BackStartPanelCommand>();
             mediationBinder.Bind<StartView>().To<StartMediator>();
@@ -63,6 +65,7 @@ namespace Root
 
             injectionBinder.Bind<IGameContext>().To<GameContext>().ToSingleton();
             injectionBinder.Bind<IUIRoot>().To<UIRoot>().ToSingleton();
+            injectionBinder.Bind<IAddressableDownload>().To<AddressableDownload>().ToSingleton();
             injectionBinder.Bind<IResourceSystemService>().To<ResourceSystemService>().ToSingleton();
             injectionBinder.Bind<IResourcesLoader>().To<AddressableLoader>().ToSingleton();
         }

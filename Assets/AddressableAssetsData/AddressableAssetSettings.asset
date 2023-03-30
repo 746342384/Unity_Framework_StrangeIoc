@@ -44,6 +44,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8f7d4bc97be00a84dbf5a67554d241b4, type: 2}
   - {fileID: 11400000, guid: 6f99be65eb57f6649b0f28c4ca4b28dc, type: 2}
   - {fileID: 11400000, guid: fe0fa0e12debba44da79252590663773, type: 2}
+  - {fileID: 11400000, guid: c9b45cafd0bf35541b63e2e4d0658951, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -58,9 +59,9 @@ MonoBehaviour:
       - m_Id: 33b93271c8417524ab646273c9105cfc
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: 4c015d9ff5bf55f4487a86f11c491903
-        m_Value: E:\Project\StrangeIoc\ResourcesPackage
+        m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: f8605b8aa2c9f9c45b34ef165c39af84
-        m_Value: E:\Project\StrangeIoc\ResourcesPackage
+        m_Value: '{UnityEngine.AddressableAssets.Addressables.RuntimePath}/[BuildTarget]'
       - m_Id: f7f3819f145c4ca4dbb96a502b038bf5
         m_Value: ServerData/[BuildTarget]
       - m_Id: 638d490cb4624c64faf5104c8f54e8ad
@@ -72,13 +73,13 @@ MonoBehaviour:
       - m_Id: 33b93271c8417524ab646273c9105cfc
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: 4c015d9ff5bf55f4487a86f11c491903
-        m_Value: E:\Project\StrangeIoc\ResourcesPackage
+        m_Value: E:\Project\StrangeIoc\ResourcesPackage[BuildTarget]
       - m_Id: f8605b8aa2c9f9c45b34ef165c39af84
-        m_Value: E:\Project\StrangeIoc\ResourcesPackage
+        m_Value: E:\Project\StrangeIoc\ResourcesPackage[BuildTarget]
       - m_Id: f7f3819f145c4ca4dbb96a502b038bf5
-        m_Value: ServerData/[BuildTarget]
+        m_Value: E:/Project/StrangeIoc/RemoteResPackage/[BuildTarget]
       - m_Id: 638d490cb4624c64faf5104c8f54e8ad
-        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
+        m_Value: http://localhost:7980/addressables/[BuildTarget]
     m_ProfileEntryNames:
     - m_Id: 33b93271c8417524ab646273c9105cfc
       m_Name: BuildTarget
@@ -102,6 +103,8 @@ MonoBehaviour:
     - Prefabs
     - Prefabs1
     - Common
+    - Common1
+    - Group1
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 364de110479252143b97f33bef0ebad0, type: 2}
@@ -124,7 +127,7 @@ MonoBehaviour:
         m_SerializedData:
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Int32
-          m_Data: 0
+          m_Data: 7981
           m_Key: HostingServicePort
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Int32
@@ -132,7 +135,7 @@ MonoBehaviour:
           m_Key: HostingServiceUploadSpeed
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: E:\Project\StrangeIoc\ResourcesPackage
+          m_Data: E:\Project\StrangeIoc\ResourcesPackageStandaloneWindows64;E:/Project/StrangeIoc/RemoteResPackage/StandaloneWindows64
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean
@@ -140,13 +143,13 @@ MonoBehaviour:
           m_Key: IsEnabled
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: Local Hosting 0
+          m_Data: LocalHosting
           m_Key: DescriptiveName
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Int32
           m_Data: 0
           m_Key: InstanceId
     m_Settings: {fileID: 11400000}
-    m_NextInstanceId: 1
+    m_NextInstanceId: 2
     m_RegisteredServiceTypeRefs:
     - UnityEditor.AddressableAssets.HostingServices.HttpHostingService, Unity.Addressables.Editor

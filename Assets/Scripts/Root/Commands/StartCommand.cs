@@ -1,18 +1,13 @@
-﻿using Base.UI;
-using framework.framework.ui.api;
+﻿using Module.Start;
 using strange.extensions.command.impl;
-using UnityEngine;
 
 namespace Root.Commands
 {
     public class StartCommand : EventCommand
     {
-        [Inject] public IPanelSystem PanelSystem { get; set; }
-
-        public override async void Execute()
+        public override void Execute()
         {
-            Debug.Log("StartCommand.Execute");
-            await PanelSystem.OpenPanelAsync(PanelNames.StartPanel);
+            Dispatcher.Dispatch(StartEvent.Update);
         }
     }
 }
