@@ -1,2 +1,6 @@
 *.csproj
 *.sln
+/Assets/AddressableAssetsData/Android/
+/Assets/AddressableAssetsData/Windows/
+/Assets/AddressableAssetsData/Android.meta
+/Assets/AddressableAssetsData/Windows.meta
