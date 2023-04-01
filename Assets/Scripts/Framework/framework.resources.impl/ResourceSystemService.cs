@@ -1,14 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Framework.framework.resources.api;
+using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Framework.framework.resources.impl
 {
     public class ResourceSystemService : IResourceSystemService
     {
         private readonly IResourcesLoader _resourcesLoader;
-        private Dictionary<string, object> _cache = new();
+        private Dictionary<string, Object> _cache = new();
 
         public ResourceSystemService(IResourcesLoader resourcesLoader)
         {
@@ -20,21 +21,19 @@ namespace Framework.framework.resources.impl
             _cache.Clear();
         }
 
-        public object Load(string path, Type type)
+        public void Realease(GameObject gameObject)
         {
-            return _cache.TryGetValue(path, out var obj) ? obj : _resourcesLoader.Load(path, type);
+            _resourcesLoader.Realease(gameObject);
         }
 
-        public T Load<T>(string path) where T : class
+        public void Realease(string key)
         {
-            return _cache.TryGetValue(path, out var obj) ? obj as T : _resourcesLoader.Load<T>(path);
+            if (_cache.TryGetValue(key, out var value))
+            {
+                _resourcesLoader.Realease(value);
+            }
         }
-
-        public async Task<object> LoadAsync(string path, Type type)
-        {
-            return _cache.TryGetValue(path, out var obj) ? obj : await _resourcesLoader.LoadAsync(path, type);
-        }
-
+        
         public async Task<T> LoadAsync<T>(string path) where T : class
         {
             return _cache.TryGetValue(path, out var obj) ? obj as T : await _resourcesLoader.LoadAsync<T>(path);

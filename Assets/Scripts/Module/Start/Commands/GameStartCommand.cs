@@ -8,10 +8,10 @@ namespace Module.Start.Commands
     {
         [Inject] public IPanelSystem PanelSystem { get; set; }
 
-        public override void Execute()
+        public override async void Execute()
         {
-            PanelSystem.ClosePanel(PanelNames.StartPanel);
-            PanelSystem.OpenPanel(PanelNames.MainPanel);
+            await PanelSystem.OpenPanelAsync(PanelNames.MainPanel);
+            await PanelSystem.ClosePanelAsync(PanelNames.StartPanel);
         }
     }
 }

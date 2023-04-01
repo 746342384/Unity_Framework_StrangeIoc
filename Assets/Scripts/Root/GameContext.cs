@@ -1,4 +1,6 @@
 ﻿using Framework.framework.addressable.api;
+using Framework.framework.coroutine.api;
+using Framework.framework.coroutine.impl;
 using Framework.framework.resources.api;
 using Framework.framework.resources.impl;
 using framework.framework.ui.api;
@@ -57,6 +59,8 @@ namespace Root
         private void BindCustomSystem()
         {
             _system.BindSystem<IPanelSystem, PanelSystem>();
+            var coroutineSystem = injectionBinder.GetInstance<ICoroutineSystem>();
+            _system.AddSystem(coroutineSystem);
         }
 
         protected override void addCoreComponents()
@@ -65,8 +69,9 @@ namespace Root
 
             injectionBinder.Bind<IGameContext>().To<GameContext>().ToSingleton();
             injectionBinder.Bind<IUIRoot>().To<UIRoot>().ToSingleton();
-            injectionBinder.Bind<IAddressableDownload>().To<AddressableDownload>().ToSingleton();
+            injectionBinder.Bind<ICoroutineSystem>().To<CoroutineSystem>().ToSingleton();
             injectionBinder.Bind<IResourceSystemService>().To<ResourceSystemService>().ToSingleton();
+            injectionBinder.Bind<IAddressableDownload>().To<AddressableDownload>().ToSingleton();
             injectionBinder.Bind<IResourcesLoader>().To<AddressableLoader>().ToSingleton();
         }
 

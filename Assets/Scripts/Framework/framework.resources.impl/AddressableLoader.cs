@@ -1,43 +1,21 @@
 ﻿using System;
-using System.Linq;
 using Cysharp.Threading.Tasks;
 using Framework.framework.resources.api;
-using UnityEngine;
 using UnityEngine.AddressableAssets;
+using Object = UnityEngine.Object;
 
 namespace Framework.framework.resources.impl
 {
     public class AddressableLoader : IResourcesLoader
     {
-        public object Load(string path)
-        {
-            return Addressables.LoadAssetAsync<GameObject>(path);
-        }
-
-        public object Load(string path, Type type)
-        {
-            return Resources.Load(path, type);
-        }
-
         public T Load<T>(string path) where T : class
         {
-            var type = typeof(T);
-            return Resources.Load(path, type) as T;
+            return default;
         }
 
         public T Load<T>(string path, Type type) where T : class
         {
-            return Resources.Load(path, type) as T;
-        }
-
-        public async UniTask<object> LoadAsync(string path)
-        {
-            return await Addressables.LoadAssetAsync<GameObject>(path).ToUniTask();
-        }
-
-        public async UniTask<object> LoadAsync(string path, Type type)
-        {
-            return await Addressables.LoadAssetAsync<GameObject>(path).ToUniTask();
+            return Load<T>(path);
         }
 
         public async UniTask<T> LoadAsync<T>(string path) where T : class
@@ -52,22 +30,27 @@ namespace Framework.framework.resources.impl
 
         public object[] LoadAll(string path)
         {
-            return Resources.LoadAll(path).Cast<object>().ToArray();
+            throw new NotImplementedException();
         }
 
         public object[] LoadAll(string path, Type type)
         {
-            return Resources.LoadAll(path, type).Cast<object>().ToArray();
+            throw new NotImplementedException();
         }
 
-        public async UniTask<object[]> LoadAllAsync(string path)
+        public UniTask<object[]> LoadAllAsync(string path)
         {
-            return await UniTask.FromResult(Resources.LoadAll(path)?.Cast<object>().ToArray());
+            throw new NotImplementedException();
         }
 
-        public async UniTask<object[]> LoadAllAsync(string path, Type type)
+        public UniTask<object[]> LoadAllAsync(string path, Type type)
         {
-            return await UniTask.FromResult(Resources.LoadAll(path, type)?.Cast<object>().ToArray());
+            throw new NotImplementedException();
+        }
+
+        public void Realease(Object gameObject)
+        {
+            Addressables.Release(gameObject);
         }
     }
 }

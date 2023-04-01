@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 468a46d0ae32c3544b7d98094e6448a9, type: 3}
   m_Name: AddressableAssetSettings
   m_EditorClassIdentifier: 
-  m_DefaultGroup: c879e564a2d40bd4d9a0a51046d32487
+  m_DefaultGroup: 8bff5204a57a8a6449db8ed2272107d7
   m_CachedHash:
     serializedVersion: 2
     Hash: 00000000000000000000000000000000
   m_OptimizeCatalogSize: 0
-  m_BuildRemoteCatalog: 0
+  m_BuildRemoteCatalog: 1
   m_BundleLocalCatalog: 0
   m_CatalogRequestsTimeout: 0
-  m_DisableCatalogUpdateOnStart: 0
+  m_DisableCatalogUpdateOnStart: 1
   m_IgnoreUnsupportedFilesInBuild: 0
   m_UniqueBundleIds: 0
   m_NonRecursiveBuilding: 1
@@ -42,9 +42,8 @@ MonoBehaviour:
   m_overridePlayerVersion: 
   m_GroupAssets:
   - {fileID: 11400000, guid: 8f7d4bc97be00a84dbf5a67554d241b4, type: 2}
-  - {fileID: 11400000, guid: 6f99be65eb57f6649b0f28c4ca4b28dc, type: 2}
   - {fileID: 11400000, guid: fe0fa0e12debba44da79252590663773, type: 2}
-  - {fileID: 11400000, guid: c9b45cafd0bf35541b63e2e4d0658951, type: 2}
+  - {fileID: 11400000, guid: 5905aca738b6045468e204e2cd869a04, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -73,9 +72,9 @@ MonoBehaviour:
       - m_Id: 33b93271c8417524ab646273c9105cfc
         m_Value: '[UnityEditor.EditorUserBuildSettings.activeBuildTarget]'
       - m_Id: 4c015d9ff5bf55f4487a86f11c491903
-        m_Value: E:\Project\StrangeIoc\ResourcesPackage[BuildTarget]
+        m_Value: E:/Project/StrangeIoc/ResourcesPackage/[BuildTarget]
       - m_Id: f8605b8aa2c9f9c45b34ef165c39af84
-        m_Value: E:\Project\StrangeIoc\ResourcesPackage[BuildTarget]
+        m_Value: E:/Project/StrangeIoc/ResourcesPackage/[BuildTarget]
       - m_Id: f7f3819f145c4ca4dbb96a502b038bf5
         m_Value: E:/Project/StrangeIoc/RemoteResPackage/[BuildTarget]
       - m_Id: 638d490cb4624c64faf5104c8f54e8ad
@@ -105,6 +104,8 @@ MonoBehaviour:
     - Common
     - Common1
     - Group1
+    - Common 1
+    - Common 2
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 364de110479252143b97f33bef0ebad0, type: 2}
@@ -135,7 +136,7 @@ MonoBehaviour:
           m_Key: HostingServiceUploadSpeed
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: E:\Project\StrangeIoc\ResourcesPackageStandaloneWindows64;E:/Project/StrangeIoc/RemoteResPackage/StandaloneWindows64
+          m_Data: E:/Project/StrangeIoc/RemoteResPackage/StandaloneWindows64
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean

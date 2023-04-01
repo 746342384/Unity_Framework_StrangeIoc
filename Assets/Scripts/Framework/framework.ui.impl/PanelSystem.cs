@@ -89,7 +89,6 @@ namespace framework.framework.ui.impl
         public Task OpenPanelAsync(string panelName, object data = null)
         {
             OpenPanel(panelName);
-
             return Task.CompletedTask;
         }
 
@@ -104,7 +103,6 @@ namespace framework.framework.ui.impl
         public Task ClosePanelAsync(string panelName)
         {
             ClosePanel(panelName);
-
             return Task.CompletedTask;
         }
 

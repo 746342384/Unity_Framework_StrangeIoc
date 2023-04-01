@@ -22,6 +22,11 @@ namespace Framework.framework.system.impl
             }
         }
 
+        public void AddSystem<TSystem>(TSystem system) where TSystem : ISystem
+        {
+            _systems.Add(system);
+        }
+
         public void BindSystem<TISystem, TSystem>() where TISystem : ISystem
         {
             _gameContext.InjectionBinder.Bind<TISystem>().To<TSystem>().ToSingleton();

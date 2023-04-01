@@ -15,15 +15,10 @@ MonoBehaviour:
   m_GroupName: Common
   m_Data:
     m_SerializedData: []
-  m_GUID: 53dc49cb4e8d40844a136d78920f6b62
+  m_GUID: 8bff5204a57a8a6449db8ed2272107d7
   m_SerializeEntries:
   - m_GUID: cf38854ede78fb84a9a050b8b2dd1bd4
     m_Address: Assets/ResPackage/Common/UIPanel/StartPanel.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Common
-  - m_GUID: 06005c31a8e95184b9d9801531348597
-    m_Address: Assets/ResPackage/Common/UIPanel/MainPanel.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Common
