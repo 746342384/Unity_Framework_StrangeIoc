@@ -6,5 +6,6 @@ namespace Module.Main.View
     public class MainView : UGameView
     {
         public Button BackBtn;
+        public Button RealeaseAllPanelBtn;
     }
 }

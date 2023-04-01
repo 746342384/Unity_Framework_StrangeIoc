@@ -1,10 +1,11 @@
 using System.Collections;
 using Framework.framework.coroutine.api;
+using Framework.framework.system.impl;
 using UnityEngine;
 
 namespace Framework.framework.coroutine.impl
 {
-    public class CoroutineSystem : ICoroutineSystem
+    public class CoroutineSystem : SystemBase, ICoroutineSystem
     {
         private CoroutineRunner _coroutineRunner;
 
@@ -23,7 +24,7 @@ namespace Framework.framework.coroutine.impl
             _coroutineRunner.StopAllCoroutines();
         }
 
-        public void OnInit()
+        public override void OnInit()
         {
             var o = new GameObject("[CoroutineRunner]");
             _coroutineRunner = o.AddComponent<CoroutineRunner>();

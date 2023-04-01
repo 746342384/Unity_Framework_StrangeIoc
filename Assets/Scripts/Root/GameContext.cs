@@ -1,4 +1,5 @@
-﻿using Framework.framework.addressable.api;
+﻿using System.Threading.Tasks;
+using Framework.framework.addressable.api;
 using Framework.framework.coroutine.api;
 using Framework.framework.coroutine.impl;
 using Framework.framework.resources.api;
@@ -40,11 +41,12 @@ namespace Root
             mediationBinder.Bind<MainView>().To<MainMediator>();
         }
 
-        public override void Launch()
+        public override async void Launch()
         {
             InitSystem();
             BindCustomSystem();
             OnInit();
+            await OnInitAsync();
             base.Launch();
         }
 
@@ -78,6 +80,11 @@ namespace Root
         private void OnInit()
         {
             _system.OnInit();
+        }
+
+        private async Task OnInitAsync()
+        {
+            await _system.OnInitAsync();
         }
     }
 }

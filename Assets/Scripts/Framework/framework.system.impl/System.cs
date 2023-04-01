@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using Framework.framework.system.api;
 using Root;
+using UnityEngine;
 
 namespace Framework.framework.system.impl
 {
@@ -16,10 +18,24 @@ namespace Framework.framework.system.impl
 
         public void OnInit()
         {
+            Debug.Log($"System OnInit Start");
             foreach (var system in _systems)
             {
                 system.OnInit();
             }
+
+            Debug.Log($"System OnInit End");
+        }
+
+        public async Task OnInitAsync()
+        {
+            Debug.Log($"System OnInitAsync Start");
+            foreach (var system in _systems)
+            {
+                await system.OnInitAsync();
+            }
+
+            Debug.Log($"System OnInitAsync End");
         }
 
         public void AddSystem<TSystem>(TSystem system) where TSystem : ISystem

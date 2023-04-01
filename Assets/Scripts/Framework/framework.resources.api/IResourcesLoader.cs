@@ -14,5 +14,6 @@ namespace Framework.framework.resources.api
         UniTask<object[]> LoadAllAsync(string path);
         UniTask<object[]> LoadAllAsync(string path, Type type);
         void Realease(UnityEngine.Object gameObject);
+        void RealeaseInstance(UnityEngine.GameObject gameObject);
     }
 }

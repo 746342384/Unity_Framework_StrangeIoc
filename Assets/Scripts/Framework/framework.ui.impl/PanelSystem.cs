@@ -6,18 +6,20 @@ using System.Threading.Tasks;
 using Extensions;
 using Framework.framework.attribute.api;
 using Framework.framework.resources.api;
+using Framework.framework.system.impl;
 using framework.framework.ui.api;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace framework.framework.ui.impl
 {
-    public class PanelSystem : IPanelSystem
+    public class PanelSystem : SystemBase, IPanelSystem
     {
         private readonly IResourceSystemService _resourceSystemService;
         private readonly IUIRoot _uiRoot;
         private readonly Dictionary<string, IUIPanel> _panels = new();
         private readonly Dictionary<string, GameObject> _panelCache = new();
+        private readonly Dictionary<string, GameObject> _panelLoadCache = new();
 
         public PanelSystem(IResourceSystemService resourceSystemService,
             IUIRoot uiRoot)
@@ -28,7 +30,7 @@ namespace framework.framework.ui.impl
 
         public bool IsInitialized { get; set; }
 
-        public void OnInit()
+        public override void OnInit()
         {
             if (IsInitialized)
             {
@@ -38,6 +40,11 @@ namespace framework.framework.ui.impl
             _uiRoot.Init();
             LoadPanels();
             IsInitialized = true;
+        }
+
+        public override async Task OnInitAsync()
+        {
+            await PreLoadPanel();
         }
 
         private void LoadPanels()
@@ -59,6 +66,17 @@ namespace framework.framework.ui.impl
             }
         }
 
+        private async Task PreLoadPanel()
+        {
+            foreach (var (panelName, value) in _panels)
+            {
+                var valuePath = value.Path;
+                var gameObject = await _resourceSystemService.LoadAsync<GameObject>(valuePath);
+                if (gameObject != null) _panelLoadCache[panelName] = gameObject;
+                Debug.Log($"PreLoadPanel:{panelName} : {valuePath}");
+            }
+        }
+
         public async void OpenPanel(string panelName, object data = null)
         {
             if (!_panels.TryGetValue(panelName, out var uiPanel)) return;
@@ -73,7 +91,11 @@ namespace framework.framework.ui.impl
 
             if (!_panelCache.TryGetValue(panelName, out var panel))
             {
-                var prefab = await _resourceSystemService.LoadAsync<GameObject>(uiPanel.Path);
+                if (!_panelLoadCache.TryGetValue(panelName, out var prefab))
+                {
+                    prefab = await _resourceSystemService.LoadAsync<GameObject>(uiPanel.Path);
+                }
+
                 panel = Object.Instantiate(prefab, uiRootNormalRoot, true);
                 _panelCache.Add(panelName, panel);
             }
@@ -108,6 +130,13 @@ namespace framework.framework.ui.impl
 
         public void UnLoadAllPanel()
         {
+            foreach (var keyValuePair in _panelLoadCache)
+            {
+                _resourceSystemService.Realease(keyValuePair.Value);
+            }
+
+            _panelLoadCache.Clear();
+
             foreach (var keyValuePair in _panels)
             {
                 keyValuePair.Value.UnLoad();

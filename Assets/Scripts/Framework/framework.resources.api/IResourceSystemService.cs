@@ -9,5 +9,6 @@ namespace Framework.framework.resources.api
         void Realease(GameObject gameObject);
         void Realease(string key);
         Task<T> LoadAsync<T>(string path) where T : class;
+        void RealeaseInstance(GameObject value);
     }
 }

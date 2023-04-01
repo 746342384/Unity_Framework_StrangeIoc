@@ -8,7 +8,6 @@ namespace Framework.framework.resources.impl
 {
     public class ResourcesLoader : IResourcesLoader
     {
-        
         public T Load<T>(string path) where T : class
         {
             var type = typeof(T);
@@ -48,10 +47,15 @@ namespace Framework.framework.resources.impl
 
         public async UniTask<object[]> LoadAllAsync(string path, Type type)
         {
-            return await UniTask.FromResult(Resources.LoadAll(path,type)?.Cast<object>().ToArray());
+            return await UniTask.FromResult(Resources.LoadAll(path, type)?.Cast<object>().ToArray());
         }
 
         public void Realease(UnityEngine.Object gameObject)
+        {
+            Resources.UnloadAsset(gameObject);
+        }
+
+        public void RealeaseInstance(GameObject gameObject)
         {
             Resources.UnloadAsset(gameObject);
         }

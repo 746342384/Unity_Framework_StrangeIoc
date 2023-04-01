@@ -1,6 +1,7 @@
 ﻿using System;
 using Cysharp.Threading.Tasks;
 using Framework.framework.resources.api;
+using UnityEngine;
 using UnityEngine.AddressableAssets;
 using Object = UnityEngine.Object;
 
@@ -51,6 +52,11 @@ namespace Framework.framework.resources.impl
         public void Realease(Object gameObject)
         {
             Addressables.Release(gameObject);
+        }
+
+        public void RealeaseInstance(GameObject gameObject)
+        {
+            Addressables.ReleaseInstance(gameObject);
         }
     }
 }

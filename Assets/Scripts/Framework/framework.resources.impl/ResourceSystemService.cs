@@ -38,5 +38,10 @@ namespace Framework.framework.resources.impl
         {
             return _cache.TryGetValue(path, out var obj) ? obj as T : await _resourcesLoader.LoadAsync<T>(path);
         }
+
+        public void RealeaseInstance(GameObject value)
+        {
+            _resourcesLoader.RealeaseInstance(value);
+        }
     }
 }
