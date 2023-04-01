@@ -12,5 +12,6 @@ namespace framework.framework.ui.api
         Task ClosePanelAsync(string panelName);
         void UnLoadAllPanel();
         void UnLoadPanel(string panelName);
+        Task PreLoadPanel();
     }
 }

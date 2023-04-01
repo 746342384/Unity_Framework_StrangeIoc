@@ -5,7 +5,7 @@ namespace Framework.framework.addressable.api
 {
     public interface IAddressableDownload
     {
-        UniTask StartPreload();
+        UniTask StartPreDownload();
         IEnumerable<string> GetGroups();
     }
 }

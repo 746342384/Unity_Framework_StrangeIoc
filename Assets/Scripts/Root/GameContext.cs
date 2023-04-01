@@ -35,6 +35,7 @@ namespace Root
             base.mapBindings();
             commandBinder.Bind(ContextEvent.START).To<StartCommand>();
             commandBinder.Bind(StartEvent.Update).To<UpdateResourcesCommand>();
+            commandBinder.Bind(StartEvent.PreLoadResources).To<PreLoadResourcesCommand>();
             commandBinder.Bind(StartEvent.Start).To<GameStartCommand>();
             commandBinder.Bind(MainEvent.Back).To<BackStartPanelCommand>();
             mediationBinder.Bind<StartView>().To<StartMediator>();
@@ -45,7 +46,6 @@ namespace Root
         {
             InitSystem();
             BindCustomSystem();
-            OnInit();
             await OnInitAsync();
             base.Launch();
         }
@@ -84,6 +84,7 @@ namespace Root
 
         private async Task OnInitAsync()
         {
+            OnInit();
             await _system.OnInitAsync();
         }
     }

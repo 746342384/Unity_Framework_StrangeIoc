@@ -42,11 +42,6 @@ namespace framework.framework.ui.impl
             IsInitialized = true;
         }
 
-        public override async Task OnInitAsync()
-        {
-            await PreLoadPanel();
-        }
-
         private void LoadPanels()
         {
             _panels.Clear();
@@ -66,7 +61,7 @@ namespace framework.framework.ui.impl
             }
         }
 
-        private async Task PreLoadPanel()
+        public async Task PreLoadPanel()
         {
             foreach (var (panelName, value) in _panels)
             {

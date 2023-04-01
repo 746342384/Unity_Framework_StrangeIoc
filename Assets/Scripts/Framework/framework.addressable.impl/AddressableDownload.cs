@@ -33,7 +33,7 @@ public class AddressableDownload : IAddressableDownload
     /// </summary>
     /// <param name="key">资源包key</param>
     /// <returns></returns>
-    public async UniTask StartPreload()
+    public async UniTask StartPreDownload()
     {
         downLoadIndex = 0;
         Debug.Log("开始下载");
