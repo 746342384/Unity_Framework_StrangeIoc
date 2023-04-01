@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace Framework.framework.system.impl
 {
-    public class System
+    public class SystemServices
     {
         private readonly List<ISystem> _systems = new();
         private IGameContext _gameContext { get; set; }

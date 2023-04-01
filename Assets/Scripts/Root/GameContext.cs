@@ -4,6 +4,7 @@ using Framework.framework.coroutine.api;
 using Framework.framework.coroutine.impl;
 using Framework.framework.resources.api;
 using Framework.framework.resources.impl;
+using Framework.framework.system.impl;
 using framework.framework.ui.api;
 using framework.framework.ui.impl;
 using Module.Main;
@@ -21,8 +22,7 @@ namespace Root
 {
     public class GameContext : MVCSContext, IGameContext
     {
-        private Framework.framework.system.impl.System _system;
-
+        private SystemServices _systemServices;
         public ICrossContextInjectionBinder InjectionBinder { get; set; }
 
         public GameContext()
@@ -44,25 +44,25 @@ namespace Root
 
         public override async void Launch()
         {
-            InitSystem();
-            BindCustomSystem();
-            await OnInitAsync();
+            InitSystemServices();
+            BindCustomSystemServices();
+            await OnSystemServicesInitAsync();
             base.Launch();
         }
 
-        private void InitSystem()
+        private void InitSystemServices()
         {
-            injectionBinder.Bind<Framework.framework.system.impl.System>().To<Framework.framework.system.impl.System>();
-            _system = injectionBinder.GetInstance<Framework.framework.system.impl.System>();
-            _system.Init(this);
-            injectionBinder.Unbind<Framework.framework.system.impl.System>();
+            injectionBinder.Bind<SystemServices>().To<SystemServices>();
+            _systemServices = injectionBinder.GetInstance<SystemServices>();
+            _systemServices.Init(this);
+            injectionBinder.Unbind<SystemServices>();
         }
 
-        private void BindCustomSystem()
+        private void BindCustomSystemServices()
         {
-            _system.BindSystem<IPanelSystem, PanelSystem>();
+            _systemServices.BindSystem<IPanelSystem, PanelSystem>();
             var coroutineSystem = injectionBinder.GetInstance<ICoroutineSystem>();
-            _system.AddSystem(coroutineSystem);
+            _systemServices.AddSystem(coroutineSystem);
         }
 
         protected override void addCoreComponents()
@@ -77,15 +77,15 @@ namespace Root
             injectionBinder.Bind<IResourcesLoader>().To<AddressableLoader>().ToSingleton();
         }
 
-        private void OnInit()
+        private void OnSystemServicesInit()
         {
-            _system.OnInit();
+            _systemServices.OnInit();
         }
 
-        private async Task OnInitAsync()
+        private async Task OnSystemServicesInitAsync()
         {
-            OnInit();
-            await _system.OnInitAsync();
+            OnSystemServicesInit();
+            await _systemServices.OnInitAsync();
         }
     }
 }
