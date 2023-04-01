@@ -2,6 +2,8 @@
 using Framework.framework.addressable.api;
 using Framework.framework.coroutine.api;
 using Framework.framework.coroutine.impl;
+using Framework.framework.repository.api;
+using Framework.framework.repository.impl;
 using Framework.framework.resources.api;
 using Framework.framework.resources.impl;
 using Framework.framework.system.impl;
@@ -72,6 +74,7 @@ namespace Root
             injectionBinder.Bind<IGameContext>().To<GameContext>().ToSingleton();
             injectionBinder.Bind<IUIRoot>().To<UIRoot>().ToSingleton();
             injectionBinder.Bind<ICoroutineSystem>().To<CoroutineSystem>().ToSingleton();
+            injectionBinder.Bind<IRepositoryManager>().To<RepositoryManager>().ToSingleton();
             injectionBinder.Bind<IResourceSystemService>().To<ResourceSystemService>().ToSingleton();
             injectionBinder.Bind<IAddressableDownload>().To<AddressableDownload>().ToSingleton();
             injectionBinder.Bind<IResourcesLoader>().To<AddressableLoader>().ToSingleton();
