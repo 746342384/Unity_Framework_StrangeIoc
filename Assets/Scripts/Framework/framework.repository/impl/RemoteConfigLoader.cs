@@ -1,13 +1,20 @@
+using System;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Framework.framework.repository.api;
-using UnityEngine;
+using Framework.framework.log;
 using UnityEngine.Networking;
 
-namespace Framework.framework.repository.impl
+namespace Framework.framework.repository
 {
     public class RemoteConfigLoader : IConfigLoader
     {
+        private readonly ILog _log;
+
+        public RemoteConfigLoader(ILog log)
+        {
+            _log = log;
+        }
+
         public string BasePath { get; set; }
 
         public async UniTask<List<T>> LoadConfigData<T>(string fileName)
@@ -16,27 +23,37 @@ namespace Framework.framework.repository.impl
             var json = await DownloadJsonAsync(fullPath);
             if (!string.IsNullOrEmpty(json))
             {
-                return JsonUtility.FromJson<List<T>>(json);
+                _log.Debug($"LoadConfigData:{fileName}:{json}");
+                return LitJson.JsonMapper.ToObject<List<T>>(json);
             }
-            Debug.LogError($"RemoteConfigLoader {typeof(T)} is null url {fullPath}");
+
+            _log.Error($"RemoteConfigLoader {typeof(T)} is null url {fullPath}");
             return new List<T>();
         }
 
         private async UniTask<string> DownloadJsonAsync(string url)
         {
             using var request = UnityWebRequest.Get(url);
-            await request.SendWebRequest();
-
-            if (request.result is
-                UnityWebRequest.Result.ConnectionError or
-                UnityWebRequest.Result.ProtocolError or
-                UnityWebRequest.Result.DataProcessingError)
+            try
             {
-                Debug.LogError($"Error downloading JSON data: {request.error}");
+                await request.SendWebRequest();
+
+                if (request.result is
+                    UnityWebRequest.Result.ConnectionError or
+                    UnityWebRequest.Result.ProtocolError or
+                    UnityWebRequest.Result.DataProcessingError)
+                {
+                    _log.Error($"Error downloading JSON data: {request.error}");
+                    return null;
+                }
+
+                return request.downloadHandler.text;
+            }
+            catch (UnityWebRequestException e)
+            {
+                _log.Error($"{e.Error},{e.UnityWebRequest.url}");
                 return null;
             }
-
-            return request.downloadHandler.text;
         }
     }
 }

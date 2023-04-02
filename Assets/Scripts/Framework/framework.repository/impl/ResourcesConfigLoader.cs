@@ -1,9 +1,8 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
-using Framework.framework.repository.api;
 using UnityEngine;
 
-namespace Framework.framework.repository.impl
+namespace Framework.framework.repository
 {
     public class ResourcesConfigLoader : IConfigLoader
     {
@@ -15,7 +14,9 @@ namespace Framework.framework.repository.impl
             var textAsset = await LoadTextAssetFromResourcesAsync(fullPath);
             if (textAsset != null)
             {
-                return JsonUtility.FromJson<List<T>>(textAsset.text);
+                Debug.Log($"LoadConfigData:{fileName}:{textAsset.text}");
+                var loadConfigData = LitJson.JsonMapper.ToObject<List<T>>(textAsset.text);
+                return loadConfigData;
             }
 
             Debug.LogError($"ResourcesConfigLoader {typeof(T)} is null path {fullPath}");

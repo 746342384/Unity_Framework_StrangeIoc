@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Extensions;
-using Framework.framework.attribute.api;
+using Framework.framework.attribute;
 using Framework.framework.resources.api;
 using Framework.framework.system.impl;
 using framework.framework.ui.api;
@@ -101,6 +101,7 @@ namespace framework.framework.ui.impl
             panel.transform.localScale = Vector3.one;
             panel.SetActive(true);
             uiPanel.Show();
+            Debug.Log($"OpenPanel:{panelName}");
         }
 
         public Task OpenPanelAsync(string panelName, object data = null)

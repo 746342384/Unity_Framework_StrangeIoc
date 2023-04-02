@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 
-namespace Framework.framework.repository.api
+namespace Framework.framework.repository
 {
     public interface IConfigLoader
     {

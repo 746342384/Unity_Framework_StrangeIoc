@@ -2,10 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using Cysharp.Threading.Tasks;
-using Framework.framework.repository.api;
 using MySql.Data.MySqlClient;
 
-namespace Framework.framework.repository.impl
+namespace Framework.framework.repository
 {
     public class DbConfigLoader : IConfigLoader
     {

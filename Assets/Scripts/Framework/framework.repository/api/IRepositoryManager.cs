@@ -1,7 +1,9 @@
-namespace Framework.framework.repository.api
+using System.Threading.Tasks;
+
+namespace Framework.framework.repository
 {
     public interface IRepositoryManager
     {
-        void LoadRepositories();
+        Task LoadRepositories();
     }
 }

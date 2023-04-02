@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff99523e2f05f9b45a13ec830aeac8c9, type: 3}
-  m_Name: AddressableGroupNames
+  m_Script: {fileID: 11500000, guid: 72fd5b2aacd94a28a73ad115205cc50a, type: 3}
+  m_Name: ConfigData
   m_EditorClassIdentifier: 
-  GroupNames:
-  - Common
-  - Common1
+  Remote: http://192.168.3.134:7980/addressables/DataConfig
+  Local: DataConfig
+  Db: 
+  ConfigLoaderMode: 0

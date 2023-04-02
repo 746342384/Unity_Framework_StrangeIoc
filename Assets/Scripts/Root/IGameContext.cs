@@ -1,9 +1,6 @@
 using strange.extensions.injector.api;
 
-namespace Root
+public interface IGameContext
 {
-    public interface IGameContext
-    {
-        public ICrossContextInjectionBinder InjectionBinder { get; set; }
-    }
+    public ICrossContextInjectionBinder InjectionBinder { get; set; }
 }

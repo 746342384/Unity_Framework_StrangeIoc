@@ -23,7 +23,7 @@ public class AddressableDownload : IAddressableDownload
 
     public IEnumerable<string> GetGroups()
     {
-        var groupNamesObject = Resources.Load<AddressableGroupNames>("AddressableGroupNames");
+        var groupNamesObject = Resources.Load<GroupNameConfig>("AddressableGroupNames");
         return groupNamesObject.GroupNames;
     }
 

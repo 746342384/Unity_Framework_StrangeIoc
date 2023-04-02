@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Framework.framework.attribute.api
+namespace Framework.framework.attribute
 {
     public class ActAttribute : Attribute
     {

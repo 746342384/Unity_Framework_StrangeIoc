@@ -8,7 +8,7 @@ public class SaveAddressableGroupNames : UnityEditor.Editor
     [MenuItem("Addressable/Save Group Names")]
     public static void SaveGroupNames()
     {
-        var groupNamesObject = Resources.Load<AddressableGroupNames>("AddressableGroupNames");
+        var groupNamesObject = Resources.Load<GroupNameConfig>("AddressableGroupNames");
         if (groupNamesObject == null)
         {
             Debug.LogError(
@@ -19,6 +19,9 @@ public class SaveAddressableGroupNames : UnityEditor.Editor
         var addressableAssetGroups = AddressableAssetSettingsDefaultObject.Settings.groups;
         groupNamesObject.GroupNames = (from addressableAssetGroup in addressableAssetGroups
             where !addressableAssetGroup.ReadOnly
-            select addressableAssetGroup.Name).ToList();
+            select addressableAssetGroup.Name).ToArray();
+        EditorUtility.SetDirty(groupNamesObject);
+        AssetDatabase.SaveAssetIfDirty(groupNamesObject);
+        AssetDatabase.Refresh();
     }
 }

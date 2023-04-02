@@ -1,11 +1,9 @@
-using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace Framework.framework.repository.api
+namespace Framework.framework.repository
 {
     public interface IConfigRepository<in TKey, T>
     {
-        List<T> GetAll();
-        T Get(TKey id);
-        void Initialize();
+        Task Initialize();
     }
 }
