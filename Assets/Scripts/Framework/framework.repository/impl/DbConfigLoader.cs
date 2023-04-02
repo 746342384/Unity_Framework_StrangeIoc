@@ -1,19 +1,29 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Threading.Tasks;
 using Cysharp.Threading.Tasks;
+using Framework.framework.log;
+using LitJson;
 using MySql.Data.MySqlClient;
 
 namespace Framework.framework.repository
 {
     public class DbConfigLoader : IConfigLoader
     {
+        private readonly ILog _log;
+
+        public DbConfigLoader(ILog log)
+        {
+            _log = log;
+        }
+
         public string BasePath { get; set; }
 
         public async UniTask<List<T>> LoadConfigData<T>(string tableName)
         {
-            var query = $"SELECT * FROM {tableName}";
-            var dataTable = await ExecuteQueryAsync(query);
+            var query = $"SELECT * FROM `{tableName}`";
+            var dataTable = await ExecuteQuery(query);
 
             if (dataTable != null)
             {
@@ -31,6 +41,8 @@ namespace Framework.framework.repository
                         }
                     }
 
+                    var json = JsonMapper.ToJson(configData);
+                    _log.Debug($"LoadConfigData:{json}");
                     configDataList.Add(configData);
                 }
 
@@ -41,16 +53,14 @@ namespace Framework.framework.repository
             return new List<T>();
         }
 
-        private async UniTask<DataTable> ExecuteQueryAsync(string query)
+        private async UniTask<DataTable> ExecuteQuery(string query)
         {
-            var dataTable = new DataTable();
-
             await using var connection = new MySqlConnection(BasePath);
             await connection.OpenAsync();
-
+            var dataTable = new DataTable();
             await using (var command = new MySqlCommand(query, connection))
             {
-                await using (var reader = (MySqlDataReader)await command.ExecuteReaderAsync())
+                await using (var reader = await command.ExecuteReaderAsync())
                 {
                     dataTable.Load(reader);
                 }

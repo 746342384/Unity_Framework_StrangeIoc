@@ -7,11 +7,9 @@ namespace Framework.framework.context
 {
     public static class GameContextExtension
     {
-        public static async void UseDataConfigLoader(this GameContext gameContext)
+        public static void UseDataConfigLoader(this GameContext gameContext)
         {
-            var request = Resources.LoadAsync<LoaderDataConfig>("ConfigData");
-            await UniTask.WaitUntil(() => request.isDone);
-            var config = request.asset as LoaderDataConfig;
+            var config = Resources.Load<LoaderDataConfig>("ConfigData");
             if (config != null)
             {
                 switch (config.ConfigLoaderMode)
