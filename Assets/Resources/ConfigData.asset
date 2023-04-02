@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Remote: http://192.168.3.134:7980/addressables/DataConfig
   Local: DataConfig
-  Db: 
-  ConfigLoaderMode: 1
+  Db: Server=127.0.0.1;Port=3306;Database=winjet;Uid=root;Pwd=root;
+  ConfigLoaderMode: 2
