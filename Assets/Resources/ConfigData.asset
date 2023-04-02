@@ -15,4 +15,4 @@ MonoBehaviour:
   Remote: http://192.168.3.134:7980/addressables/DataConfig
   Local: DataConfig
   Db: 
-  ConfigLoaderMode: 0
+  ConfigLoaderMode: 1
