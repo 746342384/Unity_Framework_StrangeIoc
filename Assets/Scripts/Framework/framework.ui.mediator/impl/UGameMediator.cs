@@ -1,3 +1,4 @@
+using System;
 using Framework.framework.ui.mediator.api;
 using Framework.framework.ui.view.impl;
 using strange.extensions.context.api;
@@ -10,7 +11,7 @@ namespace Framework.framework.ui.mediator.impl
     {
         [Inject(ContextKeys.CONTEXT_DISPATCHER)]
         public IEventDispatcher Dispatcher { get; set; }
-        
+
         public override void OnRegister()
         {
             base.OnRegister();

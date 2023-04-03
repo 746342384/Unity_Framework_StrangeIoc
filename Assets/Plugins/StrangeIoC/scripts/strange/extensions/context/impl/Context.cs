@@ -48,12 +48,12 @@ namespace strange.extensions.context.impl
             if (firstContext == null)
             {
                 firstContext = this;
+                addCoreComponents();
             }
             else
             {
                 firstContext.AddContext(this);
             }
-            addCoreComponents();
         }
 
         /// Override to add componentry. Or just extend MVCSContext.

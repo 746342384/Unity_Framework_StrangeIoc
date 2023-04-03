@@ -24,11 +24,13 @@ using strange.extensions.injector.api;
 
 public class GameContext : MVCSContext, IGameContext
 {
+    public static GameContext Instance;
     private SystemServices _systemServices;
     public ICrossContextInjectionBinder InjectionBinder { get; set; }
 
     public GameContext()
     {
+        Instance = this;
         InjectionBinder = injectionBinder;
     }
 
@@ -65,7 +67,7 @@ public class GameContext : MVCSContext, IGameContext
         _systemServices.BindSystem<IPanelSystem, PanelSystem>();
         var coroutineSystem = injectionBinder.GetInstance<ICoroutineSystem>();
         _systemServices.AddSystem(coroutineSystem);
-        _systemServices.BindSystem<ISoundManager,SoundManager>();
+        _systemServices.BindSystem<ISoundManager, SoundManager>();
     }
 
     protected override void addCoreComponents()
@@ -73,7 +75,6 @@ public class GameContext : MVCSContext, IGameContext
         base.addCoreComponents();
         this.UseDataConfigLoader();
 
-        injectionBinder.Bind<IGameContext>().To<GameContext>().ToSingleton();
         injectionBinder.Bind<ILog>().To<UnityLog>().ToSingleton();
         injectionBinder.Bind<IUIRoot>().To<UIRoot>().ToSingleton();
         injectionBinder.Bind<ICoroutineSystem>().To<CoroutineSystem>().ToSingleton();

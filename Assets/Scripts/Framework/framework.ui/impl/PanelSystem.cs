@@ -8,7 +8,9 @@ using Framework.framework.attribute;
 using Framework.framework.resources.api;
 using Framework.framework.system.impl;
 using framework.framework.ui.api;
+using strange.extensions.context.impl;
 using UnityEngine;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 namespace framework.framework.ui.impl
@@ -84,6 +86,7 @@ namespace framework.framework.ui.impl
                 _ => throw new ArgumentOutOfRangeException()
             };
 
+
             if (!_panelCache.TryGetValue(panelName, out var panel))
             {
                 if (!_panelLoadCache.TryGetValue(panelName, out var prefab))
@@ -91,9 +94,24 @@ namespace framework.framework.ui.impl
                     prefab = await _resourceSystemService.LoadAsync<GameObject>(uiPanel.Path);
                 }
 
-                panel = Object.Instantiate(prefab, uiRootNormalRoot, true);
-                _panelCache.Add(panelName, panel);
+                var panenlTransform = new GameObject(panelName);
+                var addComponent = panenlTransform.AddComponent<ContextView>();
+                addComponent.context = GameContext.Instance;
+                addComponent.autoRegisterWithContext = true;
+                panenlTransform.transform.SetParent(uiRootNormalRoot);
+                var component = panenlTransform.AddComponent<Canvas>();
+                panenlTransform.AddComponent<GraphicRaycaster>();
+                component.overrideSorting = true;
+                var transform = panenlTransform.transform as RectTransform;
+                transform.FitParent();
+                panenlTransform.transform.localScale = Vector3.one;
+
+
+                panel = Object.Instantiate(prefab, panenlTransform.transform, true);
+                panel.transform.localScale = Vector3.one;
+                _panelCache.Add(panelName, panenlTransform);
             }
+
 
             var context = uiPanel.ContextNmae;
             var rectTransform = panel.transform as RectTransform;
@@ -102,6 +120,10 @@ namespace framework.framework.ui.impl
             panel.SetActive(true);
             uiPanel.Show();
             Debug.Log($"OpenPanel:{panelName}");
+        }
+
+        private void CreateContextView()
+        {
         }
 
         public Task OpenPanelAsync(string panelName, object data = null)

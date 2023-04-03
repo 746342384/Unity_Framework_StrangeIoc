@@ -27,7 +27,7 @@ namespace framework.framework.ui.impl
         private void CreateEventSystem()
         {
             var gameObject = new GameObject("EventSystem")
-                {layer = LayerMask.NameToLayer("UI")};
+                { layer = LayerMask.NameToLayer("UI") };
             gameObject.SetParent(Root);
             gameObject.AddComponent<EventSystem>();
             gameObject.AddComponent<StandaloneInputModule>();
@@ -75,7 +75,7 @@ namespace framework.framework.ui.impl
             canvas.overrideSorting = true;
             canvas.sortingOrder = sort;
             canvas.sortingLayerName = layerName;
-            
+
             gameObject.AddComponent<GraphicRaycaster>();
             return root.transform;
         }
@@ -90,6 +90,7 @@ namespace framework.framework.ui.impl
             gameObject.transform.localScale = Vector3.one;
             UICamera.clearFlags = CameraClearFlags.SolidColor;
             UICamera.backgroundColor = Color.black;
+            gameObject.AddComponent<AudioListener>();
         }
 
         private void AddUICanvas()

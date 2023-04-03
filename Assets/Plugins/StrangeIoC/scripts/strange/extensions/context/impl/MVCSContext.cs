@@ -287,13 +287,15 @@ namespace strange.extensions.context.impl
 
         override public void AddView(object view)
         {
-            if (mediationBinder != null)
+            if (mediationBinder == null)
             {
+                mediationBinder = injectionBinder.GetInstance<IMediationBinder>();
                 mediationBinder.Trigger(MediationEvent.AWAKE, view as IView);
             }
             else
             {
-                cacheView(view as MonoBehaviour);
+                mediationBinder.Trigger(MediationEvent.AWAKE, view as IView);
+                // cacheView(view as MonoBehaviour);
             }
         }
 

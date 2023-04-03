@@ -163,7 +163,7 @@ public class AudioManager : MonoBehaviour
         var group = audioGroups.Find(g => g.groupType == groupType);
         if (group != null)
         {
-            var audioSource = group.audioSourcePool.audioSources.Find(s => s.clip == audioClip && s.isPlaying);
+            var audioSource = group.audioSourcePool?.audioSources?.Find(s => s.clip == audioClip && s.isPlaying);
             if (audioSource != null)
             {
                 audioSource.Stop();

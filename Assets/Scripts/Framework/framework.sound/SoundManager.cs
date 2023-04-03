@@ -13,5 +13,15 @@ namespace Framework.framework.sound
             var obj = new GameObject("[AudioManager]");
             _audioManager = obj.AddComponent<AudioManager>();
         }
+
+        public void PlayMusic(AudioClip clip)
+        {
+            _audioManager.Play(clip, AudioManager.AudioGroupType.Music, true);
+        }
+
+        public void StopMusic(AudioClip clip)
+        {
+            _audioManager.Stop(clip, AudioManager.AudioGroupType.Music);
+        }
     }
 }
