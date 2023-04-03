@@ -43,7 +43,6 @@ MonoBehaviour:
   m_GroupAssets:
   - {fileID: 11400000, guid: 8f7d4bc97be00a84dbf5a67554d241b4, type: 2}
   - {fileID: 11400000, guid: fe0fa0e12debba44da79252590663773, type: 2}
-  - {fileID: 11400000, guid: 5905aca738b6045468e204e2cd869a04, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -136,7 +135,7 @@ MonoBehaviour:
           m_Key: HostingServiceUploadSpeed
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: E:/Project/StrangeIoc/RemoteResPackage/StandaloneWindows64
+          m_Data: E:/Project/StrangeIoc/RemoteResPackage/Android
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean

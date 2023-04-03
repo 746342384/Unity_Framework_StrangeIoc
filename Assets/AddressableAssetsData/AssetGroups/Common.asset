@@ -22,6 +22,17 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Common
+  - m_GUID: 06005c31a8e95184b9d9801531348597
+    m_Address: Assets/ResPackage/Common1/UIPanel/MainPanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common1
+    - Common
+  - m_GUID: d4cb2c65087c82042a9af7b839285643
+    m_Address: Assets/ResPackage/Common/Audio/Music/BRPG_Assault_FULL_Loop.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3dec022fb71e9644c85717b0aee37380, type: 2}
   m_SchemaSet:

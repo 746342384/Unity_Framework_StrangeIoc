@@ -7,6 +7,7 @@ using Framework.framework.log;
 using Framework.framework.repository;
 using Framework.framework.resources.api;
 using Framework.framework.resources.impl;
+using Framework.framework.sound;
 using Framework.framework.system.impl;
 using framework.framework.ui.api;
 using framework.framework.ui.impl;
@@ -64,6 +65,7 @@ public class GameContext : MVCSContext, IGameContext
         _systemServices.BindSystem<IPanelSystem, PanelSystem>();
         var coroutineSystem = injectionBinder.GetInstance<ICoroutineSystem>();
         _systemServices.AddSystem(coroutineSystem);
+        _systemServices.BindSystem<ISoundManager,SoundManager>();
     }
 
     protected override void addCoreComponents()
