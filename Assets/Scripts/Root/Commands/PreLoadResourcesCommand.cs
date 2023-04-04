@@ -14,7 +14,7 @@ namespace Root.Commands
         {
             await PanelSystem.PreLoadPanel();
             await RepositoryManager.LoadRepositories();
-            await PanelSystem.OpenPanelAsync(PanelNames.StartPanel);
+            // await PanelSystem.OpenPanelAsync(PanelNames.StartPanel);
         }
     }
 }

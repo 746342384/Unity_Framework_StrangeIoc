@@ -88,7 +88,8 @@ namespace framework.framework.ui.impl
             gameObject.transform.localPosition = Vector3.zero;
             gameObject.transform.localRotation = Quaternion.identity;
             gameObject.transform.localScale = Vector3.one;
-            UICamera.clearFlags = CameraClearFlags.SolidColor;
+            UICamera.clearFlags = CameraClearFlags.Depth;
+            UICamera.cameraType = CameraType.SceneView;
             UICamera.backgroundColor = Color.black;
             gameObject.AddComponent<AudioListener>();
         }
