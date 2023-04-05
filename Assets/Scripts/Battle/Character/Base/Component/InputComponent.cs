@@ -1,3 +1,4 @@
+using Battle.Character.Player.State;
 using UnityEngine;
 
 namespace Battle.Character.Base.Component
@@ -12,6 +13,8 @@ namespace Battle.Character.Base.Component
         {
             HorizontalInput = Input.GetAxisRaw("Horizontal");
             VerticalInput = Input.GetAxisRaw("Vertical");
+
+           
         }
     }
 }
