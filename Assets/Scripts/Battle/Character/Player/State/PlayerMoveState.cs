@@ -5,54 +5,37 @@ namespace Battle.Character.Player.State
 {
     public class PlayerMoveState : PlayerStateBase
     {
+        private const float FixedTransitionDuration = 0.1f;
+        private string StateName;
+
         public PlayerMoveState(CharacterBase character) : base(character)
         {
         }
 
         public override void Enter()
         {
+            Character.Animator.CrossFadeInFixedTime("Run", FixedTransitionDuration);
         }
 
         public override void Tick(float deltaTime)
         {
+            if (Character.InputComponent.HorizontalInput == 0 && Character.InputComponent.VerticalInput == 0)
+            {
+                Character.StateMachine.SwitchState(new PlayerIdleState(Character));
+                return;
+            }
+
             var vector2 = new Vector2(Character.InputComponent.HorizontalInput, Character.InputComponent.VerticalInput);
-
-            if (vector2 is { x: > 0, y: > 0 })
-            {
-                Character.Animator.Play("RunLeft");
-            }
-            else if (vector2 is { x: > 0, y: < 0 })
-            {
-                Character.Animator.Play("RunBackwardLeft");
-            }
-            else if (vector2 is { x: < 0, y: < 0 })
-            {
-                Character.Animator.Play("RunBackwardRight");
-            }
-            else if (vector2 is { x: < 0, y: > 0 })
-            {
-                Character.Animator.Play("RunRight");
-            }
-            else if (vector2.x > 0)
-            {
-                Character.Animator.Play("RunLeft");
-            }
-            else if (vector2.x < 0)
-            {
-                Character.Animator.Play("RunRight");
-            }
-            else if (vector2.y > 0)
-            {
-                Character.Animator.Play("RunForward");
-            }
-            else if (vector2.y < 0)
-            {
-                Character.Animator.Play("RunBackward");
-            }
-
-
+            var H = Mathf.Clamp(Character.InputComponent.HorizontalInput, -1, 1);
+            var V = Mathf.Clamp(Character.InputComponent.VerticalInput, -1, 1);
+            Character.Animator.SetFloat("V", V, 0.1f, deltaTime);
+            Character.Animator.SetFloat("H", H, 0.1f, deltaTime);
             var movement = CalculateMovement(vector2);
             Move(movement * Character.CharacterData.MoveSpeed, deltaTime);
+            if (vector2.x != 0)
+            {
+                FaceMovementDirection(movement, deltaTime);
+            }
         }
 
         private Vector3 CalculateMovement(Vector2 vector2)
@@ -65,6 +48,12 @@ namespace Battle.Character.Player.State
             forward.Normalize();
             right.Normalize();
             return forward * vector2.y + right * vector2.x;
+        }
+
+        private void FaceMovementDirection(Vector3 movement, float deltaTime)
+        {
+            Character.transform.rotation = Quaternion.Lerp(Character.transform.rotation,
+                Quaternion.LookRotation(movement), deltaTime * Character.CharacterData.RotationDamping);
         }
 
         public override void Exit()

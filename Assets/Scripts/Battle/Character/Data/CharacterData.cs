@@ -9,5 +9,6 @@ namespace Battle.Character
         public float Attack;
         public float Defense;
         public float HP;
+        public float RotationDamping;
     }
 }

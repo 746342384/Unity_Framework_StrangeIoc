@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c6a287dbed4cccb11ff8615aac5317, type: 3}
   m_Name: Character
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
+  MoveSpeed: 8
   Attack: 10
   Defense: 10
   HP: 100
+  RotationDamping: 5
