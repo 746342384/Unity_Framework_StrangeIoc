@@ -42,6 +42,12 @@ namespace Battle.Character.Player.State
                 return;
             }
 
+            if (Input.GetKey(KeyCode.W)&& Input.GetKeyDown(KeyCode.LeftShift))
+            {
+                Character.StateMachine.SwitchState(new PlayerRollForwardState(Character));
+                return;
+            }
+
 
             if (Character.InputComponent.HorizontalInput == 0 && Character.InputComponent.VerticalInput == 0)
             {

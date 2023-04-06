@@ -11,6 +11,16 @@ namespace Battle.Character.Base.Component
         protected float GetNormalizedTime(Animator animator)
         {
             var currentInfo = animator.GetCurrentAnimatorStateInfo(0);
+            var nextInfo = animator.GetNextAnimatorStateInfo(0);
+            if (animator.IsInTransition(0))
+            {
+                return nextInfo.normalizedTime;
+            }
+
+            if (!animator.IsInTransition(0))
+            {
+                return currentInfo.normalizedTime;
+            }
             return currentInfo.normalizedTime;
         }
     }

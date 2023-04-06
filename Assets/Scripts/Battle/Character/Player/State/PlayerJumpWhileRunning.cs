@@ -1,9 +1,12 @@
 using Battle.Character.Base;
+using UnityEngine;
 
 namespace Battle.Character.Player.State
 {
     public class PlayerJumpWhileRunning : PlayerStateBase
     {
+        private float _previousFrameTime;
+
         public PlayerJumpWhileRunning(CharacterBase character) : base(character)
         {
         }
@@ -24,11 +27,14 @@ namespace Battle.Character.Player.State
             }
 
             var normalizedTime = GetNormalizedTime(Character.Animator);
-            if (normalizedTime >= 1f)
+            Debug.Log(normalizedTime);
+            if (normalizedTime > _previousFrameTime && normalizedTime >= 1f)
             {
                 Character.StateMachine.SwitchState(new PlayerMoveState(Character));
                 return;
             }
+
+            _previousFrameTime = normalizedTime;
         }
 
         public override void Exit()
