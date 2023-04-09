@@ -10,9 +10,10 @@ namespace Battle.Character.Base.Component
 
         protected float GetNormalizedTime(Animator animator)
         {
-            var currentInfo = animator.GetCurrentAnimatorStateInfo(0);
-            var nextInfo = animator.GetNextAnimatorStateInfo(0);
-            if (animator.IsInTransition(0))
+            var layer = 0;
+            var currentInfo = animator.GetCurrentAnimatorStateInfo(layer);
+            var nextInfo = animator.GetNextAnimatorStateInfo(layer);
+            if (animator.IsInTransition(layer))
             {
                 return nextInfo.normalizedTime % 1f;
             }

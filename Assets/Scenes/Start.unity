@@ -673,6 +673,18 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 116
       objectReference: {fileID: 0}
+    - target: {fileID: 4540229000216595715, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540229000216595716, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540229000216595718, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4708772610520247546, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
       propertyPath: m_ApplyRootMotion
       value: 0
