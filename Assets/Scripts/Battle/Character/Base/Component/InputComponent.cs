@@ -7,8 +7,7 @@ namespace Battle.Character.Base.Component
     public class InputComponent : MonoBehaviour, PlayerInput.IPlayerActions
     {
         private PlayerInput PlayerInput;
-        public Vector2 MoveValue;
-
+        public Vector2 MoveValue { get; private set; }
         public event Action JumpEvent;
         public event Action RollForwardEvent;
 

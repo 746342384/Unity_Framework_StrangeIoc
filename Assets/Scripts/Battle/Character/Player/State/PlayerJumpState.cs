@@ -11,6 +11,7 @@ namespace Battle.Character.Player.State
 
         public override void Enter()
         {
+            Debug.Log("PlayerJumpState");
             Character.Animator.CrossFadeInFixedTime("Jump", 0.1f);
         }
 

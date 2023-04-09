@@ -17,5 +17,5 @@ MonoBehaviour:
   Defense: 10
   HP: 100
   RotationDamping: 5
-  RollBlendThreshold: 0.8
   RollForwardDistance: 4
+  RunningJumpDistance: 4

@@ -10,30 +10,19 @@ namespace Battle.Character.Player.State
         private static readonly int V = Animator.StringToHash("V");
         private static readonly int H = Animator.StringToHash("H");
 
+        private bool isJump;
+        private bool isRollForward;
+
         public PlayerMoveState(CharacterBase character) : base(character)
         {
         }
 
         public override void Enter()
         {
-            Character.Animator.CrossFadeInFixedTime("Run", FixedTransitionDuration);
+            Debug.Log("PlayerMoveState");
             Character.InputComponent.JumpEvent += OnJump;
             Character.InputComponent.RollForwardEvent += OnRollForward;
-        }
-
-        private bool isRollForward;
-        private bool isJump;
-
-        private void OnRollForward()
-        {
-            isRollForward = true;
-            Character.StateMachine.SwitchState(new PlayerRollForwardState(Character));
-        }
-
-        private void OnJump()
-        {
-            isJump = true;
-            Character.StateMachine.SwitchState(new PlayerJumpWhileRunning(Character));
+            Character.Animator.CrossFadeInFixedTime("Run", FixedTransitionDuration);
         }
 
         public override void Tick(float deltaTime)
@@ -60,6 +49,18 @@ namespace Battle.Character.Player.State
             {
                 FaceMovementDirection(movement, deltaTime);
             }
+        }
+
+        private void OnRollForward()
+        {
+            isRollForward = true;
+            Character.StateMachine.SwitchState(new PlayerRollForwardState(Character));
+        }
+
+        private void OnJump()
+        {
+            isJump = true;
+            Character.StateMachine.SwitchState(new PlayerJumpWhileRunning(Character));
         }
 
         public override void Exit()

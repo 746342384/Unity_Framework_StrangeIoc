@@ -13,6 +13,7 @@ namespace Battle.Character.Player.State
 
         public override void Enter()
         {
+            Debug.Log("PlayerIdleState");
             Character.Animator.CrossFadeInFixedTime("Idle", FixedTransitionDuration);
             Character.InputComponent.JumpEvent += OnJump;
         }
