@@ -14,33 +14,17 @@ namespace Battle.Character.Player.State
         public override void Enter()
         {
             Character.Animator.CrossFadeInFixedTime("Idle", FixedTransitionDuration);
+            Character.InputComponent.JumpEvent += OnJump;
         }
 
-        private bool IsJumping { get; set; }
+        private void OnJump()
+        {
+            Character.StateMachine.SwitchState(new PlayerJumpState(Character));
+        }
 
         public override void Tick(float deltaTime)
         {
-            if (IsJumping)
-            {
-                var normalizedTime = GetNormalizedTime(Character.Animator);
-                if (normalizedTime >= 1)
-                {
-                    IsJumping = false;
-                }
-
-                return;
-            }
-
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (IsJumping) return;
-                IsJumping = true;
-                Character.StateMachine.SwitchState(new PlayerJumpState(Character));
-                return;
-            }
-
-
-            if (Character.InputComponent.HorizontalInput != 0 || Character.InputComponent.VerticalInput != 0)
+            if (!Character.InputComponent.MoveValue.Equals(Vector2.zero))
             {
                 Character.StateMachine.SwitchState(new PlayerMoveState(Character));
                 return;
@@ -51,6 +35,7 @@ namespace Battle.Character.Player.State
 
         public override void Exit()
         {
+            Character.InputComponent.JumpEvent -= OnJump;
         }
     }
 }

@@ -2,6 +2,7 @@
 using framework.framework.ui.api;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
 namespace framework.framework.ui.impl
@@ -30,7 +31,7 @@ namespace framework.framework.ui.impl
                 { layer = LayerMask.NameToLayer("UI") };
             gameObject.SetParent(Root);
             gameObject.AddComponent<EventSystem>();
-            gameObject.AddComponent<StandaloneInputModule>();
+            gameObject.AddComponent<InputSystemUIInputModule>();
         }
 
         private void CreateUIRoot()

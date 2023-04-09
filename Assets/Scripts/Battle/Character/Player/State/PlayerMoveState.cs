@@ -17,49 +17,43 @@ namespace Battle.Character.Player.State
         public override void Enter()
         {
             Character.Animator.CrossFadeInFixedTime("Run", FixedTransitionDuration);
+            Character.InputComponent.JumpEvent += OnJump;
+            Character.InputComponent.RollForwardEvent += OnRollForward;
         }
 
-        private bool IsJumping { get; set; }
+        private bool isRollForward;
+        private bool isJump;
+
+        private void OnRollForward()
+        {
+            isRollForward = true;
+            Character.StateMachine.SwitchState(new PlayerRollForwardState(Character));
+        }
+
+        private void OnJump()
+        {
+            isJump = true;
+            Character.StateMachine.SwitchState(new PlayerJumpWhileRunning(Character));
+        }
 
         public override void Tick(float deltaTime)
         {
-            if (IsJumping)
+            if (isRollForward || isJump)
             {
-                var normalizedTime = GetNormalizedTime(Character.Animator);
-                if (normalizedTime >= 1)
-                {
-                    IsJumping = false;
-                }
-
                 return;
             }
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                if (IsJumping) return;
-                IsJumping = true;
-                Character.StateMachine.SwitchState(new PlayerJumpWhileRunning(Character));
-                return;
-            }
-
-            if (Input.GetKey(KeyCode.W)&& Input.GetKeyDown(KeyCode.LeftShift))
-            {
-                Character.StateMachine.SwitchState(new PlayerRollForwardState(Character));
-                return;
-            }
-
-
-            if (Character.InputComponent.HorizontalInput == 0 && Character.InputComponent.VerticalInput == 0)
+            if (Character.InputComponent.MoveValue == Vector2.zero)
             {
                 Character.StateMachine.SwitchState(new PlayerIdleState(Character));
                 return;
             }
 
             var vector2 = GetMovement();
-            var H = Mathf.Clamp(Character.InputComponent.HorizontalInput, -1, 1);
-            var V = Mathf.Clamp(Character.InputComponent.VerticalInput, -1, 1);
-            Character.Animator.SetFloat(PlayerMoveState.V, V, 0.1f, deltaTime);
-            Character.Animator.SetFloat(PlayerMoveState.H, H, 0.1f, deltaTime);
+            var x = Mathf.Clamp(vector2.x, -1, 1);
+            var y = Mathf.Clamp(vector2.y, -1, 1);
+            Character.Animator.SetFloat(H, x, 0.1f, deltaTime);
+            Character.Animator.SetFloat(V, y, 0.1f, deltaTime);
             var movement = CalculateMovement(vector2);
             Move(movement * Character.CharacterData.MoveSpeed, deltaTime);
             if (vector2.x != 0)
@@ -70,6 +64,10 @@ namespace Battle.Character.Player.State
 
         public override void Exit()
         {
+            isRollForward = false;
+            isJump = false;
+            Character.InputComponent.JumpEvent -= OnJump;
+            Character.InputComponent.RollForwardEvent -= OnRollForward;
         }
     }
 }

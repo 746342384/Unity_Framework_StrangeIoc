@@ -27,7 +27,6 @@ namespace Battle.Character.Player.State
             }
 
             var normalizedTime = GetNormalizedTime(Character.Animator);
-            Debug.Log(normalizedTime);
             if (normalizedTime > _previousFrameTime && normalizedTime >= 1f)
             {
                 Character.StateMachine.SwitchState(new PlayerMoveState(Character));

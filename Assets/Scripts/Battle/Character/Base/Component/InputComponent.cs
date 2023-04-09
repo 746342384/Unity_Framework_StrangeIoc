@@ -1,20 +1,44 @@
-using Battle.Character.Player.State;
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Battle.Character.Base.Component
 {
-    public class InputComponent : MonoBehaviour
+    public class InputComponent : MonoBehaviour, PlayerInput.IPlayerActions
     {
-        public CharacterBase CharacterBase;
-        public float HorizontalInput;
-        public float VerticalInput;
+        private PlayerInput PlayerInput;
+        public Vector2 MoveValue;
 
-        private void Update()
+        public event Action JumpEvent;
+        public event Action RollForwardEvent;
+
+        private void Start()
         {
-            HorizontalInput = Input.GetAxisRaw("Horizontal");
-            VerticalInput = Input.GetAxisRaw("Vertical");
+            PlayerInput = new PlayerInput();
+            PlayerInput.Player.SetCallbacks(this);
+            PlayerInput.Enable();
+        }
 
-           
+        public void OnMove(InputAction.CallbackContext context)
+        {
+            MoveValue = context.ReadValue<Vector2>();
+        }
+
+        public void OnJump(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
+            JumpEvent?.Invoke();
+        }
+
+        public void OnRollForward(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
+            RollForwardEvent?.Invoke();
+        }
+
+        private void OnDisable()
+        {
+            PlayerInput.Disable();
         }
     }
 }
