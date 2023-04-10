@@ -11,6 +11,9 @@ namespace Battle.Character
         public float HP;
         public float RotationDamping;
         public float RollForwardDistance;
+        public float RollBackwardDistance;
+        public float RollLeftDistance;
+        public float RollRightDistance;
         public float RunningJumpDistance;
     }
 }

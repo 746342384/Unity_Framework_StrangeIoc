@@ -25,7 +25,7 @@ namespace Battle.Character.Player.State
                 distance *= -1f;
             }
 
-            SetMoveTarget(distance);
+            SetMoveForwardTarget(distance);
             Character.Animator.CrossFadeInFixedTime("JumpWhileRunning", 0.1f);
         }
 

@@ -11,7 +11,7 @@ namespace Battle.Character.Player.State
         private static readonly int H = Animator.StringToHash("H");
 
         private bool isJump;
-        private bool isRollForward;
+        private bool isRolling;
 
         public PlayerMoveState(CharacterBase character) : base(character)
         {
@@ -22,12 +22,15 @@ namespace Battle.Character.Player.State
             Debug.Log("PlayerMoveState");
             Character.InputComponent.JumpEvent += OnJump;
             Character.InputComponent.RollForwardEvent += OnRollForward;
+            Character.InputComponent.RollBackwardEvent += OnRollBackward;
+            Character.InputComponent.RollLeftEvent += OnRollLeft;
+            Character.InputComponent.RollRightEvent += OnRollRight;
             Character.Animator.CrossFadeInFixedTime("Run", FixedTransitionDuration);
         }
 
         public override void Tick(float deltaTime)
         {
-            if (isRollForward || isJump)
+            if (isRolling || isJump)
             {
                 return;
             }
@@ -53,8 +56,26 @@ namespace Battle.Character.Player.State
 
         private void OnRollForward()
         {
-            isRollForward = true;
+            isRolling = true;
             Character.StateMachine.SwitchState(new PlayerRollForwardState(Character));
+        }
+
+        private void OnRollBackward()
+        {
+            isRolling = true;
+            Character.StateMachine.SwitchState(new PlayerRollBackwardState(Character));
+        }
+
+        private void OnRollRight()
+        {
+            isRolling = true;
+            Character.StateMachine.SwitchState(new PlayerRollRightState(Character));
+        }
+
+        private void OnRollLeft()
+        {
+            isRolling = true;
+            Character.StateMachine.SwitchState(new PlayerRollLeftState(Character));
         }
 
         private void OnJump()
@@ -65,10 +86,13 @@ namespace Battle.Character.Player.State
 
         public override void Exit()
         {
-            isRollForward = false;
+            isRolling = false;
             isJump = false;
             Character.InputComponent.JumpEvent -= OnJump;
             Character.InputComponent.RollForwardEvent -= OnRollForward;
+            Character.InputComponent.RollBackwardEvent -= OnRollBackward;
+            Character.InputComponent.RollLeftEvent -= OnRollLeft;
+            Character.InputComponent.RollRightEvent -= OnRollRight;
         }
     }
 }

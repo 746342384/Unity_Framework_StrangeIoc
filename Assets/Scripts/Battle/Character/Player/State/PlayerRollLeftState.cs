@@ -3,17 +3,17 @@ using UnityEngine;
 
 namespace Battle.Character.Player.State
 {
-    public class PlayerRollForwardState : PlayerStateBase
+    public class PlayerRollLeftState : PlayerStateBase
     {
-        public PlayerRollForwardState(CharacterBase character) : base(character)
+        public PlayerRollLeftState(CharacterBase character) : base(character)
         {
         }
 
         public override void Enter()
         {
-            Debug.Log("PlayerRollForwardState");
-            SetMoveForwardTarget(Character.CharacterData.RollForwardDistance);
-            Character.Animator.CrossFadeInFixedTime("RollForward", 0.1f);
+            Debug.Log("PlayerRollLeftState");
+            SetMoveRightTarget(Character.CharacterData.RollLeftDistance);
+            Character.Animator.CrossFadeInFixedTime("RollLeft", 0.1f);
         }
 
         public override void Tick(float deltaTime)

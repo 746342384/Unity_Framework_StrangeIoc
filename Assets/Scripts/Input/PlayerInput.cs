@@ -53,6 +53,33 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RollBackward"",
+                    ""type"": ""Button"",
+                    ""id"": ""3797f55e-d033-4596-9876-ec852d17bd29"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RollLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""999e9ac3-4374-4b19-b10d-3b63a221b6a2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RollRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""5f17f384-ed54-4d23-9feb-89b2cc9e2fbc"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -154,6 +181,105 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""RollForward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""ed73fc1d-5d0c-428a-b532-177bc7dfe636"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RollBackward"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""26c8650a-cfa2-49e9-9f38-213ba1681bca"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RollBackward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""825e14a6-747e-4765-99ca-dc46095bdb86"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RollBackward"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""67cfa615-530b-4336-a360-267653695ade"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RollLeft"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""0743478e-fa85-4b09-affd-70aa0e128b20"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RollLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""732eb3f9-306f-4564-b2a5-4c7aeec071ac"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RollLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""One Modifier"",
+                    ""id"": ""4411eae4-7639-4c02-aca8-9d404f8436d2"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RollRight"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""71a0392a-4107-4c13-b679-44112f254ff1"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RollRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""d2c0028a-107a-43f7-97ff-9ce868cecf12"",
+                    ""path"": ""<Keyboard>/leftShift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RollRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -193,6 +319,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_RollForward = m_Player.FindAction("RollForward", throwIfNotFound: true);
+        m_Player_RollBackward = m_Player.FindAction("RollBackward", throwIfNotFound: true);
+        m_Player_RollLeft = m_Player.FindAction("RollLeft", throwIfNotFound: true);
+        m_Player_RollRight = m_Player.FindAction("RollRight", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_K = m_UI.FindAction("K", throwIfNotFound: true);
@@ -258,6 +387,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_RollForward;
+    private readonly InputAction m_Player_RollBackward;
+    private readonly InputAction m_Player_RollLeft;
+    private readonly InputAction m_Player_RollRight;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -265,6 +397,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @RollForward => m_Wrapper.m_Player_RollForward;
+        public InputAction @RollBackward => m_Wrapper.m_Player_RollBackward;
+        public InputAction @RollLeft => m_Wrapper.m_Player_RollLeft;
+        public InputAction @RollRight => m_Wrapper.m_Player_RollRight;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -283,6 +418,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @RollForward.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollForward;
                 @RollForward.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollForward;
                 @RollForward.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollForward;
+                @RollBackward.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollBackward;
+                @RollBackward.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollBackward;
+                @RollBackward.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollBackward;
+                @RollLeft.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollLeft;
+                @RollLeft.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollLeft;
+                @RollLeft.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollLeft;
+                @RollRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollRight;
+                @RollRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollRight;
+                @RollRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollRight;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -296,6 +440,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @RollForward.started += instance.OnRollForward;
                 @RollForward.performed += instance.OnRollForward;
                 @RollForward.canceled += instance.OnRollForward;
+                @RollBackward.started += instance.OnRollBackward;
+                @RollBackward.performed += instance.OnRollBackward;
+                @RollBackward.canceled += instance.OnRollBackward;
+                @RollLeft.started += instance.OnRollLeft;
+                @RollLeft.performed += instance.OnRollLeft;
+                @RollLeft.canceled += instance.OnRollLeft;
+                @RollRight.started += instance.OnRollRight;
+                @RollRight.performed += instance.OnRollRight;
+                @RollRight.canceled += instance.OnRollRight;
             }
         }
     }
@@ -338,6 +491,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnRollForward(InputAction.CallbackContext context);
+        void OnRollBackward(InputAction.CallbackContext context);
+        void OnRollLeft(InputAction.CallbackContext context);
+        void OnRollRight(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

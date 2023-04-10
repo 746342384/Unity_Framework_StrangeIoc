@@ -65,10 +65,10 @@ namespace Battle.Character.Player.State
         }
 
         /// <summary>
-        /// 设置在播放特定动画的时候角色向前移动的距离
+        /// 设置在播放特定动画的时候角色前后移动的距离
         /// </summary>
         /// <param name="distance"></param>
-        protected void SetMoveTarget(float distance)
+        protected void SetMoveForwardTarget(float distance)
         {
             var transform = Character.transform;
             var position = transform.position;
@@ -76,6 +76,21 @@ namespace Battle.Character.Player.State
             forward.y = 0.0f;
             forward.Normalize();
             TargetPosition = position + forward * distance;
+            StartPosition = position;
+        }
+        
+        /// <summary>
+        /// 设置在播放特定动画的时候角色左右移动的距离
+        /// </summary>
+        /// <param name="distance"></param>
+        protected void SetMoveRightTarget(float distance)
+        {
+            var transform = Character.transform;
+            var position = transform.position;
+            var right = transform.right;
+            right.x = 0.0f;
+            right.Normalize();
+            TargetPosition = position + right * distance;
             StartPosition = position;
         }
 

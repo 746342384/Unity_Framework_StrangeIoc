@@ -10,6 +10,9 @@ namespace Battle.Character.Base.Component
         public Vector2 MoveValue { get; private set; }
         public event Action JumpEvent;
         public event Action RollForwardEvent;
+        public event Action RollBackwardEvent;
+        public event Action RollLeftEvent;
+        public event Action RollRightEvent;
 
         private void Start()
         {
@@ -33,6 +36,24 @@ namespace Battle.Character.Base.Component
         {
             if (!context.performed) return;
             RollForwardEvent?.Invoke();
+        }
+
+        public void OnRollBackward(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
+            RollBackwardEvent?.Invoke();
+        }
+
+        public void OnRollLeft(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
+            RollLeftEvent?.Invoke();
+        }
+
+        public void OnRollRight(InputAction.CallbackContext context)
+        {
+            if (!context.performed) return;
+            RollRightEvent?.Invoke();
         }
 
         private void OnDisable()
