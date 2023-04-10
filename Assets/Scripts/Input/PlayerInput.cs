@@ -80,6 +80,24 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""d0de4427-6fda-478a-a256-e5c0ae3a99dd"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TwoHandAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""62bd4617-a26e-455a-9b4b-90e5824c93fa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -280,6 +298,28 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""RollRight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""858849d8-2be0-4a6b-b65e-9d7d76d95418"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fa44d827-9687-429e-b057-a4bdf2c61450"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TwoHandAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -322,6 +362,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_RollBackward = m_Player.FindAction("RollBackward", throwIfNotFound: true);
         m_Player_RollLeft = m_Player.FindAction("RollLeft", throwIfNotFound: true);
         m_Player_RollRight = m_Player.FindAction("RollRight", throwIfNotFound: true);
+        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_TwoHandAttack = m_Player.FindAction("TwoHandAttack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_K = m_UI.FindAction("K", throwIfNotFound: true);
@@ -390,6 +432,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_RollBackward;
     private readonly InputAction m_Player_RollLeft;
     private readonly InputAction m_Player_RollRight;
+    private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_TwoHandAttack;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -400,6 +444,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @RollBackward => m_Wrapper.m_Player_RollBackward;
         public InputAction @RollLeft => m_Wrapper.m_Player_RollLeft;
         public InputAction @RollRight => m_Wrapper.m_Player_RollRight;
+        public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        public InputAction @TwoHandAttack => m_Wrapper.m_Player_TwoHandAttack;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -427,6 +473,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @RollRight.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollRight;
                 @RollRight.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollRight;
                 @RollRight.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRollRight;
+                @Attack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnAttack;
+                @TwoHandAttack.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTwoHandAttack;
+                @TwoHandAttack.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTwoHandAttack;
+                @TwoHandAttack.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnTwoHandAttack;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -449,6 +501,12 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @RollRight.started += instance.OnRollRight;
                 @RollRight.performed += instance.OnRollRight;
                 @RollRight.canceled += instance.OnRollRight;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
+                @TwoHandAttack.started += instance.OnTwoHandAttack;
+                @TwoHandAttack.performed += instance.OnTwoHandAttack;
+                @TwoHandAttack.canceled += instance.OnTwoHandAttack;
             }
         }
     }
@@ -494,6 +552,8 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnRollBackward(InputAction.CallbackContext context);
         void OnRollLeft(InputAction.CallbackContext context);
         void OnRollRight(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
+        void OnTwoHandAttack(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

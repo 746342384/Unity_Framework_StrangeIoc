@@ -14,6 +14,10 @@ namespace Battle.Character.Base.Component
         public event Action RollLeftEvent;
         public event Action RollRightEvent;
 
+        public bool IsAttacking { get; private set; }
+        public bool IsTwoHandAttacking { get; private set; }
+        public bool CancelAttacking { get; private set; }
+
         private void Start()
         {
             PlayerInput = new PlayerInput();
@@ -29,6 +33,7 @@ namespace Battle.Character.Base.Component
         public void OnJump(InputAction.CallbackContext context)
         {
             if (!context.performed) return;
+            CancelAttacking = true;
             JumpEvent?.Invoke();
         }
 
@@ -54,6 +59,34 @@ namespace Battle.Character.Base.Component
         {
             if (!context.performed) return;
             RollRightEvent?.Invoke();
+        }
+
+        public void OnAttack(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                CancelAttacking = false;
+                IsAttacking = true;
+            }
+
+            if (context.canceled)
+            {
+                IsAttacking = false;
+            }
+        }
+
+        public void OnTwoHandAttack(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                CancelAttacking = false;
+                IsTwoHandAttacking = true;
+            }
+
+            if (context.canceled)
+            {
+                IsTwoHandAttacking = false;
+            }
         }
 
         private void OnDisable()

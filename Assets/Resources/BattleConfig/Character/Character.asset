@@ -18,7 +18,7 @@ MonoBehaviour:
   HP: 100
   RotationDamping: 5
   RollForwardDistance: 4
-  RollBackwardDistance: 2
-  RollLeftDistance: -5
-  RollRightDistance: 5
+  RollBackwardDistance: 4
+  RollLeftDistance: -4
+  RollRightDistance: 2
   RunningJumpDistance: 4

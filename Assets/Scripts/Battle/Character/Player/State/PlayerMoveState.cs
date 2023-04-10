@@ -35,6 +35,18 @@ namespace Battle.Character.Player.State
                 return;
             }
 
+            if (Character.InputComponent.IsAttacking)
+            {
+                Character.StateMachine.SwitchState(new PlayerAttackingState(Character));
+                return;
+            }
+
+            if (Character.InputComponent.IsTwoHandAttacking)
+            {
+                Character.StateMachine.SwitchState(new PlayerTwoHandAttackingState(Character));
+                return;
+            }
+
             if (Character.InputComponent.MoveValue == Vector2.zero)
             {
                 Character.StateMachine.SwitchState(new PlayerIdleState(Character));

@@ -18,13 +18,20 @@ namespace Battle.Character.Player.State
             Character.InputComponent.JumpEvent += OnJump;
         }
 
-        private void OnJump()
-        {
-            Character.StateMachine.SwitchState(new PlayerJumpState(Character));
-        }
-
         public override void Tick(float deltaTime)
         {
+            if (Character.InputComponent.IsAttacking)
+            {
+                Character.StateMachine.SwitchState(new PlayerAttackingState(Character));
+                return;
+            }
+            
+            if (Character.InputComponent.IsTwoHandAttacking)
+            {
+                Character.StateMachine.SwitchState(new PlayerTwoHandAttackingState(Character));
+                return;
+            }
+
             if (!Character.InputComponent.MoveValue.Equals(Vector2.zero))
             {
                 Character.StateMachine.SwitchState(new PlayerMoveState(Character));
@@ -32,6 +39,11 @@ namespace Battle.Character.Player.State
             }
 
             Move(Vector3.zero, deltaTime);
+        }
+
+        private void OnJump()
+        {
+            Character.StateMachine.SwitchState(new PlayerJumpState(Character));
         }
 
         public override void Exit()

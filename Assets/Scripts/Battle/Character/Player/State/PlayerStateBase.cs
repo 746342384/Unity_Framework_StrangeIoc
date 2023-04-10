@@ -78,7 +78,7 @@ namespace Battle.Character.Player.State
             TargetPosition = position + forward * distance;
             StartPosition = position;
         }
-        
+
         /// <summary>
         /// 设置在播放特定动画的时候角色左右移动的距离
         /// </summary>
@@ -88,7 +88,7 @@ namespace Battle.Character.Player.State
             var transform = Character.transform;
             var position = transform.position;
             var right = transform.right;
-            right.x = 0.0f;
+            right.y = 0.0f;
             right.Normalize();
             TargetPosition = position + right * distance;
             StartPosition = position;
