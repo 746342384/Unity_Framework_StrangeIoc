@@ -6,8 +6,6 @@ namespace Battle.Character
     public class CharacterData : ScriptableObject
     {
         public float MoveSpeed;
-        public float Attack;
-        public float Defense;
         public float HP;
         [Header("旋转速度")] public float RotationDamping;
         [Header("向前翻滚距离")] public float RollForwardDistance;
