@@ -552,6 +552,37 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
+--- !u!1 &438068184 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2823867701120513270, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+  m_PrefabInstance: {fileID: 9104811173222785028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &438068185 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3205353587514076748, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+  m_PrefabInstance: {fileID: 9104811173222785028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &438068188 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 438068188, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+  m_PrefabInstance: {fileID: 9104811173222785028}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &438068189
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438068184}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!1 &1577437134
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,58 +668,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1494877652, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1494877652, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1494877652, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1494877652, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.9990483
-      objectReference: {fileID: 0}
-    - target: {fileID: 1494877652, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.043619405
-      objectReference: {fileID: 0}
-    - target: {fileID: 1494877652, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1494877652, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1494877652, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4540229000216595712, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
-      propertyPath: m_Constraints
-      value: 116
-      objectReference: {fileID: 0}
-    - target: {fileID: 4540229000216595715, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+    - target: {fileID: 438068188, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
       propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4540229000216595716, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4540229000216595718, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4708772610520247546, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
-      propertyPath: m_ApplyRootMotion
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1893553943, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+      propertyPath: Root
+      value: 
+      objectReference: {fileID: 438068185}
+    - target: {fileID: 1893553943, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+      propertyPath: Collider
+      value: 
+      objectReference: {fileID: 438068188}
     - target: {fileID: 7415080025685942053, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
       propertyPath: m_Name
       value: Player

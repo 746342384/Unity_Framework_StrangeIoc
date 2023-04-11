@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Battle.Character
@@ -7,6 +8,7 @@ namespace Battle.Character
     {
         public float MoveSpeed;
         public float HP;
+        public List<AttackData> AttackDatas = new();
         [Header("旋转速度")] public float RotationDamping;
         [Header("向前翻滚距离")] public float RollForwardDistance;
         [Header("向后翻滚距离")] public float RollBackwardDistance;

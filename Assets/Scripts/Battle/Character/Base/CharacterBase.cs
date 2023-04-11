@@ -1,4 +1,5 @@
 using Battle.Character.Base.Component;
+using Battle.Character.Player.Weapon;
 using UnityEngine;
 
 namespace Battle.Character.Base
@@ -10,6 +11,7 @@ namespace Battle.Character.Base
         public StateMachineComponent StateMachine;
         public Animator Animator;
         public CharacterController CharacterController;
+        public WeaponBase WeaponBase;
 
         private void Awake()
         {

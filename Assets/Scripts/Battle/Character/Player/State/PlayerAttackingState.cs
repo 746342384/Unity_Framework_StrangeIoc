@@ -1,16 +1,23 @@
 using Battle.Character.Base;
+using UnityEngine;
 
 namespace Battle.Character.Player.State
 {
     public class PlayerAttackingState : PlayerStateBase
     {
-        public PlayerAttackingState(CharacterBase character) : base(character)
+        private int _index;
+        private AttackData _attackData;
+
+        public PlayerAttackingState(CharacterBase character, int index) : base(character)
         {
+            _index = index;
+            Debug.Log(index);
         }
 
         public override void Enter()
         {
-            Character.Animator.CrossFadeInFixedTime("MeleeAttack_OneHanded", 0.1f);
+            _attackData = Character.CharacterData.AttackDatas[_index];
+            Character.Animator.CrossFadeInFixedTime(_attackData.AnimationName, 0.1f);
         }
 
         public override void Tick(float deltaTime)
@@ -26,6 +33,18 @@ namespace Battle.Character.Player.State
             if (normalizedTime >= 1f)
             {
                 Character.StateMachine.SwitchState(new PlayerIdleState(Character));
+                return;
+            }
+
+            if (normalizedTime >= _attackData.Time && Character.InputComponent.IsAttacking)
+            {
+                _index += 1;
+                if (_index >= Character.CharacterData.AttackDatas.Count)
+                {
+                    return;
+                }
+
+                Character.StateMachine.SwitchState(new PlayerAttackingState(Character, _index));
                 return;
             }
         }

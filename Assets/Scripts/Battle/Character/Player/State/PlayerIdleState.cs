@@ -22,10 +22,10 @@ namespace Battle.Character.Player.State
         {
             if (Character.InputComponent.IsAttacking)
             {
-                Character.StateMachine.SwitchState(new PlayerAttackingState(Character));
+                Character.StateMachine.SwitchState(new PlayerAttackingState(Character, 0));
                 return;
             }
-            
+
             if (Character.InputComponent.IsTwoHandAttacking)
             {
                 Character.StateMachine.SwitchState(new PlayerTwoHandAttackingState(Character));

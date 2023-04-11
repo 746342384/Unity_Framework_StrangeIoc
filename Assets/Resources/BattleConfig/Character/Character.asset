@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: Character
   m_EditorClassIdentifier: 
   MoveSpeed: 8
-  Attack: 10
-  Defense: 10
   HP: 100
+  AttackDatas:
+  - {fileID: 11400000, guid: 35a5b9647232f0444904abdaeafab1ae, type: 2}
+  - {fileID: 11400000, guid: 8f365ac491cd1ac4080d638375ccf4c4, type: 2}
+  - {fileID: 11400000, guid: 3f8825fee998ef440affc8bf3775a418, type: 2}
   RotationDamping: 5
   RollForwardDistance: 4
   RollBackwardDistance: 4
