@@ -3600,6 +3600,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e82fe43e68347d5bb6b776c6cc33851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Root: {fileID: 3205353587514076748}
+  Collider: {fileID: 438068188}
 --- !u!1 &5562397166024512987
 GameObject:
   m_ObjectHideFlags: 0
@@ -6148,6 +6150,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3380400193892418386}
     m_Modifications:
+    - target: {fileID: 1311561399333364932, guid: 365779f13dc25854ba83dfc59287a887, type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1311561399333364932, guid: 365779f13dc25854ba83dfc59287a887, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3820176814769304558, guid: 365779f13dc25854ba83dfc59287a887, type: 3}
       propertyPath: m_Name
       value: Sword7_Red
@@ -6198,6 +6208,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 365779f13dc25854ba83dfc59287a887, type: 3}
+--- !u!64 &438068188 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 1311561399333364932, guid: 365779f13dc25854ba83dfc59287a887, type: 3}
+  m_PrefabInstance: {fileID: 1311561399502980888}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2823867701120513270 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3820176814769304558, guid: 365779f13dc25854ba83dfc59287a887, type: 3}
+  m_PrefabInstance: {fileID: 1311561399502980888}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &438068189
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2823867701120513270}
+  serializedVersion: 2
+  m_Mass: 0.0000001
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!4 &3205353587514076748 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4487887873524214100, guid: 365779f13dc25854ba83dfc59287a887, type: 3}
