@@ -53,16 +53,16 @@ namespace Battle.Character.Player.State
                 return;
             }
 
-            var vector2 = GetMovement();
+            var vector2 = Character.MoveComponent.GetMovement();
             var x = Mathf.Clamp(vector2.x, -1, 1);
             var y = Mathf.Clamp(vector2.y, -1, 1);
             Character.Animator.SetFloat(H, x, 0.1f, deltaTime);
             Character.Animator.SetFloat(V, y, 0.1f, deltaTime);
-            var movement = CalculateMovement(vector2);
-            Move(movement * Character.CharacterData.MoveSpeed, deltaTime);
+            var movement = Character.MoveComponent.CalculateMovement(vector2);
+            Character.MoveComponent.Move(movement * Character.CharacterData.MoveSpeed, deltaTime);
             if (vector2.x != 0)
             {
-                FaceMovementDirection(movement, deltaTime);
+                Character.MoveComponent.FaceMovementDirection(movement, deltaTime);
             }
         }
 

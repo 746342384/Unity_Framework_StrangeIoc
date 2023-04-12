@@ -14,27 +14,30 @@ namespace Battle.Character.Player.State
         public override void Enter()
         {
             Debug.Log("PlayerJumpWhileRunning");
-            var movement = GetMovement();
-            var distance = Character.CharacterData.RunningJumpDistance;
+            var movement = Character.MoveComponent.GetMovement();
+            AddForce = Character.CharacterData.RunningJumpAddForce;
             if (movement.y > 0)
             {
-                distance *= 1f;
+                AddForce *= 1f;
             }
             else
             {
-                distance *= -1f;
+                AddForce *= -1f;
             }
 
-            SetMoveForwardTarget(distance);
             Character.Animator.CrossFadeInFixedTime("JumpWhileRunning", 0.1f);
         }
 
         public override void Tick(float deltaTime)
         {
+            Character.MoveComponent.Move(Vector3.zero, deltaTime);
+            if (!IsApplyForce)
+            {
+                Character.MoveComponent.AddForce(Character.transform.forward.normalized * AddForce);
+                IsApplyForce = true;
+            }
+
             var normalizedTime = GetNormalizedTime(Character.Animator);
-            LerpMoveToTarget(normalizedTime);
-
-
             if (normalizedTime > _previousFrameTime && normalizedTime >= 1f)
             {
                 Character.StateMachine.SwitchState(new PlayerMoveState(Character));

@@ -18,9 +18,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 35a5b9647232f0444904abdaeafab1ae, type: 2}
   - {fileID: 11400000, guid: 8f365ac491cd1ac4080d638375ccf4c4, type: 2}
   - {fileID: 11400000, guid: 3f8825fee998ef440affc8bf3775a418, type: 2}
-  RotationDamping: 5
-  RollForwardDistance: 4
-  RollBackwardDistance: 4
-  RollLeftDistance: -4
-  RollRightDistance: 2
-  RunningJumpDistance: 4
+  RotationDamping: 2.5
+  RollForwardAddForce: 8
+  RollBackwardAddForce: 10
+  RollLeftAddForce: 8
+  RollRightAddForce: 8
+  RunningJumpAddForce: 15

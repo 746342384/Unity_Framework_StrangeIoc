@@ -19,6 +19,11 @@ namespace Framework.framework.sound
             _audioManager.Play(clip, AudioManager.AudioGroupType.Music, true);
         }
 
+        public void PlaySfx(AudioClip clip)
+        {
+            _audioManager.Play(clip, AudioManager.AudioGroupType.SFX);
+        }
+
         public void StopMusic(AudioClip clip)
         {
             _audioManager.Stop(clip, AudioManager.AudioGroupType.Music);

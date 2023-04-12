@@ -1,4 +1,6 @@
+using System;
 using Battle.Character.Base;
+using Framework.framework.sound;
 using UnityEngine;
 
 namespace Battle.Character.Player.State
@@ -7,6 +9,8 @@ namespace Battle.Character.Player.State
     {
         private int _index;
         private AttackData _attackData;
+        private ISoundManager _soundManager;
+
 
         public PlayerAttackingState(CharacterBase character, int index) : base(character)
         {
@@ -17,12 +21,19 @@ namespace Battle.Character.Player.State
         public override void Enter()
         {
             _attackData = Character.CharacterData.AttackDatas[_index];
+            _soundManager = GameContext.Instance.GetComponent<ISoundManager>() as ISoundManager;
             Character.Animator.CrossFadeInFixedTime(_attackData.AnimationName, 0.1f);
         }
 
         public override void Tick(float deltaTime)
         {
+            Character.MoveComponent.Move(Vector3.zero, deltaTime);
             var normalizedTime = GetNormalizedTime(Character.Animator);
+
+            if (Math.Abs(normalizedTime - _attackData.AttackSfxTime) < 0.01f)
+            {
+                _soundManager?.PlaySfx(_attackData.AttackSfx);
+            }
 
             if (normalizedTime > 0.5f && Character.InputComponent.CancelAttacking)
             {

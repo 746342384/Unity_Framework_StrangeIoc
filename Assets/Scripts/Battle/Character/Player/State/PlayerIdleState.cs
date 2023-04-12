@@ -38,7 +38,7 @@ namespace Battle.Character.Player.State
                 return;
             }
 
-            Move(Vector3.zero, deltaTime);
+            Character.MoveComponent.Move(Vector3.zero, deltaTime);
         }
 
         private void OnJump()

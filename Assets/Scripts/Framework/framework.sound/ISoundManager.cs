@@ -7,5 +7,6 @@ namespace Framework.framework.sound
     {
         void PlayMusic(AudioClip clip);
         void StopMusic(AudioClip clip);
+        void PlaySfx(AudioClip clip);
     }
 }

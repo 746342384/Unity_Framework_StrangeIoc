@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 23444f797caaea547858c0d182f94091, type: 2}
 --- !u!1 &48152995
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -552,6 +552,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 67117722a812a2e46ab8cb8eafbf5f5e, type: 3}
+--- !u!114 &782628377 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4540229000216595713, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+  m_PrefabInstance: {fileID: 9104811173222785028}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a9d496d45441068d670aa562f8a8db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1577437134
 GameObject:
   m_ObjectHideFlags: 0
@@ -641,6 +652,22 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4540229000216595712, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540229000216595712, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540229000216595712, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4540229000216595718, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
+      propertyPath: MoveComponent
+      value: 
+      objectReference: {fileID: 782628377}
     - target: {fileID: 7415080025685942053, guid: 74040d3246ecd7941865419a9e8014cc, type: 3}
       propertyPath: m_Name
       value: Player

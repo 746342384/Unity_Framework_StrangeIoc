@@ -17,7 +17,7 @@ namespace Battle.Character.Player.State
 
         public override void Tick(float deltaTime)
         {
-            Move(Vector3.zero, deltaTime);
+            Character.MoveComponent.Move(Vector3.zero, deltaTime);
             var normalizedTime = GetNormalizedTime(Character.Animator);
             if (normalizedTime >= 1f)
             {

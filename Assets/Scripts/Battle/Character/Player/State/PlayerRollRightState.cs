@@ -12,14 +12,19 @@ namespace Battle.Character.Player.State
         public override void Enter()
         {
             Debug.Log("PlayerRollRightState");
-            SetMoveRightTarget(Character.CharacterData.RollRightDistance);
+            AddForce = Character.CharacterData.RollRightAddForce;
             Character.Animator.CrossFadeInFixedTime("RollRight", 0.1f);
         }
 
         public override void Tick(float deltaTime)
         {
+            Character.MoveComponent.Move(Vector3.zero, deltaTime);
             var normalizedTime = GetNormalizedTime(Character.Animator);
-            LerpMoveToTarget(normalizedTime);
+            if (!IsApplyForce)
+            {
+                Character.MoveComponent.AddForce(Character.transform.right.normalized * AddForce);
+                IsApplyForce = true;
+            }
 
             if (normalizedTime >= 0.8f)
             {
