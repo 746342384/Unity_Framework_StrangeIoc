@@ -7,14 +7,11 @@ namespace Battle.Character.Base.Component
     public class MoveComponent : MonoBehaviour
     {
         private CharacterBase _character;
-        private Vector3 _targetPosition;
-        private Vector3 _newPosition;
-        private Vector3 _startPosition;
         private NavMeshAgent _agent;
-        private float verticalVelocity;
-        private Vector3 dampingVelocity;
-        private Vector3 impact;
-        private Vector3 MoveMent => impact + Vector3.up * verticalVelocity;
+        private float _verticalVelocity;
+        private Vector3 _dampingVelocity;
+        private Vector3 _impact;
+        private Vector3 MoveMent => _impact + Vector3.up * _verticalVelocity;
 
         private void Awake()
         {
@@ -28,26 +25,26 @@ namespace Battle.Character.Base.Component
 
         private void Update()
         {
-            if (verticalVelocity < 0 && _character.CharacterController.isGrounded)
+            if (_verticalVelocity < 0 && _character.CharacterController.isGrounded)
             {
-                verticalVelocity = Physics.gravity.y * Time.deltaTime;
+                _verticalVelocity = Physics.gravity.y * Time.deltaTime;
             }
             else
             {
-                verticalVelocity += Physics.gravity.y * Time.deltaTime;
+                _verticalVelocity += Physics.gravity.y * Time.deltaTime;
             }
 
-            impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, _character.CharacterData.MoveDrag);
-            if (impact.sqrMagnitude < 0.2f * 0.2f && _agent)
+            _impact = Vector3.SmoothDamp(_impact, Vector3.zero, ref _dampingVelocity, _character.CharacterData.MoveDrag);
+            if (_impact.sqrMagnitude < 0.2f * 0.2f && _agent)
             {
-                impact = Vector3.zero;
+                _impact = Vector3.zero;
                 _agent.enabled = true;
             }
         }
 
         public void AddForce(Vector3 force)
         {
-            impact += force;
+            _impact += force;
             if (_agent) _agent.enabled = false;
         }
 
