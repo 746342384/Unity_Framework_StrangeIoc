@@ -28,6 +28,13 @@ namespace Battle.Character.Player.State
         public override void Tick(float deltaTime)
         {
             Character.MoveComponent.Move(Vector3.zero, deltaTime);
+
+            if (!IsApplyForce)
+            {
+                Character.MoveComponent.AddForce(Character.transform.forward.normalized * _attackData.AddForce);
+                IsApplyForce = true;
+            }
+
             var normalizedTime = GetNormalizedTime(Character.Animator);
 
             if (Math.Abs(normalizedTime - _attackData.AttackSfxTime) < 0.01f)

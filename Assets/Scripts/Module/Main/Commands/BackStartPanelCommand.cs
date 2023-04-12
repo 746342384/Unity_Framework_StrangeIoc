@@ -12,7 +12,7 @@ namespace Module.Main.Commands
         {
             base.Execute();
             PanelSystem.ClosePanel(PanelNames.MainPanel);
-            PanelSystem.OpenPanel(PanelNames.StartPanel);
+            //PanelSystem.OpenPanel(PanelNames.StartPanel);
         }
     }
 }

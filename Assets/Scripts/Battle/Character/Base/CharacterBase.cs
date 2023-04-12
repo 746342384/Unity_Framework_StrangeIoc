@@ -7,15 +7,20 @@ namespace Battle.Character.Base
     public class CharacterBase : MonoBehaviour
     {
         public CharacterData CharacterData;
-        public InputComponent InputComponent;
-        public StateMachineComponent StateMachine;
-        public Animator Animator;
-        public CharacterController CharacterController;
+        public InputComponent InputComponent { get; private set; }
+        public StateMachineComponent StateMachine { get; private set; }
+        public Animator Animator { get; private set; }
+        public CharacterController CharacterController { get; private set; }
         public WeaponBase WeaponBase;
-        public MoveComponent MoveComponent;
+        public MoveComponent MoveComponent { get; private set; }
 
         private void Awake()
         {
+            StateMachine = GetComponent<StateMachineComponent>();
+            Animator = GetComponent<Animator>();
+            CharacterController = GetComponent<CharacterController>();
+            MoveComponent = GetComponent<MoveComponent>();
+            InputComponent = GetComponent<InputComponent>();
             OnAwake();
         }
 

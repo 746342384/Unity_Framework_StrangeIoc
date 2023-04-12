@@ -17,19 +17,48 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 8bff5204a57a8a6449db8ed2272107d7
   m_SerializeEntries:
+  - m_GUID: a32caaad8cd3fad4da03db21e5e64be7
+    m_Address: Assets/ResPackage/Common/Audio/Sfx/Attack/Insect Attack 4 .mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
+  - m_GUID: 3fc3f880c2168b741b111e06e72ff381
+    m_Address: Assets/ResPackage/Common/Audio/Sfx/Attack/Insect Attack 3.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
+  - m_GUID: c0b70a30f1d94cf46b01210d0edd2c32
+    m_Address: Assets/ResPackage/Common/Audio/Sfx/Attack/Insect Attack 2.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
+  - m_GUID: a6478ca56d4571247b794e359841e35e
+    m_Address: Assets/ResPackage/Common/Audio/Sfx/Attack/Insect Attack 1.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
+  - m_GUID: 365779f13dc25854ba83dfc59287a887
+    m_Address: Assets/ResPackage/Common/Prefab/Weapon/Sword7_Red.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
+  - m_GUID: 74040d3246ecd7941865419a9e8014cc
+    m_Address: Assets/ResPackage/Common/Prefab/Player/Player.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
+  - m_GUID: d4cb2c65087c82042a9af7b839285643
+    m_Address: Assets/ResPackage/Common/Audio/Music/BRPG_Assault_FULL_Loop.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
   - m_GUID: cf38854ede78fb84a9a050b8b2dd1bd4
     m_Address: Assets/ResPackage/Common/UIPanel/StartPanel.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Common
   - m_GUID: 06005c31a8e95184b9d9801531348597
-    m_Address: Assets/ResPackage/Common1/UIPanel/MainPanel.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Common1
-    - Common
-  - m_GUID: d4cb2c65087c82042a9af7b839285643
-    m_Address: Assets/ResPackage/Common/Audio/Music/BRPG_Assault_FULL_Loop.wav
+    m_Address: Assets/ResPackage/Common/UIPanel/MainPanel.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Common

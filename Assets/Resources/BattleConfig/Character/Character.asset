@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Character
   m_EditorClassIdentifier: 
   MoveSpeed: 8
+  MoveDrag: 0.3
   HP: 100
   AttackDatas:
   - {fileID: 11400000, guid: 35a5b9647232f0444904abdaeafab1ae, type: 2}

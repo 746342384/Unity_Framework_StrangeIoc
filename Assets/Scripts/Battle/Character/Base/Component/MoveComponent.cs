@@ -11,7 +11,6 @@ namespace Battle.Character.Base.Component
         private Vector3 _newPosition;
         private Vector3 _startPosition;
         private NavMeshAgent _agent;
-        [SerializeField] private float _drag = 0.3f;
         private float verticalVelocity;
         private Vector3 dampingVelocity;
         private Vector3 impact;
@@ -38,7 +37,7 @@ namespace Battle.Character.Base.Component
                 verticalVelocity += Physics.gravity.y * Time.deltaTime;
             }
 
-            impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, _drag);
+            impact = Vector3.SmoothDamp(impact, Vector3.zero, ref dampingVelocity, _character.CharacterData.MoveDrag);
             if (impact.sqrMagnitude < 0.2f * 0.2f && _agent)
             {
                 impact = Vector3.zero;

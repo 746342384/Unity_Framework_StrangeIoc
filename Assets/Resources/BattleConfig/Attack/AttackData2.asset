@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AttackData2
   m_EditorClassIdentifier: 
   AnimationName: MeleeAttack_TwoHanded
+  AddForce: 0
   Time: 0.8
   AttackSfxTime: 0.35
   AttackSfx: {fileID: 8300000, guid: 3fc3f880c2168b741b111e06e72ff381, type: 3}

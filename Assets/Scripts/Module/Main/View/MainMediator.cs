@@ -11,7 +11,6 @@ namespace Module.Main.View
         {
             base.OnRegister();
             View.BackBtn.onClick.AddListener(() => { Dispatcher.Dispatch(MainEvent.Back); });
-            View.RealeaseAllPanelBtn.onClick.AddListener(() => { PanelSystem.UnLoadAllPanel(); });
         }
     }
 }

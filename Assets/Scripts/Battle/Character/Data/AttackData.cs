@@ -6,6 +6,7 @@ namespace Battle.Character
     public class AttackData : ScriptableObject
     {
         public string AnimationName;
+        public float AddForce;
         [Range(0, 1f)] public float Time;
         [Range(0, 1f)] public float AttackSfxTime;
         public AudioClip AttackSfx;
