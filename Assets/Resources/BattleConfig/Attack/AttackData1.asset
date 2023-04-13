@@ -13,7 +13,10 @@ MonoBehaviour:
   m_Name: AttackData1
   m_EditorClassIdentifier: 
   AnimationName: MeleeAttack_OneHanded
+  AttackDistance: 0.3
   AddForce: 0
   Time: 0.8
   AttackSfxTime: 0.3
   AttackSfx: {fileID: 8300000, guid: a6478ca56d4571247b794e359841e35e, type: 3}
+  AttackStart: 0.4
+  AttackEnd: 0.5

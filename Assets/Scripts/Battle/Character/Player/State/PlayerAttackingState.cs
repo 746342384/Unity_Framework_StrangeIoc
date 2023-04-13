@@ -11,9 +11,9 @@ namespace Battle.Character.Player.State
         private AttackData _attackData;
         private ISoundManager _soundManager;
 
-
         public PlayerAttackingState(CharacterBase character, int index) : base(character)
         {
+            character.AttackIndex = index;
             _index = index;
             Debug.Log(index);
         }
@@ -40,6 +40,16 @@ namespace Battle.Character.Player.State
             if (Math.Abs(normalizedTime - _attackData.AttackSfxTime) < 0.01f)
             {
                 _soundManager?.PlaySfx(_attackData.AttackSfx);
+            }
+
+            if (normalizedTime > _attackData.AttackStart)
+            {
+                Character.WeaponBase.EnableCollider();
+            }
+
+            if (normalizedTime >= _attackData.AttackEnd)
+            {
+                Character.WeaponBase.DisableCollider();
             }
 
             if (normalizedTime > 0.5f && Character.InputComponent.CancelAttacking)

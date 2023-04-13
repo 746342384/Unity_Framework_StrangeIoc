@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4487887873524214100}
   - component: {fileID: 713809182817429233}
   - component: {fileID: 3315496922796413499}
-  - component: {fileID: 1311561399333364932}
+  - component: {fileID: 5642189007828389108}
   m_Layer: 0
   m_Name: Sword7_Red
   m_TagString: Untagged
@@ -84,17 +84,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1311561399333364932
-MeshCollider:
+--- !u!65 &5642189007828389108
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3820176814769304558}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -1195938968934217610, guid: 98318b7fbb6008a488a87d8f130a5b45, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 0.24306954, y: 1.8165449, z: 0.051603496}
+  m_Center: {x: 0.07990024, y: 0.64866674, z: -0.0029636426}

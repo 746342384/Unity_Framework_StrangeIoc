@@ -13,6 +13,7 @@ namespace Battle.Character.Base
         public CharacterController CharacterController { get; private set; }
         public WeaponBase WeaponBase;
         public MoveComponent MoveComponent { get; private set; }
+        public int AttackIndex { get; set; }
 
         private void Awake()
         {
@@ -31,6 +32,7 @@ namespace Battle.Character.Base
         private void Start()
         {
             MoveComponent.Init(this);
+            WeaponBase.Init(this);
             OnStart();
         }
 
