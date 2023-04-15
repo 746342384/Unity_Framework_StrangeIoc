@@ -2369,6 +2369,7 @@ GameObject:
   - component: {fileID: 1005940833870846509}
   - component: {fileID: 2955188674025173667}
   - component: {fileID: 8349716896308067427}
+  - component: {fileID: 3011924329326508412}
   m_Layer: 7
   m_Name: Demon
   m_TagString: Untagged
@@ -2511,6 +2512,20 @@ MonoBehaviour:
   CharacterData: {fileID: 11400000, guid: 2bda6e511e325b34dbf52d00ffed970b, type: 2}
   WeaponBase: {fileID: 8349716895215496112}
   Type: 0
+--- !u!136 &3011924329326508412
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6497751427905964652}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6653782284248692244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2619,13 +2634,14 @@ GameObject:
   m_Component:
   - component: {fileID: 7256334990635710620}
   - component: {fileID: 8349716895215496112}
+  - component: {fileID: 4227676882071666511}
   m_Layer: 7
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7256334990635710620
 Transform:
   m_ObjectHideFlags: 0
@@ -2656,6 +2672,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Root: {fileID: 478085598433927041}
   Collider: {fileID: 8349716896883998747}
+  Spline: {fileID: 0}
+  numOfRays: 5
+--- !u!114 &4227676882071666511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7000190179736839089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7261d95e36548259dca14b352081666, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points: []
+  resolution: 100
+  LineColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7307574600534167236
 GameObject:
   m_ObjectHideFlags: 0

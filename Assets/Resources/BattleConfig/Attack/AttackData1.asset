@@ -18,5 +18,5 @@ MonoBehaviour:
   Time: 0.8
   AttackSfxTime: 0.3
   AttackSfx: {fileID: 8300000, guid: a6478ca56d4571247b794e359841e35e, type: 3}
-  AttackStart: 0.4
-  AttackEnd: 0.5
+  AttackStart: 0.3
+  AttackEnd: 0.6

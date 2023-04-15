@@ -15,7 +15,6 @@ namespace Battle.Character.Player.State
         {
             character.AttackIndex = index;
             _index = index;
-            Debug.Log(index);
         }
 
         public override void Enter()

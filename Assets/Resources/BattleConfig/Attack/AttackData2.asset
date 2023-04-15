@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AttackData2
   m_EditorClassIdentifier: 
   AnimationName: MeleeAttack_TwoHanded
-  AttackDistance: 1
+  AttackDistance: 0.3
   AddForce: 0
   Time: 0.8
   AttackSfxTime: 0.35

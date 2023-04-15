@@ -1,16 +1,22 @@
 using System;
-using System.Linq;
 using Battle.Character.Base;
 using Battle.Enemy;
 using UnityEngine;
 
 namespace Battle.Character.Player.Weapon
 {
+    [RequireComponent(typeof(BezierSpline))]
     public class WeaponBase : MonoBehaviour
     {
         public Transform Root;
         public Collider Collider;
         private CharacterBase _characterBase;
+        public BezierSpline Spline;
+
+        private void Awake()
+        {
+            Spline = GetComponent<BezierSpline>();
+        }
 
         public void Init(CharacterBase characterBase)
         {
@@ -27,34 +33,48 @@ namespace Battle.Character.Player.Weapon
             Collider.enabled = false;
         }
 
-        public float offset;
-        public float height;
-
         private void Update()
         {
             if (Collider.enabled)
             {
-                var attackDistance =
-                    _characterBase.CharacterData.AttackDatas[_characterBase.AttackIndex].AttackDistance;
-                if (Physics.Raycast(transform.position, transform.right, out var hitInfo,
-                        attackDistance,
-                        LayerMask.GetMask("Enemy")))
+                PerformAttack();
+            }
+        }
+
+
+        public int numOfRays = 5;
+
+        void PerformAttack()
+        {
+            var attackDistance = _characterBase.CharacterData.AttackDatas[_characterBase.AttackIndex].AttackDistance;
+            var mask = LayerMask.GetMask("Enemy");
+            for (var i = 0; i < numOfRays; i++)
+            {
+                var t = (float)i / (numOfRays - 1); // 计算当前射线在曲线上的位置百分比
+                var rayOrigin = Spline.GetPoint(t); // 计算当前射线的起始位置
+                var bladeDirection = (Spline.GetPoint(t + 0.01f) - rayOrigin).normalized; // 计算刀锋方向
+                if (Physics.Raycast(rayOrigin, bladeDirection, out var hit, attackDistance, mask))
                 {
-                    var enemy = hitInfo.collider.GetComponent<EnemyBase>();
-                    if (enemy != null)
+                    if (hit.collider.gameObject.GetComponent<EnemyBase>() != null)
                     {
-                        Time.timeScale = 0.00f;
-                        Debug.Log("碰撞到敌人");
+                        Debug.Log("击中敌人！");
+                        break;
                     }
                 }
 
-                var position = transform.position;
-                var up = transform.up;
-                var start = position + up * offset; // 起点为武器刀锋位置
-                var end = position + up * (offset + height); // 终点为武器刀锋位置加上长度
-                Debug.DrawLine(start, end, Color.red, 1.0f);
-                Debug.DrawRay(position, transform.right * attackDistance, Color.blue, 1.0f);
+                Debug.DrawRay(rayOrigin, bladeDirection * attackDistance, Color.blue, 1.0f);
             }
         }
+
+        // private void OnDrawGizmos()
+        // {
+        //     if (_characterBase != null)
+        //     {
+        //         var attackDistance =
+        //             _characterBase.CharacterData.AttackDatas[_characterBase.AttackIndex].AttackDistance;
+        //         Gizmos.color = Color.blue;
+        //         Gizmos.DrawRay(transform.position, transform.right * attackDistance);
+        //     }
+        // }
     }
 }
