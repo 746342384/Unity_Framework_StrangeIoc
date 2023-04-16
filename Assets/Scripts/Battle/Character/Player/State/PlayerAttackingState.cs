@@ -13,8 +13,8 @@ namespace Battle.Character.Player.State
 
         public PlayerAttackingState(CharacterBase character, int index) : base(character)
         {
-            character.AttackIndex = index;
             _index = index;
+            character.WeaponBase.AttackDataIndex = index;
         }
 
         public override void Enter()
@@ -43,12 +43,12 @@ namespace Battle.Character.Player.State
 
             if (normalizedTime > _attackData.AttackStart)
             {
-                Character.WeaponBase.EnableCollider();
+                Character.WeaponBase.StartAttack();
             }
 
             if (normalizedTime >= _attackData.AttackEnd)
             {
-                Character.WeaponBase.DisableCollider();
+                Character.WeaponBase.EndAttack();
             }
 
             if (normalizedTime > 0.5f && Character.InputComponent.CancelAttacking)

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Battle.Character.Base;
 using Battle.Enemy;
 using UnityEngine;
@@ -12,6 +13,9 @@ namespace Battle.Character.Player.Weapon
         public Collider Collider;
         private CharacterBase _characterBase;
         public BezierSpline Spline;
+        public List<CharacterBase> TarGets = new();
+        private bool _isAttacking;
+        public int AttackDataIndex;
 
         private void Awake()
         {
@@ -23,58 +27,79 @@ namespace Battle.Character.Player.Weapon
             _characterBase = characterBase;
         }
 
-        public void EnableCollider()
+        public void StartAttack()
         {
-            Collider.enabled = true;
+            _isAttacking = true;
         }
 
-        public void DisableCollider()
+        public void EndAttack()
         {
-            Collider.enabled = false;
+            _isAttacking = false;
+            ClearTargets();
         }
 
-        private void Update()
+        private void ClearTargets()
         {
-            if (Collider.enabled)
+            TarGets.Clear();
+        }
+
+        private void FixedUpdate()
+        {
+            if (_isAttacking)
             {
                 PerformAttack();
             }
         }
 
-
-        public int numOfRays = 5;
-
-        void PerformAttack()
+        private void PerformAttack()
         {
-            var attackDistance = _characterBase.CharacterData.AttackDatas[_characterBase.AttackIndex].AttackDistance;
             var mask = LayerMask.GetMask("Enemy");
+            var numOfRays = Spline.points.Count - 1;
             for (var i = 0; i < numOfRays; i++)
             {
-                var t = (float)i / (numOfRays - 1); // 计算当前射线在曲线上的位置百分比
-                var rayOrigin = Spline.GetPoint(t); // 计算当前射线的起始位置
-                var bladeDirection = (Spline.GetPoint(t + 0.01f) - rayOrigin).normalized; // 计算刀锋方向
-                if (Physics.Raycast(rayOrigin, bladeDirection, out var hit, attackDistance, mask))
+                var rayOrigin = Spline.points[i].position;
+                var rayNext = Spline.points[i + 1].position;
+                var bladeDirection = (rayNext - rayOrigin).normalized;
+                var dir = Vector3.Distance(rayOrigin, rayNext);
+                if (Physics.Raycast(rayOrigin, bladeDirection, out var hit, dir, mask))
                 {
-                    if (hit.collider.gameObject.GetComponent<EnemyBase>() != null)
+                    var enemyBase = hit.collider.gameObject.GetComponent<EnemyBase>();
+                    if (enemyBase != null)
                     {
-                        Debug.Log("击中敌人！");
+                        Time.timeScale = _characterBase.CharacterData.WeaponData.AttackStopStep;
+                        AddTarget(enemyBase);
+                        Debug.DrawRay(rayOrigin, bladeDirection * dir, Color.blue, 1.0f);
                         break;
                     }
                 }
 
-                Debug.DrawRay(rayOrigin, bladeDirection * attackDistance, Color.blue, 1.0f);
+                Debug.DrawRay(rayOrigin, bladeDirection * dir, Color.blue, 1.0f);
             }
         }
 
-        // private void OnDrawGizmos()
-        // {
-        //     if (_characterBase != null)
-        //     {
-        //         var attackDistance =
-        //             _characterBase.CharacterData.AttackDatas[_characterBase.AttackIndex].AttackDistance;
-        //         Gizmos.color = Color.blue;
-        //         Gizmos.DrawRay(transform.position, transform.right * attackDistance);
-        //     }
-        // }
+        private void AddTarget(CharacterBase characterBase)
+        {
+            if (!TarGets.Contains(characterBase))
+            {
+                Debug.Log("击中敌人！");
+                TarGets.Add(characterBase);
+                TakeDamage(characterBase);
+            }
+        }
+
+        private void TakeDamage(CharacterBase enemyBase)
+        {
+            switch (_characterBase.CharacterData.WeaponData.AttackType)
+            {
+                case AttackType.Single:
+                    SingleTakeDamage(enemyBase);
+                    break;
+            }
+        }
+
+        private void SingleTakeDamage(CharacterBase enemyBase)
+        {
+            enemyBase.SingleTakeDamage(_characterBase, AttackDataIndex);
+        }
     }
 }

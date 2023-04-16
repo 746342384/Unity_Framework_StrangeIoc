@@ -12,13 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9c6a287dbed4cccb11ff8615aac5317, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  MoveSpeed: 5
-  MoveDrag: 0.3
   HP: 100
   AttackDatas:
   - {fileID: 11400000, guid: 35a5b9647232f0444904abdaeafab1ae, type: 2}
   - {fileID: 11400000, guid: 8f365ac491cd1ac4080d638375ccf4c4, type: 2}
   - {fileID: 11400000, guid: 3f8825fee998ef440affc8bf3775a418, type: 2}
+  WeaponData: {fileID: 11400000, guid: 6317796f1e05b2c46be531ba3d3ca4cc, type: 2}
+  MoveDrag: 0.3
+  MoveSpeed: 5
   RotationDamping: 1
   RollForwardAddForce: 8
   RollBackwardAddForce: 10

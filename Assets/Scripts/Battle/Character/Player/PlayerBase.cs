@@ -10,12 +10,13 @@ namespace Battle.Character.Player
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(MoveComponent))]
-    public class PlayerCharacter : CharacterBase
+    public class PlayerBase : CharacterBase
     {
         protected override void OnStart()
         {
             base.OnStart();
             StateMachine.SwitchState(new PlayerIdleState(this));
+            CharacterType = CharacterType.Player;
         }
     }
 }
