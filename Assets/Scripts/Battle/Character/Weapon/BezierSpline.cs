@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Battle.Character.Player.Weapon
+namespace Battle.Character.Weapon
 {
     public class BezierSpline : MonoBehaviour
     {

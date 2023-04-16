@@ -1,4 +1,4 @@
-namespace Battle.Character.Player.Weapon
+namespace Battle.Character.Weapon
 {
     public enum AttackType
     {

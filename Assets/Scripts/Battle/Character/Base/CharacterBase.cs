@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Battle.Character.Base.Component;
-using Battle.Character.Player.Weapon;
+using Battle.Character.Weapon;
 using Battle.Enemy.State;
 using UnityEngine;
 

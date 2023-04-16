@@ -1,4 +1,4 @@
-using Battle.Character.Player.Weapon;
+using Battle.Character.Weapon;
 using UnityEngine;
 
 namespace Battle.Character

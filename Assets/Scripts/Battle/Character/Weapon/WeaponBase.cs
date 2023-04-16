@@ -4,7 +4,7 @@ using Battle.Character.Base;
 using Battle.Enemy;
 using UnityEngine;
 
-namespace Battle.Character.Player.Weapon
+namespace Battle.Character.Weapon
 {
     [RequireComponent(typeof(BezierSpline))]
     public class WeaponBase : MonoBehaviour
