@@ -67,7 +67,7 @@ namespace Battle.Character.Weapon
                     if (enemyBase != null)
                     {
                         Time.timeScale = _characterBase.CharacterData.WeaponData.AttackStopStep;
-                        AddTarget(enemyBase);
+                        AddTarget(enemyBase, hit);
                         Debug.DrawRay(rayOrigin, bladeDirection * dir, Color.blue, 1.0f);
                         break;
                     }
@@ -77,14 +77,22 @@ namespace Battle.Character.Weapon
             }
         }
 
-        private void AddTarget(CharacterBase characterBase)
+        private void AddTarget(CharacterBase characterBase, RaycastHit raycastHit)
         {
             if (!TarGets.Contains(characterBase))
             {
                 Debug.Log("击中敌人！");
                 TarGets.Add(characterBase);
                 TakeDamage(characterBase);
+                PlayAttackEfx(raycastHit.point);
             }
+        }
+
+        private void PlayAttackEfx(Vector3 raycastHitPoint)
+        {
+            const string path = "Assets/ResPackage/Common/Prefab/Effect/Sphere.prefab";
+            _characterBase.EffectComponent.PlayerAttackEfxAsync(path, null,
+                raycastHitPoint);
         }
 
         private void TakeDamage(CharacterBase enemyBase)

@@ -1041,6 +1041,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9058226011030254804}
   - component: {fileID: 6416758627614892222}
+  - component: {fileID: 8834891952527917309}
   m_Layer: 7
   m_Name: Armor02
   m_TagString: Untagged
@@ -1124,6 +1125,20 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.17234205, y: -0.016232833, z: -0.009189203}
     m_Extent: {x: 0.12146585, y: 0.2148634, z: 0.22403467}
   m_DirtyAABB: 0
+--- !u!64 &8834891952527917309
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2902615055283697287}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &2970742951974464034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1607,6 +1622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2310405573463438976}
   - component: {fileID: 2248033505448040674}
+  - component: {fileID: 8289450905388357269}
   m_Layer: 7
   m_Name: Cloth
   m_TagString: Untagged
@@ -1697,6 +1713,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.16199708, y: -0.004689738, z: 0}
     m_Extent: {x: 0.3434074, y: 0.17655943, z: 0.18176584}
   m_DirtyAABB: 0
+--- !u!64 &8289450905388357269
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4501619185084797741}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1 &4504695067932043345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2369,7 +2399,6 @@ GameObject:
   - component: {fileID: 1005940833870846509}
   - component: {fileID: 2955188674025173667}
   - component: {fileID: 8349716896308067427}
-  - component: {fileID: 3011924329326508412}
   m_Layer: 7
   m_Name: Demon
   m_TagString: Untagged
@@ -2510,22 +2539,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterData: {fileID: 11400000, guid: 2bda6e511e325b34dbf52d00ffed970b, type: 2}
+  AttributeComponent:
+    MaxHp: 0
+    Hp: 0
   WeaponBase: {fileID: 8349716895215496112}
+  CharacterType: 0
+  Collider: []
   Type: 0
---- !u!136 &3011924329326508412
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6497751427905964652}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6653782284248692244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2673,7 +2693,8 @@ MonoBehaviour:
   Root: {fileID: 478085598433927041}
   Collider: {fileID: 8349716896883998747}
   Spline: {fileID: 0}
-  numOfRays: 5
+  TarGets: []
+  AttackDataIndex: 0
 --- !u!114 &4227676882071666511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2687,7 +2708,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   points: []
-  resolution: 100
+  BezierPoint: {fileID: 0}
   LineColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7307574600534167236
 GameObject:
@@ -3552,6 +3573,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5291066505599598472}
   - component: {fileID: 2499731712451876131}
+  - component: {fileID: 3161517249561602786}
   m_Layer: 7
   m_Name: body
   m_TagString: Untagged
@@ -3687,6 +3709,20 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.021903276, y: -0.006753981, z: 0.0000004172325}
     m_Extent: {x: 1.0945271, y: 0.31385267, z: 1.1317401}
   m_DirtyAABB: 0
+--- !u!64 &3161517249561602786
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9216446076651711649}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!1001 &3496112216213171907
 PrefabInstance:
   m_ObjectHideFlags: 0

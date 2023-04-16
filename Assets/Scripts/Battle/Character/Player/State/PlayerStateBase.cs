@@ -7,24 +7,23 @@ namespace Battle.Character.Player.State
 {
     public abstract class PlayerStateBase : StateBase
     {
+        private readonly ISoundManager _soundManager;
         protected readonly CharacterBase Character;
         protected bool IsApplyForce;
         protected float AddForce;
-        private readonly ISoundManager _soundManager;
 
         protected PlayerStateBase(CharacterBase character)
         {
             Character = character;
+            
             _soundManager = GameContext.Instance.GetComponent<ISoundManager>() as ISoundManager;
         }
 
         protected void ApplyForce(float attackDataAddForce)
         {
-            if (!IsApplyForce)
-            {
-                Character.MoveComponent.AddForce(Character.transform.forward.normalized * attackDataAddForce);
-                IsApplyForce = true;
-            }
+            if (IsApplyForce) return;
+            Character.MoveComponent.AddForce(Character.transform.forward.normalized * attackDataAddForce);
+            IsApplyForce = true;
         }
 
         protected void PlayAttackSfx(float normalizedTime, AttackData attackData)
@@ -34,7 +33,7 @@ namespace Battle.Character.Player.State
                 _soundManager?.PlaySfx(attackData.AttackSfx);
             }
         }
-
+    
         protected void ExecuteAttact(float normalizedTime, AttackData attackData)
         {
             if (normalizedTime > attackData.AttackStart)

@@ -11,17 +11,19 @@ namespace Battle.Character.Base
         public CharacterData CharacterData;
         public InputComponent InputComponent { get; private set; }
         public StateMachineComponent StateMachine { get; private set; }
+        public MoveComponent MoveComponent { get; private set; }
+        public AttributeComponent AttributeComponent;
+        public EffectComponent EffectComponent { get; private set; }
         public Animator Animator { get; private set; }
         public CharacterController CharacterController { get; private set; }
         public WeaponBase WeaponBase;
-        public MoveComponent MoveComponent { get; private set; }
-        public AttributeComponent AttributeComponent;
         public CharacterType CharacterType;
         public List<Collider> Collider;
         public bool IsDead { get; private set; }
 
         private void Awake()
         {
+            EffectComponent = GetComponent<EffectComponent>();
             StateMachine = GetComponent<StateMachineComponent>();
             Animator = GetComponent<Animator>();
             CharacterController = GetComponent<CharacterController>();
@@ -73,7 +75,7 @@ namespace Battle.Character.Base
             }
         }
 
-        protected void DisableAllCollider()
+        private void DisableAllCollider()
         {
             foreach (var collider1 in Collider)
             {
@@ -89,7 +91,7 @@ namespace Battle.Character.Base
             }
         }
 
-        public void SetIsDead(bool isDead)
+        protected void SetIsDead(bool isDead)
         {
             IsDead = isDead;
         }

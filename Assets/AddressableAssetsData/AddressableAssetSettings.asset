@@ -99,12 +99,7 @@ MonoBehaviour:
     m_LabelNames:
     - default
     - Prefabs
-    - Prefabs1
     - Common
-    - Common1
-    - Group1
-    - Common 1
-    - Common 2
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: 364de110479252143b97f33bef0ebad0, type: 2}
@@ -135,7 +130,7 @@ MonoBehaviour:
           m_Key: HostingServiceUploadSpeed
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String
-          m_Data: E:/Project/StrangeIoc/RemoteResPackage/Android
+          m_Data: E:/Project/StrangeIoc/RemoteResPackage/StandaloneWindows64
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean

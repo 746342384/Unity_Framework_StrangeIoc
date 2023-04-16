@@ -62,6 +62,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Common
+  - m_GUID: 698cb947bab762a4e943b51ddef0ba24
+    m_Address: Assets/ResPackage/Common/Prefab/Effect/Sphere.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3dec022fb71e9644c85717b0aee37380, type: 2}
   m_SchemaSet:

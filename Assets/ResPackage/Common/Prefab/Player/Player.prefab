@@ -5017,6 +5017,7 @@ GameObject:
   - component: {fileID: 4540229000216595715}
   - component: {fileID: 4540229000216595713}
   - component: {fileID: 4540229000216595716}
+  - component: {fileID: 2999672000529734557}
   - component: {fileID: 7782906541834733030}
   m_Layer: 6
   m_Name: Player
@@ -5111,10 +5112,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CharacterData: {fileID: 11400000, guid: 224775d05eca7814ba519ed24d892458, type: 2}
-  WeaponBase: {fileID: 1893553943}
   AttributeComponent:
     MaxHp: 0
     Hp: 0
+  WeaponBase: {fileID: 1893553943}
+  CharacterType: 0
+  Collider: []
 --- !u!114 &4540229000216595715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5149,6 +5152,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12162ba47cdc4646890bc9eb2c82900b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2999672000529734557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7415080025685942053}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f243ead4834be8b17f81310e6098e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!195 &7782906541834733030
