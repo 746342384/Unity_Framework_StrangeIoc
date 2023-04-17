@@ -20,3 +20,7 @@ MonoBehaviour:
   AttackStart: 0.3
   AttackEnd: 0.6
   AtkValue: 50
+  AttackWeaponEfx: {fileID: 0}
+  AttackEfxTime: 0.3
+  AttackEfx: {fileID: 9150946605474228029, guid: 9307008512a9c1c45ac122516378acfa, type: 3}
+  AttackEfxDuration: 1

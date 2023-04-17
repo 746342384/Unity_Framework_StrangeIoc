@@ -24,11 +24,12 @@ namespace Battle.Character.Player.State
         {
             Character.MoveComponent.Move(Vector3.zero, deltaTime);
             ApplyForce(_attackData.AddForce);
-            
+
             var normalizedTime = GetNormalizedTime(Character.Animator);
-            
+
+            PlayAttackEfx(normalizedTime, _attackData);
             PlayAttackSfx(normalizedTime, _attackData);
-            ExecuteAttact(normalizedTime,_attackData);
+            ExecuteAttact(normalizedTime, _attackData);
 
             if (normalizedTime > 0.5f && Character.InputComponent.CancelAttacking)
             {

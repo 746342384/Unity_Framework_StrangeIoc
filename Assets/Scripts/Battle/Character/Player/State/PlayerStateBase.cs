@@ -15,7 +15,6 @@ namespace Battle.Character.Player.State
         protected PlayerStateBase(CharacterBase character)
         {
             Character = character;
-            
             _soundManager = GameContext.Instance.GetComponent<ISoundManager>() as ISoundManager;
         }
 
@@ -33,7 +32,15 @@ namespace Battle.Character.Player.State
                 _soundManager?.PlaySfx(attackData.AttackSfx);
             }
         }
-    
+
+        protected void PlayAttackEfx(float normalizedTime, AttackData attackData)
+        {
+            if (Math.Abs(normalizedTime - attackData.AttackEfxTime) < 0.01f)
+            {
+                Character.EffectComponent.PlayerAttackEfx(attackData.AttackEfx, attackData.AttackEfxDuration);
+            }
+        }
+
         protected void ExecuteAttact(float normalizedTime, AttackData attackData)
         {
             if (normalizedTime > attackData.AttackStart)

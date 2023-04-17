@@ -10,6 +10,7 @@ namespace Battle.Character
 
         [Header("角色普通攻击")] public List<AttackData> AttackDatas = new();
         [Header("武器配置")] public WeaponData WeaponData;
+        [Header("受击动画")] public GameObject HittedEfx;
 
         public float MoveDrag;
         [Header("角色移动速度")] public float MoveSpeed;

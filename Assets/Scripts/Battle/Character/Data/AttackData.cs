@@ -13,5 +13,9 @@ namespace Battle.Character
         [Header("攻击检测开始的时间")] [Range(0, 1f)] public float AttackStart;
         [Header("攻击检测结束的时间")] [Range(0, 1f)] public float AttackEnd;
         [Header("攻击伤害")] public float AtkValue;
+        [Header("攻击武器特效")] public GameObject AttackWeaponEfx;
+        [Header("攻击特效开始释放时间")] [Range(0, 1)] public float AttackEfxTime;
+        [Header("攻击特效")] public GameObject AttackEfx;
+        [Header("攻击特效持续时间")] public float AttackEfxDuration;
     }
 }
