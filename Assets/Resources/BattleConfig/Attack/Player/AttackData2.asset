@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0737dfb896b44847bca17a74d61c25c6, type: 3}
+  m_Name: AttackData2
+  m_EditorClassIdentifier: 
+  AnimationName: MeleeAttack_TwoHanded
+  AddForce: 0
+  Time: 0.8
+  AttackSfxTime: 0.35
+  AttackSfx: {fileID: 8300000, guid: 3fc3f880c2168b741b111e06e72ff381, type: 3}
+  AttackStart: 0.3
+  AttackEnd: 0.6
+  AtkValue: 10
+  AttackWeaponEfx: {fileID: 0}
+  AttackEfxTime: 0.3
+  AttackEfx: {fileID: 3781946150010653001, guid: 9ea626200818bd6438f97bf22e4a0bad, type: 3}
+  EffectParent: 5
+  AttackEfxDuration: 2

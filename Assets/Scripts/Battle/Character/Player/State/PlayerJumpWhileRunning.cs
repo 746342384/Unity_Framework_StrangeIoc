@@ -25,7 +25,7 @@ namespace Battle.Character.Player.State
                 AddForce *= -1f;
             }
 
-            Character.Animator.CrossFadeInFixedTime("JumpWhileRunning", 0.1f);
+            Character.Animator.CrossFadeInFixedTime("Jump", 0.1f);
         }
 
         public override void Tick(float deltaTime)

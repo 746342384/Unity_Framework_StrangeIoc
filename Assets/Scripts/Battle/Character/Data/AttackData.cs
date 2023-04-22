@@ -1,7 +1,10 @@
+using System;
+using Battle.Character.Base;
 using UnityEngine;
 
 namespace Battle.Character
 {
+    [Serializable]
     [CreateAssetMenu(fileName = nameof(AttackData), menuName = "ScriptableObjects/AttackData", order = 1)]
     public class AttackData : ScriptableObject
     {
@@ -16,6 +19,7 @@ namespace Battle.Character
         [Header("攻击武器特效")] public GameObject AttackWeaponEfx;
         [Header("攻击特效开始释放时间")] [Range(0, 1)] public float AttackEfxTime;
         [Header("攻击特效")] public GameObject AttackEfx;
+        [Header("攻击特效层级")] public EffectParent EffectParent;
         [Header("攻击特效持续时间")] public float AttackEfxDuration;
     }
 }

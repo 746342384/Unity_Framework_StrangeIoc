@@ -39,7 +39,7 @@ namespace Battle.Character.Player.State
 
             if (normalizedTime >= 1f)
             {
-                Character.StateMachine.SwitchState(new PlayerIdleState(Character));
+                Character.StateMachine.SwitchState(new PlayerMoveState(Character));
                 return;
             }
 

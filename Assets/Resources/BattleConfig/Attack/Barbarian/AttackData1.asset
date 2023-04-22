@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0737dfb896b44847bca17a74d61c25c6, type: 3}
+  m_Name: AttackData1
+  m_EditorClassIdentifier: 
+  AnimationName: Attack_1
+  AddForce: 0
+  Time: 0
+  AttackSfxTime: 0
+  AttackSfx: {fileID: 8300000, guid: a6478ca56d4571247b794e359841e35e, type: 3}
+  AttackStart: 0
+  AttackEnd: 1
+  AtkValue: 10
+  AttackWeaponEfx: {fileID: 0}
+  AttackEfxTime: 0
+  AttackEfx: {fileID: 3781946150010653001, guid: c2c5fb3197925e547819103e162fd848, type: 3}
+  EffectParent: 2
+  AttackEfxDuration: 2

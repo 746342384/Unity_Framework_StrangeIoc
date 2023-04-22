@@ -5,10 +5,9 @@ namespace Battle.Character.Player.State
 {
     public class PlayerMoveState : PlayerStateBase
     {
-        private const float FixedTransitionDuration = 0.1f;
+        private const float FixedTransitionDuration = 0.2f;
         private string StateName;
-        private static readonly int V = Animator.StringToHash("V");
-        private static readonly int H = Animator.StringToHash("H");
+        private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
 
         private bool isJump;
         private bool isRolling;
@@ -47,23 +46,26 @@ namespace Battle.Character.Player.State
                 return;
             }
 
-            if (Character.InputComponent.MoveValue == Vector2.zero)
+            if (Character.MoveComponent.GetMovement() == Vector2.zero)
             {
-                Character.StateMachine.SwitchState(new PlayerIdleState(Character));
+                Character.Animator.SetFloat(MoveSpeed, 0, 0, deltaTime);
                 return;
             }
 
             var vector2 = Character.MoveComponent.GetMovement();
-            var x = Mathf.Clamp(vector2.x, -1, 1);
-            var y = Mathf.Clamp(vector2.y, -1, 1);
-            Character.Animator.SetFloat(H, x, 0.1f, deltaTime);
-            Character.Animator.SetFloat(V, y, 0.1f, deltaTime);
             var movement = Character.MoveComponent.CalculateMovement(vector2);
             Character.MoveComponent.Move(movement * Character.CharacterData.MoveSpeed, deltaTime);
-            if (vector2.x != 0)
+           
+            if (vector2.y > 0)
             {
-                Character.MoveComponent.FaceMovementDirection(movement, deltaTime);
+                Character.Animator.SetFloat(MoveSpeed, 1, 0.1f, deltaTime);
             }
+            else
+            {
+                Character.Animator.SetFloat(MoveSpeed, -1, 0.1f, deltaTime);
+            }
+
+            //Character.MoveComponent.FaceMovementDirection(movement, deltaTime);
         }
 
         private void OnRollForward()

@@ -37,7 +37,7 @@ namespace Battle.Character.Player.State
         {
             if (Math.Abs(normalizedTime - attackData.AttackEfxTime) < 0.01f)
             {
-                Character.EffectComponent.PlayerAttackEfx(attackData.AttackEfx, attackData.AttackEfxDuration);
+                Character.EffectComponent.PlayerAttackEfx(attackData.AttackEfx, attackData.AttackEfxDuration,attackData.EffectParent);
             }
         }
 

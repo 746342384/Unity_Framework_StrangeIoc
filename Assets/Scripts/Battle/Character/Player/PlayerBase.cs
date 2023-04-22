@@ -15,7 +15,7 @@ namespace Battle.Character.Player
         protected override void OnStart()
         {
             base.OnStart();
-            StateMachine.SwitchState(new PlayerIdleState(this));
+            StateMachine.SwitchState(new PlayerMoveState( this));
             CharacterType = CharacterType.Player;
         }
     }
