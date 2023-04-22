@@ -19,7 +19,7 @@ namespace Battle.Character.Base
         public WeaponBase WeaponBase;
         public CharacterType CharacterType;
         public List<Collider> Collider;
-        private bool IsDead { get; set; }
+        protected bool IsDead { get; set; }
 
         private void Awake()
         {
@@ -59,6 +59,12 @@ namespace Battle.Character.Base
                 AttributeComponent.Hp = 0;
                 Dead();
             }
+
+            OnSingleTakeDamage(origin, attackDataIndex, raycastHitPoint);
+        }
+
+        protected virtual void OnSingleTakeDamage(CharacterBase origin, int attackDataIndex, Vector3 raycastHitPoint)
+        {
         }
 
         private void Dead()

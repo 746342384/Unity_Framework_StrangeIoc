@@ -27,5 +27,14 @@ namespace Battle.Enemy
             EnbleAllCollider();
             SetIsDead(false);
         }
+
+        protected override void OnSingleTakeDamage(CharacterBase origin, int attackDataIndex, Vector3 raycastHitPoint)
+        {
+            base.OnSingleTakeDamage(origin, attackDataIndex, raycastHitPoint);
+            if (!IsDead)
+            {
+                StateMachine.SwitchState(new EnemyGetHitState(this));
+            }
+        }
     }
 }
