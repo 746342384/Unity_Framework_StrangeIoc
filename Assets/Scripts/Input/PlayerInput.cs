@@ -116,6 +116,15 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FreeLook"",
+                    ""type"": ""Value"",
+                    ""id"": ""97896acc-db36-410b-ad84-408e8e52a28b"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -360,6 +369,17 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                     ""action"": ""IsMoveBackward"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""da46efca-58f8-4882-8fcc-0ecb9f0484ce"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FreeLook"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -406,6 +426,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         m_Player_TwoHandAttack = m_Player.FindAction("TwoHandAttack", throwIfNotFound: true);
         m_Player_IsMoveForward = m_Player.FindAction("IsMoveForward", throwIfNotFound: true);
         m_Player_IsMoveBackward = m_Player.FindAction("IsMoveBackward", throwIfNotFound: true);
+        m_Player_FreeLook = m_Player.FindAction("FreeLook", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_K = m_UI.FindAction("K", throwIfNotFound: true);
@@ -478,6 +499,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_TwoHandAttack;
     private readonly InputAction m_Player_IsMoveForward;
     private readonly InputAction m_Player_IsMoveBackward;
+    private readonly InputAction m_Player_FreeLook;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -492,6 +514,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         public InputAction @TwoHandAttack => m_Wrapper.m_Player_TwoHandAttack;
         public InputAction @IsMoveForward => m_Wrapper.m_Player_IsMoveForward;
         public InputAction @IsMoveBackward => m_Wrapper.m_Player_IsMoveBackward;
+        public InputAction @FreeLook => m_Wrapper.m_Player_FreeLook;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -531,6 +554,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @IsMoveBackward.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIsMoveBackward;
                 @IsMoveBackward.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIsMoveBackward;
                 @IsMoveBackward.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnIsMoveBackward;
+                @FreeLook.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFreeLook;
+                @FreeLook.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFreeLook;
+                @FreeLook.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnFreeLook;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -565,6 +591,9 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
                 @IsMoveBackward.started += instance.OnIsMoveBackward;
                 @IsMoveBackward.performed += instance.OnIsMoveBackward;
                 @IsMoveBackward.canceled += instance.OnIsMoveBackward;
+                @FreeLook.started += instance.OnFreeLook;
+                @FreeLook.performed += instance.OnFreeLook;
+                @FreeLook.canceled += instance.OnFreeLook;
             }
         }
     }
@@ -614,6 +643,7 @@ public partial class @PlayerInput : IInputActionCollection2, IDisposable
         void OnTwoHandAttack(InputAction.CallbackContext context);
         void OnIsMoveForward(InputAction.CallbackContext context);
         void OnIsMoveBackward(InputAction.CallbackContext context);
+        void OnFreeLook(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

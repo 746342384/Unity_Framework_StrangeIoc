@@ -94,6 +94,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "FreeLook",
+                    "type": "Value",
+                    "id": "97896acc-db36-410b-ad84-408e8e52a28b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -336,6 +345,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "IsMoveBackward",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "da46efca-58f8-4882-8fcc-0ecb9f0484ce",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FreeLook",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

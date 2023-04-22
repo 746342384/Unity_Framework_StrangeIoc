@@ -117,6 +117,11 @@ namespace Battle.Character.Base.Component
             }
         }
 
+        public void OnFreeLook(InputAction.CallbackContext context)
+        {
+            
+        }
+
         private void OnDisable()
         {
             PlayerInput.Disable();
