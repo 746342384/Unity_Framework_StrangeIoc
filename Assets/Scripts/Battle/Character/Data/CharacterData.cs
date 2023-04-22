@@ -12,7 +12,7 @@ namespace Battle.Character
         [Header("武器配置")] public WeaponData WeaponData;
         [Header("受击动画")] public GameObject HittedEfx;
 
-        public float MoveDrag;
+        [Header("施加力平滑移动时间")] public float MoveDrag;
         [Header("角色移动速度")] public float MoveSpeed;
         [Header("旋转速度")] public float RotationDamping;
         [Header("向前翻滚施加力")] public float RollForwardAddForce;

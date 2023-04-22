@@ -17,6 +17,8 @@ namespace Battle.Character.Base.Component
         public bool IsAttacking { get; private set; }
         public bool IsTwoHandAttacking { get; private set; }
         public bool CancelAttacking { get; private set; }
+        public bool IsMoveForward { get; private set; }
+        public bool IsMoveBaclward { get; private set; }
 
         private void Start()
         {
@@ -86,6 +88,32 @@ namespace Battle.Character.Base.Component
             if (context.canceled)
             {
                 IsTwoHandAttacking = false;
+            }
+        }
+
+        public void OnIsMoveForward(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                IsMoveForward = true;
+            }
+
+            if (context.canceled)
+            {
+                IsMoveForward = false;
+            }
+        }
+
+        public void OnIsMoveBackward(InputAction.CallbackContext context)
+        {
+            if (context.performed)
+            {
+                IsMoveBaclward = true;
+            }
+
+            if (context.canceled)
+            {
+                IsMoveBaclward = false;
             }
         }
 

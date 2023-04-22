@@ -7,8 +7,6 @@ using UnityEngine;
 namespace Battle.Enemy
 {
     [RequireComponent(typeof(StateMachineComponent))]
-    [RequireComponent(typeof(Animator))]
-    [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(MoveComponent))]
     public class EnemyBase : CharacterBase
     {

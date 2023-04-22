@@ -7,8 +7,6 @@ namespace Battle.Character.Player
 {
     [RequireComponent(typeof(InputComponent))]
     [RequireComponent(typeof(StateMachineComponent))]
-    [RequireComponent(typeof(Animator))]
-    [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(MoveComponent))]
     public class PlayerBase : CharacterBase
     {

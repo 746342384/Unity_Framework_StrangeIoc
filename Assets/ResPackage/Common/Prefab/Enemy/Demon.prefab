@@ -2393,12 +2393,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5865787691935666390}
   - component: {fileID: 6263891006587615480}
-  - component: {fileID: 790334695315284473}
-  - component: {fileID: 825379797016418747}
-  - component: {fileID: 1005688683194738958}
-  - component: {fileID: 1005940833870846509}
-  - component: {fileID: 2955188674025173667}
-  - component: {fileID: 8349716896308067427}
   m_Layer: 7
   m_Name: Demon
   m_TagString: Untagged
@@ -2446,106 +2440,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!54 &790334695315284473
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6497751427905964652}
-  serializedVersion: 2
-  m_Mass: 0.0000001
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!143 &825379797016418747
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6497751427905964652}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Height: 2
-  m_Radius: 0.3
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!195 &1005688683194738958
-NavMeshAgent:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6497751427905964652}
-  m_Enabled: 1
-  m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
-  avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
-  m_AutoTraverseOffMeshLink: 1
-  m_AutoBraking: 1
-  m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 0
-  m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
---- !u!114 &1005940833870846509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6497751427905964652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fbc9c9dea6504ac593afb1a478ece8e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2955188674025173667
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6497751427905964652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a9d496d45441068d670aa562f8a8db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &8349716896308067427
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6497751427905964652}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b788eb8d2b64db1a777a35451e1a157, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CharacterData: {fileID: 11400000, guid: 2bda6e511e325b34dbf52d00ffed970b, type: 2}
-  AttributeComponent:
-    MaxHp: 0
-    Hp: 0
-  WeaponBase: {fileID: 8349716895215496112}
-  CharacterType: 0
-  Collider: []
-  Type: 0
 --- !u!1 &6653782284248692244
 GameObject:
   m_ObjectHideFlags: 0
@@ -2661,7 +2555,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7256334990635710620
 Transform:
   m_ObjectHideFlags: 0
@@ -2692,7 +2586,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Root: {fileID: 478085598433927041}
   Collider: {fileID: 8349716896883998747}
-  Spline: {fileID: 0}
+  Spline: {fileID: 4227676882071666511}
   TarGets: []
   AttackDataIndex: 0
 --- !u!114 &4227676882071666511

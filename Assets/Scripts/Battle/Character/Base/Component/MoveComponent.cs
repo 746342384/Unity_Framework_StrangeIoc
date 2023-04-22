@@ -1,13 +1,13 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Serialization;
 
 namespace Battle.Character.Base.Component
 {
-    [RequireComponent(typeof(NavMeshAgent))]
     public class MoveComponent : MonoBehaviour
     {
         private CharacterBase _character;
-        private NavMeshAgent _agent;
+        [FormerlySerializedAs("_agent")] public NavMeshAgent Agent;
         private float _verticalVelocity;
         private Vector3 _dampingVelocity;
         private Vector3 _impact;
@@ -15,7 +15,7 @@ namespace Battle.Character.Base.Component
 
         private void Awake()
         {
-            _agent = GetComponent<NavMeshAgent>();
+            Agent = GetComponent<NavMeshAgent>();
         }
 
         public void Init(CharacterBase characterBase)
@@ -25,6 +25,7 @@ namespace Battle.Character.Base.Component
 
         private void Update()
         {
+            if (_character == null) return;
             if (_verticalVelocity < 0 && _character.CharacterController.isGrounded)
             {
                 _verticalVelocity = Physics.gravity.y * Time.deltaTime;
@@ -34,18 +35,19 @@ namespace Battle.Character.Base.Component
                 _verticalVelocity += Physics.gravity.y * Time.deltaTime;
             }
 
-            _impact = Vector3.SmoothDamp(_impact, Vector3.zero, ref _dampingVelocity, _character.CharacterData.MoveDrag);
-            if (_impact.sqrMagnitude < 0.2f * 0.2f && _agent)
+            _impact = Vector3.SmoothDamp(_impact, Vector3.zero, ref _dampingVelocity,
+                _character.CharacterData.MoveDrag);
+            if (_impact.sqrMagnitude < 0.2f * 0.2f && Agent)
             {
                 _impact = Vector3.zero;
-                _agent.enabled = true;
+                Agent.enabled = true;
             }
         }
 
         public void AddForce(Vector3 force)
         {
             _impact += force;
-            if (_agent) _agent.enabled = false;
+            if (Agent) Agent.enabled = false;
         }
 
         /// <summary>
@@ -55,6 +57,11 @@ namespace Battle.Character.Base.Component
         public Vector2 GetMovement()
         {
             return _character.InputComponent.MoveValue;
+        }
+
+        public bool IsMove()
+        {
+            return !_character.InputComponent.MoveValue.Equals(Vector2.zero);
         }
 
         /// <summary>

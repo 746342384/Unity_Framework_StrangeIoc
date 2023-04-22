@@ -14,8 +14,8 @@ namespace Battle.Character.Base
         public MoveComponent MoveComponent { get; private set; }
         public AttributeComponent AttributeComponent;
         public EffectComponent EffectComponent { get; private set; }
-        public Animator Animator { get; private set; }
-        public CharacterController CharacterController { get; private set; }
+        public Animator Animator;
+        public CharacterController CharacterController;
         public WeaponBase WeaponBase;
         public CharacterType CharacterType;
         public List<Collider> Collider;
@@ -25,8 +25,6 @@ namespace Battle.Character.Base
         {
             EffectComponent = GetComponent<EffectComponent>();
             StateMachine = GetComponent<StateMachineComponent>();
-            Animator = GetComponent<Animator>();
-            CharacterController = GetComponent<CharacterController>();
             MoveComponent = GetComponent<MoveComponent>();
             InputComponent = GetComponent<InputComponent>();
             Collider = TransformDeepFind.FindDeepComponents<Collider>(transform);

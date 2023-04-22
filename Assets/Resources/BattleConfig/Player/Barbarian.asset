@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b1e5388c111d71341897d808b20202ca, type: 2}
   WeaponData: {fileID: 11400000, guid: 6317796f1e05b2c46be531ba3d3ca4cc, type: 2}
   HittedEfx: {fileID: 0}
-  MoveDrag: 0.1
+  MoveDrag: 0.3
   MoveSpeed: 5
   RotationDamping: 1
   RollForwardAddForce: 8
