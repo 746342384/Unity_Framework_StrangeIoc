@@ -39,12 +39,6 @@ namespace Battle.Character.Player.State
                 return;
             }
 
-            if (Character.InputComponent.IsTwoHandAttacking)
-            {
-                Character.StateMachine.SwitchState(new PlayerTwoHandAttackingState(Character));
-                return;
-            }
-
             var vector2 = Character.MoveComponent.GetMovement();
             var movement = Character.MoveComponent.CalculateMovement(vector2);
             Character.MoveComponent.Move(movement * Character.CharacterData.MoveSpeed, deltaTime);
@@ -86,7 +80,7 @@ namespace Battle.Character.Player.State
         private void OnJump()
         {
             isJump = true;
-            Character.StateMachine.SwitchState(new PlayerJumpWhileRunning(Character));
+            Character.StateMachine.SwitchState(new PlayerJumpState(Character));
         }
 
         public override void Exit()

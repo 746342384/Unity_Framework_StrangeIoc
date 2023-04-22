@@ -24,4 +24,8 @@ MonoBehaviour:
   RollBackwardAddForce: 10
   RollLeftAddForce: 8
   RollRightAddForce: 8
-  RunningJumpAddForce: 15
+  JumpAnimationName: Jump
+  JumpFixedTransitionDuration: 0.1
+  JumpEndTime: 0.8
+  JumpAddForceStartTime: 0.2
+  JumpAddForce: 15
