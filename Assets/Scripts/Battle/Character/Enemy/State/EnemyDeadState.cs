@@ -1,19 +1,16 @@
-using Battle.Character.Base;
 
 namespace Battle.Enemy.State
 {
     public class EnemyDeadState : EnemyStateBase
     {
-        private readonly CharacterBase _characterBase;
 
-        public EnemyDeadState(CharacterBase characterBase) : base(characterBase)
+        public EnemyDeadState(EnemyBase enemyBase) : base(enemyBase)
         {
-            _characterBase = characterBase;
         }
 
         public override void Enter()
         {
-            _characterBase.Animator.CrossFadeInFixedTime("Dead", 0.2f);
+            EnemyBase.Animator.CrossFadeInFixedTime("Dead", 0.2f);
         }
 
         public override void Tick(float deltaTime)

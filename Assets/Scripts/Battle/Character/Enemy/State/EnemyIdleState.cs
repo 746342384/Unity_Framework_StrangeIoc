@@ -1,23 +1,26 @@
-using Battle.Character.Base;
+using UnityEngine;
 
 namespace Battle.Enemy.State
 {
     public class EnemyIdleState : EnemyStateBase
     {
-        private readonly CharacterBase _characterBase;
-
-        public EnemyIdleState(CharacterBase characterBase) : base(characterBase)
+        public EnemyIdleState(EnemyBase enemyBase) : base(enemyBase)
         {
-            _characterBase = characterBase;
         }
 
         public override void Enter()
         {
-            _characterBase.Animator.CrossFadeInFixedTime("Idle", 0.2f);
+            EnemyBase.Animator.CrossFadeInFixedTime("Idle", 0.2f);
         }
 
         public override void Tick(float deltaTime)
         {
+            EnemyBase.AIMoveComponent.Move(Vector3.zero, deltaTime);
+            if (GetDistance(EnemyBase.Target.transform.position) <= 5)
+            {
+                EnemyBase.StateMachine.SwitchState(new EnemyFindPathState(EnemyBase));
+                return;
+            }
         }
 
         public override void Exit()

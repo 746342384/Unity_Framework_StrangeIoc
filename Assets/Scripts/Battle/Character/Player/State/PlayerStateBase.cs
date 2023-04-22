@@ -1,5 +1,4 @@
 using System;
-using Battle.Character.Base;
 using Battle.Character.Base.Component;
 using Framework.framework.sound;
 
@@ -8,11 +7,11 @@ namespace Battle.Character.Player.State
     public abstract class PlayerStateBase : StateBase
     {
         private readonly ISoundManager _soundManager;
-        protected readonly CharacterBase Character;
+        protected readonly PlayerBase Character;
         protected bool IsApplyForce;
         protected float AddForce;
 
-        protected PlayerStateBase(CharacterBase character)
+        protected PlayerStateBase(PlayerBase character)
         {
             Character = character;
             _soundManager = GameContext.Instance.GetComponent<ISoundManager>() as ISoundManager;

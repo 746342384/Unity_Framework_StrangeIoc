@@ -7,14 +7,23 @@ using UnityEngine;
 namespace Battle.Enemy
 {
     [RequireComponent(typeof(StateMachineComponent))]
-    [RequireComponent(typeof(MoveComponent))]
+    [RequireComponent(typeof(AIMoveComponent))]
     public class EnemyBase : CharacterBase
     {
         public AIType Type; //敌人类型
+        public AIMoveComponent AIMoveComponent;
+        public CharacterBase Target;
+
+        protected override void OnAwake()
+        {
+            base.OnAwake();
+            AIMoveComponent = GetComponent<AIMoveComponent>();
+        }
 
         protected override void OnStart()
         {
             base.OnStart();
+            AIMoveComponent.Init(this);
             CharacterType = CharacterType.Enemy;
             StateMachine.SwitchState(new EnemyIdleState(this));
         }

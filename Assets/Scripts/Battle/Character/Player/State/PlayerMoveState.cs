@@ -1,4 +1,3 @@
-using Battle.Character.Base;
 using UnityEngine;
 
 namespace Battle.Character.Player.State
@@ -11,7 +10,7 @@ namespace Battle.Character.Player.State
         private bool isJump;
         private bool isRolling;
 
-        public PlayerMoveState(CharacterBase character) : base(character)
+        public PlayerMoveState(PlayerBase character) : base(character)
         {
         }
 

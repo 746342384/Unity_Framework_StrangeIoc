@@ -1,15 +1,20 @@
-using Battle.Character.Base;
 using Battle.Character.Base.Component;
+using UnityEngine;
 
 namespace Battle.Enemy.State
 {
     public abstract class EnemyStateBase : StateBase
     {
-        protected readonly CharacterBase CharacterBase;
+        protected readonly EnemyBase EnemyBase;
 
-        public EnemyStateBase(CharacterBase characterBase)
+        public EnemyStateBase(EnemyBase enemyBase)
         {
-            CharacterBase = characterBase;
+            EnemyBase = enemyBase;
+        }
+
+        public float GetDistance(Vector3 target)
+        {
+            return Vector3.Distance(EnemyBase.transform.position, target);
         }
     }
 }

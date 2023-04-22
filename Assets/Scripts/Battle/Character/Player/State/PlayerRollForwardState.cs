@@ -1,11 +1,10 @@
-using Battle.Character.Base;
 using UnityEngine;
 
 namespace Battle.Character.Player.State
 {
     public class PlayerRollForwardState : PlayerStateBase
     {
-        public PlayerRollForwardState(CharacterBase character) : base(character)
+        public PlayerRollForwardState(PlayerBase character) : base(character)
         {
         }
 

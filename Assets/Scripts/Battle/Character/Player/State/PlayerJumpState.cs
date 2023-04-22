@@ -1,4 +1,3 @@
-using Battle.Character.Base;
 using UnityEngine;
 
 namespace Battle.Character.Player.State
@@ -7,7 +6,7 @@ namespace Battle.Character.Player.State
     {
         private float _previousFrameTime;
 
-        public PlayerJumpState(CharacterBase character) : base(character)
+        public PlayerJumpState(PlayerBase character) : base(character)
         {
         }
 

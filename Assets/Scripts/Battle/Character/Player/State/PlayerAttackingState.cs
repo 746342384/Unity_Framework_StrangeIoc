@@ -1,4 +1,3 @@
-using Battle.Character.Base;
 using UnityEngine;
 
 namespace Battle.Character.Player.State
@@ -8,7 +7,7 @@ namespace Battle.Character.Player.State
         private int _index;
         private AttackData _attackData;
 
-        public PlayerAttackingState(CharacterBase character, int index) : base(character)
+        public PlayerAttackingState(PlayerBase character, int index) : base(character)
         {
             _index = index;
             character.WeaponBase.AttackDataIndex = index;

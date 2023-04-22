@@ -25,5 +25,7 @@ namespace Battle.Character
         [Header("跳跃结束时间")] [Range(0, 1)] public float JumpEndTime = 1f;
         [Header("跳跃施加力开始时间")] [Range(0, 1)] public float JumpAddForceStartTime;
         [Header("跳跃施加力")] public float JumpAddForce;
+
+        [Space(20)] [Header("受击动作动画名")] public string GetHitAnimationName = "GetHit";
     }
 }
