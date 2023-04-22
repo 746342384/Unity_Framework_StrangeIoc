@@ -15,6 +15,8 @@ MonoBehaviour:
   HP: 100
   AttackDatas:
   - {fileID: 11400000, guid: b1e5388c111d71341897d808b20202ca, type: 2}
+  - {fileID: 11400000, guid: e89d98c136342714c9f49923f863ed42, type: 2}
+  - {fileID: 11400000, guid: 47bb54138221e0e4b8d6da286305df4c, type: 2}
   WeaponData: {fileID: 11400000, guid: 6317796f1e05b2c46be531ba3d3ca4cc, type: 2}
   HittedEfx: {fileID: 0}
   MoveDrag: 0.3

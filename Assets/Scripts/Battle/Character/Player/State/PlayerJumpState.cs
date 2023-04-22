@@ -13,7 +13,7 @@ namespace Battle.Character.Player.State
 
         public override void Enter()
         {
-            Debug.Log("PlayerJumpWhileRunning");
+            Debug.Log("PlayerJumpState");
             AddForce = Character.CharacterData.JumpAddForce;
             if (Character.InputComponent.IsMoveForward || Character.InputComponent.IsMoveBaclward)
                 AddForce = Mathf.Abs(AddForce);
@@ -26,7 +26,7 @@ namespace Battle.Character.Player.State
         {
             Character.MoveComponent.Move(Vector3.zero, deltaTime);
             var normalizedTime = GetNormalizedTime(Character.Animator);
-            
+
             if (normalizedTime >= Character.CharacterData.JumpAddForceStartTime && !IsApplyForce)
             {
                 Character.MoveComponent.AddForce(Character.transform.forward.normalized * AddForce);
@@ -44,6 +44,7 @@ namespace Battle.Character.Player.State
 
         public override void Exit()
         {
+            _previousFrameTime = 0;
         }
     }
 }
