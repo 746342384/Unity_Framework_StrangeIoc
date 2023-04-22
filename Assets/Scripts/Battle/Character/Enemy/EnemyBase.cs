@@ -6,7 +6,6 @@ using UnityEngine;
 
 namespace Battle.Enemy
 {
-    [RequireComponent(typeof(StateMachineComponent))]
     [RequireComponent(typeof(AIMoveComponent))]
     public class EnemyBase : CharacterBase
     {
@@ -16,8 +15,8 @@ namespace Battle.Enemy
 
         protected override void OnAwake()
         {
-            base.OnAwake();
             AIMoveComponent = GetComponent<AIMoveComponent>();
+            base.OnAwake();
         }
 
         protected override void OnStart()

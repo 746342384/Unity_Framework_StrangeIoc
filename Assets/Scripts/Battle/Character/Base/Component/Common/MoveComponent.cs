@@ -4,10 +4,11 @@ using UnityEngine.AI;
 
 namespace Battle.Character.Base.Component
 {
+    [RequireComponent(typeof(NavMeshAgent))]
     public class MoveComponent : MonoBehaviour
     {
-        private CharacterBase _character;
-        public NavMeshAgent Agent;
+        private PlayerBase _character;
+        private NavMeshAgent Agent;
         private float _verticalVelocity;
         private Vector3 _dampingVelocity;
         private Vector3 _impact;
@@ -18,7 +19,7 @@ namespace Battle.Character.Base.Component
             Agent = GetComponent<NavMeshAgent>();
         }
 
-        public void Init(CharacterBase characterBase)
+        public void Init(PlayerBase characterBase)
         {
             _character = characterBase;
         }
@@ -86,6 +87,7 @@ namespace Battle.Character.Base.Component
             {
                 transform1 = playerBase.MainCameraTransform;
             }
+
             var forward = transform1.forward;
             var right = transform1.right;
             forward.y = 0;

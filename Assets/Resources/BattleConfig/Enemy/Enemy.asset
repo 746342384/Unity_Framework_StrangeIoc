@@ -17,7 +17,7 @@ MonoBehaviour:
   WeaponData: {fileID: 0}
   HittedEfx: {fileID: 4694846424373880265, guid: 1202fe8ecd4edcc4babfb8f7a0b5b149, type: 3}
   MoveDrag: 0.3
-  MoveSpeed: 5
+  MoveSpeed: 1
   RotationDamping: 0
   RollForwardAddForce: 0
   RollBackwardAddForce: 0
@@ -28,3 +28,4 @@ MonoBehaviour:
   JumpEndTime: 1
   JumpAddForceStartTime: 0
   JumpAddForce: 0
+  GetHitAnimationName: GetHit

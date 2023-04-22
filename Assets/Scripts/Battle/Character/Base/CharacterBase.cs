@@ -7,16 +7,18 @@ using UnityEngine;
 
 namespace Battle.Character.Base
 {
+    [RequireComponent(typeof(EffectComponent))]
+    [RequireComponent(typeof(StateMachineComponent))]
+    [RequireComponent(typeof(CharacterController))]
+    [RequireComponent(typeof(AttributeComponent))]
     public class CharacterBase : MonoBehaviour
     {
         public CharacterData CharacterData;
-        public InputComponent InputComponent { get; private set; }
         public StateMachineComponent StateMachine { get; private set; }
-        
+        public CharacterController CharacterController { get; private set; }
         public AttributeComponent AttributeComponent;
         public EffectComponent EffectComponent { get; private set; }
         public Animator Animator;
-        public CharacterController CharacterController;
         public WeaponBase WeaponBase;
         public CharacterType CharacterType;
         public List<Collider> Collider;
@@ -24,9 +26,9 @@ namespace Battle.Character.Base
 
         private void Awake()
         {
+            CharacterController = GetComponent<CharacterController>();
             EffectComponent = GetComponent<EffectComponent>();
             StateMachine = GetComponent<StateMachineComponent>();
-            InputComponent = GetComponent<InputComponent>();
             Collider = TransformDeepFind.FindDeepComponents<Collider>(transform);
             OnAwake();
         }
@@ -37,7 +39,6 @@ namespace Battle.Character.Base
 
         private void Start()
         {
-           
             WeaponBase.Init(this);
             AttributeComponent = new AttributeComponent();
             AttributeComponent.Init(CharacterData);

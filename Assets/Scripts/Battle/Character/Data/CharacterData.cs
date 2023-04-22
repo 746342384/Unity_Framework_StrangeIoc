@@ -27,5 +27,7 @@ namespace Battle.Character
         [Header("跳跃施加力")] public float JumpAddForce;
 
         [Space(20)] [Header("受击动作动画名")] public string GetHitAnimationName = "GetHit";
+
+        [Header("寻敌范围")] public float FindPathDistance = 5f;
     }
 }

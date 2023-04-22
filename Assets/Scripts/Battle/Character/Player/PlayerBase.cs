@@ -6,16 +6,17 @@ using UnityEngine;
 namespace Battle.Character.Player
 {
     [RequireComponent(typeof(InputComponent))]
-    [RequireComponent(typeof(StateMachineComponent))]
     [RequireComponent(typeof(MoveComponent))]
     public class PlayerBase : CharacterBase
     {
+        public InputComponent InputComponent { get; private set; }
         public MoveComponent MoveComponent { get; private set; }
         public Transform MainCameraTransform;
 
         protected override void OnAwake()
         {
             base.OnAwake();
+            InputComponent = GetComponent<InputComponent>();
             MoveComponent = GetComponent<MoveComponent>();
         }
 

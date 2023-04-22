@@ -776,7 +776,6 @@ MonoBehaviour:
     MaxHp: 100
     Hp: 0
   Animator: {fileID: 8670000507995455717}
-  CharacterController: {fileID: 381954958}
   WeaponBase: {fileID: 6660814828725543504}
   CharacterType: 0
   Collider: []
@@ -793,7 +792,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6a9d496d45441068d670aa562f8a8db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Agent: {fileID: 381954959}
 --- !u!114 &381954955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1015,12 +1013,11 @@ MonoBehaviour:
     MaxHp: 100
     Hp: 0
   Animator: {fileID: 1899879756}
-  CharacterController: {fileID: 596565133}
   WeaponBase: {fileID: 482923150}
   CharacterType: 1
   Collider: []
   Type: 0
-  AIMoveComponent: {fileID: 0}
+  AIMoveComponent: {fileID: 596565142}
   Target: {fileID: 381954950}
 --- !u!114 &596565136
 MonoBehaviour:
@@ -1414,7 +1411,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142414528}
-  m_LocalRotation: {x: 0.055580344, y: 0.0000000021474729, z: -1.1954208e-10, w: 0.9984542}
+  m_LocalRotation: {x: 0.055580344, y: -0.0000000021474729, z: 1.1954208e-10, w: 0.9984542}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1990,7 +1987,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623165115}
-  m_LocalRotation: {x: 0.05558035, y: 0.000000004294946, z: -2.3908414e-10, w: 0.9984542}
+  m_LocalRotation: {x: 0.05558035, y: -0.000000004294946, z: 2.3908414e-10, w: 0.9984542}
   m_LocalPosition: {x: 0, y: 2.5, z: -10.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

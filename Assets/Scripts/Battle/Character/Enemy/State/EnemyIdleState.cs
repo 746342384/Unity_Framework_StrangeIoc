@@ -16,7 +16,7 @@ namespace Battle.Enemy.State
         public override void Tick(float deltaTime)
         {
             EnemyBase.AIMoveComponent.Move(Vector3.zero, deltaTime);
-            if (GetDistance(EnemyBase.Target.transform.position) <= 5)
+            if (GetDistance(EnemyBase.Target.transform.position) <= EnemyBase.CharacterData.FindPathDistance)
             {
                 EnemyBase.StateMachine.SwitchState(new EnemyFindPathState(EnemyBase));
                 return;
