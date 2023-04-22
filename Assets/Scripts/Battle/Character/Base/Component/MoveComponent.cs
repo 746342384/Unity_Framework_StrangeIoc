@@ -1,13 +1,13 @@
+using Battle.Character.Player;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Serialization;
 
 namespace Battle.Character.Base.Component
 {
     public class MoveComponent : MonoBehaviour
     {
         private CharacterBase _character;
-        [FormerlySerializedAs("_agent")] public NavMeshAgent Agent;
+        public NavMeshAgent Agent;
         private float _verticalVelocity;
         private Vector3 _dampingVelocity;
         private Vector3 _impact;
@@ -82,6 +82,10 @@ namespace Battle.Character.Base.Component
         public Vector3 CalculateMovement(Vector2 vector2)
         {
             var transform1 = _character.transform;
+            if (_character is PlayerBase playerBase)
+            {
+                transform1 = playerBase.MainCameraTransform;
+            }
             var forward = transform1.forward;
             var right = transform1.right;
             forward.y = 0;

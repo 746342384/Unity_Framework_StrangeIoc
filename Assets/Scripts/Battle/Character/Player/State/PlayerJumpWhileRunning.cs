@@ -15,8 +15,7 @@ namespace Battle.Character.Player.State
         {
             Debug.Log("PlayerJumpWhileRunning");
             AddForce = Character.CharacterData.RunningJumpAddForce;
-            if (Character.InputComponent.IsMoveForward) AddForce *= 1f;
-            else if (Character.InputComponent.IsMoveBaclward) AddForce *= -1f;
+            if (Character.InputComponent.IsMoveForward || Character.InputComponent.IsMoveBaclward) AddForce *= 1f;
             else AddForce = 0f;
             Character.Animator.CrossFadeInFixedTime("Jump", 0.1f);
         }
@@ -31,7 +30,7 @@ namespace Battle.Character.Player.State
 
             Character.MoveComponent.Move(Vector3.zero, deltaTime);
             var normalizedTime = GetNormalizedTime(Character.Animator);
-            if (normalizedTime > _previousFrameTime && normalizedTime >= 1f)
+            if (normalizedTime > _previousFrameTime && normalizedTime >= 0.8f)
             {
                 Character.StateMachine.SwitchState(new PlayerMoveState(Character));
                 return;

@@ -6,7 +6,6 @@ namespace Battle.Character.Player.State
     public class PlayerMoveState : PlayerStateBase
     {
         private const float FixedTransitionDuration = 0.2f;
-        private string StateName;
         private static readonly int MoveSpeed = Animator.StringToHash("MoveSpeed");
 
         private bool isJump;
@@ -46,26 +45,18 @@ namespace Battle.Character.Player.State
                 return;
             }
 
-            if (Character.MoveComponent.GetMovement() == Vector2.zero)
-            {
-                Character.Animator.SetFloat(MoveSpeed, 0, 0, deltaTime);
-                return;
-            }
-
             var vector2 = Character.MoveComponent.GetMovement();
             var movement = Character.MoveComponent.CalculateMovement(vector2);
             Character.MoveComponent.Move(movement * Character.CharacterData.MoveSpeed, deltaTime);
-           
-            if (vector2.y > 0)
+
+            if (Character.InputComponent.MoveValue == Vector2.zero)
             {
-                Character.Animator.SetFloat(MoveSpeed, 1, 0.1f, deltaTime);
-            }
-            else
-            {
-                Character.Animator.SetFloat(MoveSpeed, -1, 0.1f, deltaTime);
+                Character.Animator.SetFloat(MoveSpeed, 0, 0.1f, deltaTime);
+                return;
             }
 
-            //Character.MoveComponent.FaceMovementDirection(movement, deltaTime);
+            Character.Animator.SetFloat(MoveSpeed, 1, 0.1f, deltaTime);
+            Character.MoveComponent.FaceMovementDirection(movement, deltaTime);
         }
 
         private void OnRollForward()

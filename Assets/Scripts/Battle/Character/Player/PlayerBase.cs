@@ -10,6 +10,7 @@ namespace Battle.Character.Player
     [RequireComponent(typeof(MoveComponent))]
     public class PlayerBase : CharacterBase
     {
+        public Transform MainCameraTransform;
         protected override void OnStart()
         {
             base.OnStart();

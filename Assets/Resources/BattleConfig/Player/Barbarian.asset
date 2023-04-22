@@ -19,7 +19,7 @@ MonoBehaviour:
   HittedEfx: {fileID: 0}
   MoveDrag: 0.3
   MoveSpeed: 5
-  RotationDamping: 1
+  RotationDamping: 10
   RollForwardAddForce: 8
   RollBackwardAddForce: 10
   RollLeftAddForce: 8

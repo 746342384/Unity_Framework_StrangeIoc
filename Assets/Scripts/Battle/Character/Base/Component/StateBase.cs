@@ -10,7 +10,7 @@ namespace Battle.Character.Base.Component
 
         protected float GetNormalizedTime(Animator animator)
         {
-            var layer = 0;
+            const int layer = 0;
             var currentInfo = animator.GetCurrentAnimatorStateInfo(layer);
             var nextInfo = animator.GetNextAnimatorStateInfo(layer);
             if (animator.IsInTransition(layer))
@@ -26,6 +26,6 @@ namespace Battle.Character.Base.Component
             return currentInfo.normalizedTime % 1f;
         }
 
-        private const float threshold = 0.05f;
+        private const float threshold = 0.1f;
     }
 }
