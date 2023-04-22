@@ -39,6 +39,16 @@ namespace Battle.Character.Base.Component
             obj.SetScale(Vector3.one);
             Destroy(obj, duration);
         }
+        
+        public void PlayerAttackEfxByPos(GameObject attackDataAttackEfx, float duration, EffectParent attackDataEffectParent,Vector3 pos)
+        {
+            if (attackDataAttackEfx == null) return;
+            var parent = GetEffectParent(attackDataEffectParent);
+            var obj = Instantiate(attackDataAttackEfx, parent);
+            obj.transform.position = pos;
+            obj.SetScale(Vector3.one);
+            Destroy(obj, duration);
+        }
 
         private Transform GetEffectParent(EffectParent effectParent)
         {

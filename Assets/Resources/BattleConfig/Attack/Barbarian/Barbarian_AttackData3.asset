@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0737dfb896b44847bca17a74d61c25c6, type: 3}
   m_Name: Barbarian_AttackData3
   m_EditorClassIdentifier: 
-  AnimationName: Attack_3
+  AnimationName: Attack_6
   AddForce: 10
   Time: 0.5
   AttackSfxTime: 0
   AttackSfx: {fileID: 8300000, guid: 3fc3f880c2168b741b111e06e72ff381, type: 3}
-  AttackStart: 0
-  AttackEnd: 1
+  AttackStart: 0.3
+  AttackEnd: 0.6
   AtkValue: 10
   AttackWeaponEfx: {fileID: 0}
   AttackEfxTime: 0

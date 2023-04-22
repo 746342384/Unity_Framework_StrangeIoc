@@ -19,7 +19,7 @@ namespace Battle.Character.Base
         public WeaponBase WeaponBase;
         public CharacterType CharacterType;
         public List<Collider> Collider;
-        public bool IsDead { get; private set; }
+        private bool IsDead { get; set; }
 
         private void Awake()
         {
@@ -48,10 +48,11 @@ namespace Battle.Character.Base
         {
         }
 
-        public void SingleTakeDamage(CharacterBase origin, int attackDataIndex)
+        public void SingleTakeDamage(CharacterBase origin, int attackDataIndex, Vector3 raycastHitPoint)
         {
             if (IsDead) return;
             AttributeComponent.Hp -= origin.CharacterData.AttackDatas[attackDataIndex].AtkValue;
+            EffectComponent.PlayerAttackEfxByPos(CharacterData.HittedEfx, 2f, EffectParent.Middle, raycastHitPoint);
             if (AttributeComponent.Hp <= 0)
             {
                 SetIsDead(true);

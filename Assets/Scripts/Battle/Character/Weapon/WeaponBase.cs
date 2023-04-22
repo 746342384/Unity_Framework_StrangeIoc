@@ -82,31 +82,31 @@ namespace Battle.Character.Weapon
             {
                 Debug.Log("击中敌人！");
                 TarGets.Add(characterBase);
-                TakeDamage(characterBase);
+                TakeDamage(characterBase, raycastHit.point);
                 PlayAttackEfx(raycastHit.point);
             }
         }
 
         private void PlayAttackEfx(Vector3 raycastHitPoint)
         {
-            const string path = "Assets/ResPackage/Common/Prefab/Effect/Sphere.prefab";
-            _characterBase.EffectComponent.PlayerAttackEfxAsync(path, null,
-                raycastHitPoint);
+            // const string path = "Assets/ResPackage/Common/Prefab/Effect/Sphere.prefab";
+            // _characterBase.EffectComponent.PlayerAttackEfxAsync(path, null,
+            //     raycastHitPoint);
         }
 
-        private void TakeDamage(CharacterBase enemyBase)
+        private void TakeDamage(CharacterBase enemyBase, Vector3 raycastHitPoint)
         {
             switch (_characterBase.CharacterData.WeaponData.AttackType)
             {
                 case AttackType.Single:
-                    SingleTakeDamage(enemyBase);
+                    SingleTakeDamage(enemyBase, raycastHitPoint);
                     break;
             }
         }
 
-        private void SingleTakeDamage(CharacterBase enemyBase)
+        private void SingleTakeDamage(CharacterBase enemyBase, Vector3 raycastHitPoint)
         {
-            enemyBase.SingleTakeDamage(_characterBase, AttackDataIndex);
+            enemyBase.SingleTakeDamage(_characterBase, AttackDataIndex, raycastHitPoint);
         }
     }
 }
