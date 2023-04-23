@@ -4,5 +4,6 @@ namespace Base.UI
     {
         public const string StartPanel = nameof(StartPanel);
         public const string MainPanel = nameof(MainPanel);
+        public const string GamePanel = nameof(GamePanel);
     }
 }

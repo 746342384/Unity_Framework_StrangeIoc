@@ -1,3 +1,4 @@
+using Base.UI;
 using framework.framework.ui.api;
 using Framework.framework.ui.mediator.impl;
 
@@ -10,7 +11,11 @@ namespace Module.Main.View
         public override void OnRegister()
         {
             base.OnRegister();
-            View.BackBtn.onClick.AddListener(() => { Dispatcher.Dispatch(MainEvent.Back); });
+            View.BackBtn.onClick.AddListener(() =>
+            {
+                PanelSystem.OpenPanel(PanelNames.GamePanel);
+                PanelSystem.ClosePanel(PanelNames.MainPanel);
+            });
         }
     }
 }

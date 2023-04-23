@@ -11,6 +11,7 @@ using Framework.framework.sound;
 using Framework.framework.system.impl;
 using framework.framework.ui.api;
 using framework.framework.ui.impl;
+using Module.Game;
 using Module.Main;
 using Module.Main.Commands;
 using Module.Main.View;
@@ -44,6 +45,7 @@ public class GameContext : MVCSContext, IGameContext
         commandBinder.Bind(MainEvent.Back).To<BackStartPanelCommand>();
         mediationBinder.Bind<StartView>().To<StartMediator>();
         mediationBinder.Bind<MainView>().To<MainMediator>();
+        mediationBinder.Bind<GameView>().To<GameMediator>();
     }
 
     public override async void Launch()
