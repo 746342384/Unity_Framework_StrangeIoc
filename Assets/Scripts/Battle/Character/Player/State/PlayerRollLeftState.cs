@@ -21,7 +21,7 @@ namespace Battle.Character.Player.State
 
             if (!IsApplyForce)
             {
-                Character.MoveComponent.AddForce(Character.transform.right.normalized * -AddForce);
+                Character.ReceiveForceComponent.AddForce(Character.transform.right.normalized * -AddForce);
                 IsApplyForce = true;
             }
 

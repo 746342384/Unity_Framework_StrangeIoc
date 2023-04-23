@@ -44,7 +44,7 @@ namespace Battle.Character.Base.Component
 
         public void Move(Vector3 motion, float deltaTime)
         {
-            CharacterBase.CharacterController.Move((motion) * deltaTime);
+            CharacterBase.CharacterController.Move((motion + CharacterBase.ReceiveForceComponent.MoveMent) * deltaTime);
         }
     }
 }

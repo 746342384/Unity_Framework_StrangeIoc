@@ -13,8 +13,10 @@ namespace Battle.Character.Base
     [RequireComponent(typeof(StateMachineComponent))]
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(AttributeComponent))]
+    [RequireComponent(typeof(ReceiveForceComponent))]
     public class CharacterBase : MonoBehaviour
     {
+        public ReceiveForceComponent ReceiveForceComponent { get; private set; }
         public CharacterData CharacterData;
         public StateMachineComponent StateMachine { get; private set; }
         public CharacterController CharacterController { get; private set; }
@@ -32,6 +34,7 @@ namespace Battle.Character.Base
             EffectComponent = GetComponent<EffectComponent>();
             StateMachine = GetComponent<StateMachineComponent>();
             Collider = TransformDeepFind.FindDeepComponents<Collider>(transform);
+            ReceiveForceComponent = GetComponent<ReceiveForceComponent>();
             OnAwake();
         }
 
@@ -44,6 +47,7 @@ namespace Battle.Character.Base
             WeaponBase.Init(this);
             AttributeComponent = new AttributeComponent();
             AttributeComponent.Init(CharacterData);
+            ReceiveForceComponent.Init(this);
             OnStart();
         }
 

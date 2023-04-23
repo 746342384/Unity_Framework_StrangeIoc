@@ -28,7 +28,7 @@ namespace Battle.Character.Player.State
 
             if (normalizedTime >= Character.CharacterData.JumpAddForceStartTime && !IsApplyForce)
             {
-                Character.MoveComponent.AddForce(Character.transform.forward.normalized * AddForce);
+                Character.ReceiveForceComponent.AddForce(Character.transform.forward.normalized * AddForce);
                 IsApplyForce = true;
             }
 

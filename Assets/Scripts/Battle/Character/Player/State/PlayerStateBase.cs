@@ -20,7 +20,7 @@ namespace Battle.Character.Player.State
         protected void ApplyForce(float attackDataAddForce)
         {
             if (IsApplyForce) return;
-            Character.MoveComponent.AddForce(Character.transform.forward.normalized * attackDataAddForce);
+            Character.ReceiveForceComponent.AddForce(Character.transform.forward.normalized * attackDataAddForce);
             IsApplyForce = true;
         }
 

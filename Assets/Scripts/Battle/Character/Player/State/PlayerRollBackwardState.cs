@@ -20,7 +20,7 @@ namespace Battle.Character.Player.State
             Character.MoveComponent.Move(Vector3.zero, deltaTime);
             if (!IsApplyForce)
             {
-                Character.MoveComponent.AddForce(Character.transform.forward.normalized * AddForce);
+                Character.ReceiveForceComponent.AddForce(Character.transform.forward.normalized * AddForce);
                 IsApplyForce = true;
             }
 
