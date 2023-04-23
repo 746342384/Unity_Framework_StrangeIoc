@@ -1411,7 +1411,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1142414528}
-  m_LocalRotation: {x: 0.055580344, y: -0.0000000021474729, z: 1.1954208e-10, w: 0.9984542}
+  m_LocalRotation: {x: 0.055580344, y: 0.0000000021474729, z: -1.1954208e-10, w: 0.9984542}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1987,7 +1987,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623165115}
-  m_LocalRotation: {x: 0.05558035, y: -0.000000004294946, z: 2.3908414e-10, w: 0.9984542}
+  m_LocalRotation: {x: 0.05558035, y: 0.000000004294946, z: -2.3908414e-10, w: 0.9984542}
   m_LocalPosition: {x: 0, y: 2.5, z: -10.37}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2507,10 +2507,6 @@ PrefabInstance:
     - target: {fileID: 6497751427905964652, guid: 7cf0855c155fedb479e7c9ab6341e532, type: 3}
       propertyPath: m_Name
       value: Demon
-      objectReference: {fileID: 0}
-    - target: {fileID: 7000190179736839089, guid: 7cf0855c155fedb479e7c9ab6341e532, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7cf0855c155fedb479e7c9ab6341e532, type: 3}

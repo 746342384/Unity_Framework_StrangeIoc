@@ -16,6 +16,7 @@ namespace Battle.Character.Player.State
         public override void Enter()
         {
             _attackData = Character.CharacterData.AttackDatas[_index];
+            Character.WeaponBase.ClearTargets();
             Character.Animator.CrossFadeInFixedTime(_attackData.AnimationName, 0.1f);
         }
 

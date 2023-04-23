@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using Battle.Character.Base.Component;
+using Battle.Character.Player;
+using Battle.Character.Player.State;
 using Battle.Character.Weapon;
 using Battle.Enemy;
 using Battle.Enemy.State;
@@ -22,7 +24,7 @@ namespace Battle.Character.Base
         public WeaponBase WeaponBase;
         public CharacterType CharacterType;
         public List<Collider> Collider;
-        protected bool IsDead { get; set; }
+        public bool IsDead { get; set; }
 
         private void Awake()
         {
@@ -74,6 +76,7 @@ namespace Battle.Character.Base
             switch (CharacterType)
             {
                 case CharacterType.Player:
+                    StateMachine.SwitchState(new PlayerDeadState(this as PlayerBase));
                     break;
                 case CharacterType.Enemy:
                     StateMachine.SwitchState(new EnemyDeadState(this as EnemyBase));

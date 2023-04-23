@@ -27,5 +27,14 @@ namespace Battle.Character.Player
             StateMachine.SwitchState(new PlayerMoveState( this));
             CharacterType = CharacterType.Player;
         }
+        
+        protected override void OnSingleTakeDamage(CharacterBase origin, int attackDataIndex, Vector3 raycastHitPoint)
+        {
+            base.OnSingleTakeDamage(origin, attackDataIndex, raycastHitPoint);
+            if (!IsDead)
+            {
+                StateMachine.SwitchState(new PlayerGetHitState(this));
+            }
+        }
     }
 }

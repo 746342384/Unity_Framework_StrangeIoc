@@ -37,7 +37,7 @@ namespace Battle.Character.Weapon
             ClearTargets();
         }
 
-        private void ClearTargets()
+        public void ClearTargets()
         {
             TarGets.Clear();
         }
@@ -52,7 +52,7 @@ namespace Battle.Character.Weapon
 
         private void PerformAttack()
         {
-            var mask = LayerMask.GetMask("Enemy");
+            var mask = LayerMask.GetMask(_characterBase.CharacterType == CharacterType.Enemy ? "Player" : "Enemy");
             var numOfRays = Spline.points.Count - 1;
             for (var i = 0; i < numOfRays; i++)
             {
@@ -62,11 +62,11 @@ namespace Battle.Character.Weapon
                 var dir = Vector3.Distance(rayOrigin, rayNext);
                 if (Physics.Raycast(rayOrigin, bladeDirection, out var hit, dir, mask))
                 {
-                    var enemyBase = hit.collider.gameObject.GetComponent<EnemyBase>();
-                    if (enemyBase != null)
+                    var characterBase = hit.collider.gameObject.GetComponent<CharacterBase>();
+                    if (characterBase != null)
                     {
                         Time.timeScale = _characterBase.CharacterData.WeaponData.AttackStopStep;
-                        AddTarget(enemyBase, hit);
+                        AddTarget(characterBase, hit);
                         Debug.DrawRay(rayOrigin, bladeDirection * dir, Color.blue, 1.0f);
                         break;
                     }
