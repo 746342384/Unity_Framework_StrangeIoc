@@ -97,6 +97,11 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Common
+  - m_GUID: 818f1f9e9130473418a40a395d28cfb6
+    m_Address: "Assets/ResPackage/Common/Font/\u5E38\u7528\u5B57.txt"
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 3dec022fb71e9644c85717b0aee37380, type: 2}
   m_SchemaSet:
