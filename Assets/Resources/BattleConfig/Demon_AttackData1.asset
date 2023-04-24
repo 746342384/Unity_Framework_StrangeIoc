@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0737dfb896b44847bca17a74d61c25c6, type: 3}
-  m_Name: AttackData3
+  m_Name: Demon_AttackData1
   m_EditorClassIdentifier: 
-  AnimationName: PunchLeft
+  AnimationName: Attack1
   AddForce: 0
-  Time: 0.8
-  AttackSfxTime: 0.3
-  AttackSfx: {fileID: 8300000, guid: 3fc3f880c2168b741b111e06e72ff381, type: 3}
-  AttackStart: 0.3
-  AttackEnd: 0.6
-  AtkValue: 15
+  Time: 0
+  AttackSfxTime: 0
+  AttackSfx: {fileID: 0}
+  AttackStart: 0.25
+  AttackEnd: 0.4
+  AtkValue: 10
   AttackWeaponEfx: {fileID: 0}
-  AttackEfxTime: 0.3
-  AttackEfx: {fileID: 3781946150010653001, guid: d111e51ce3bba7d488d4d1aaec84c520, type: 3}
-  EffectParent: 5
-  AttackEfxDuration: 1
+  AttackEfxTime: 0
+  AttackEfx: {fileID: 0}
+  EffectParent: 0
+  AttackEfxDuration: 0

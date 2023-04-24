@@ -96,4 +96,9 @@ public class GameContext : MVCSContext, IGameContext
         OnSystemServicesInit();
         await _systemServices.OnInitAsync();
     }
+
+    public T GetService<T>()
+    {
+        return (T)GetComponent<T>();
+    }
 }

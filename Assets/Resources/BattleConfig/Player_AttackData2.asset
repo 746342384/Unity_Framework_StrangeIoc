@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0737dfb896b44847bca17a74d61c25c6, type: 3}
-  m_Name: AttackData2
+  m_Name: Player_AttackData2
   m_EditorClassIdentifier: 
   AnimationName: MeleeAttack_TwoHanded
   AddForce: 0

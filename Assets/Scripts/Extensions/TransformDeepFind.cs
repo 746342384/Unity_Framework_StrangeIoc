@@ -14,13 +14,11 @@ public static class TransformDeepFind
             {
                 return child;
             }
-            else
+
+            result = FindDeepChild(child, name);
+            if (result != null)
             {
-                result = FindDeepChild(child, name);
-                if (result != null)
-                {
-                    return result;
-                }
+                return result;
             }
         }
 
@@ -49,6 +47,12 @@ public static class TransformDeepFind
         return null;
     }
 
+    public static T FindDeepComponent<T>(Transform parent, string name) where T : Component
+    {
+        var findDeepChild = FindDeepChild(parent, name);
+        return findDeepChild.GetComponent<T>();
+    }
+
     // 根据类型深度查找组件
     public static List<T> FindDeepComponents<T>(Transform parent) where T : Component
     {
@@ -60,6 +64,7 @@ public static class TransformDeepFind
             var component = FindDeepComponents<T>(child);
             list.AddRange(component);
         }
+
         return list;
     }
 }

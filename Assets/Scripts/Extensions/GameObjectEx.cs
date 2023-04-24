@@ -13,10 +13,15 @@ namespace Extensions
         {
             gameObject.transform.localScale = vector3;
         }
-        
+
         public static void SetPostion(this GameObject gameObject, Vector3 vector3)
         {
             gameObject.transform.position = vector3;
+        }
+
+        public static void SetLocalPostion(this GameObject gameObject, Vector3 vector3)
+        {
+            gameObject.transform.localPosition = vector3;
         }
     }
 }

@@ -13,7 +13,8 @@ namespace Battle.Enemy.State
 
         public override void Tick(float deltaTime)
         {
-            if (GetDistance(EnemyBase.Target.transform.position) > EnemyBase.CharacterData.FindPathDistance ||
+            if (!HasTarget() || GetDistance(EnemyBase.Target.transform.position) >
+                EnemyBase.CharacterData.FindPathDistance ||
                 EnemyBase.Target.IsDead)
             {
                 EnemyBase.StateMachine.SwitchState(new EnemyIdleState(EnemyBase));

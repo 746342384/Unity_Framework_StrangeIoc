@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 577bc88b127d47de8e0abe5b192ac90d, type: 3}
-  m_Name: Weapon1
+  m_Name: Player_Weapon
   m_EditorClassIdentifier: 
   AttackStopStep: 1
   AttackType: 0

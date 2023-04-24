@@ -29,7 +29,8 @@ namespace Battle.Character.Base.Component
                 case CharacterType.Player:
                     break;
                 case CharacterType.Enemy:
-                    targetPos = ((EnemyBase)CharacterBase).Target.transform.position;
+                    var characterBase = ((EnemyBase)CharacterBase).Target;
+                    if (characterBase != null) targetPos = characterBase.transform.position;
                     break;
             }
 

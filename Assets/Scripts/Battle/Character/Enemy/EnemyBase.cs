@@ -1,6 +1,8 @@
+using System;
 using Battle.AI.Const;
 using Battle.Character.Base;
 using Battle.Character.Base.Component;
+using Battle.Character.Controller;
 using Battle.Enemy.State;
 using UnityEngine;
 
@@ -19,21 +21,24 @@ namespace Battle.Enemy
             base.OnAwake();
         }
 
-        protected override void OnStart()
+        protected override void OnInit()
         {
-            base.OnStart();
+            base.OnInit();
             AIMoveComponent.Init(this);
             CharacterType = CharacterType.Enemy;
             StateMachine.SwitchState(new EnemyIdleState(this));
         }
 
-        [ContextMenu("Reborn")]
-        public void Reborn()
+        protected override void OnDead()
         {
-            AttributeComponent.Hp = AttributeComponent.MaxHp;
+            base.OnDead();
+            StateMachine.SwitchState(new EnemyDeadState(this));
+        }
+
+        protected override void OnReborn()
+        {
+            base.OnReborn();
             StateMachine.SwitchState(new EnemyIdleState(this));
-            EnbleAllCollider();
-            SetIsDead(false);
         }
 
         protected override void OnSingleTakeDamage(CharacterBase origin, int attackDataIndex, Vector3 raycastHitPoint)
@@ -43,6 +48,11 @@ namespace Battle.Enemy
             {
                 StateMachine.SwitchState(new EnemyGetHitState(this));
             }
+        }
+
+        protected override void OnUpdate()
+        {
+            Target = BattleController.Ins.FindNearTarget(this);
         }
     }
 }

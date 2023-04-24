@@ -42,11 +42,6 @@ MonoBehaviour:
     m_ReadOnly: 0
     m_SerializedLabels:
     - Common
-  - m_GUID: 74040d3246ecd7941865419a9e8014cc
-    m_Address: Assets/ResPackage/Common/Prefab/Player/Player.prefab
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - Common
   - m_GUID: d4cb2c65087c82042a9af7b839285643
     m_Address: Assets/ResPackage/Common/Audio/Music/BRPG_Assault_FULL_Loop.wav
     m_ReadOnly: 0
@@ -69,6 +64,36 @@ MonoBehaviour:
     - Common
   - m_GUID: 7534a43840711bc42ad84cba50669ad2
     m_Address: Assets/ResPackage/Common/UIPanel/GamePanel.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
+  - m_GUID: 7cf0855c155fedb479e7c9ab6341e532
+    m_Address: Assets/ResPackage/Common/Prefab/Enemy/Demon.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
+  - m_GUID: 39b188dd385f3f04eaca30a841844c7f
+    m_Address: Assets/ResPackage/Common/Prefab/Player/Barbarian.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
+  - m_GUID: 462f4ffd37df89b41b3015bab6bd2b81
+    m_Address: Assets/ResPackage/Common/Prefab/Weapon/Barbarian_Weapon_01.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
+  - m_GUID: 5f2a28fa600bfc8499c50fade14179b5
+    m_Address: Assets/ResPackage/Common/Prefab/Weapon/Demon_Sword_Mesh.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
+  - m_GUID: e7a57ae5694bc944296c22681afcd662
+    m_Address: Assets/ResPackage/Common/Prefab/Enemy/Enemy.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Common
+  - m_GUID: 74040d3246ecd7941865419a9e8014cc
+    m_Address: Assets/ResPackage/Common/Prefab/Player/Player.prefab
     m_ReadOnly: 0
     m_SerializedLabels:
     - Common

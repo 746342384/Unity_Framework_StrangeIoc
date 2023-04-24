@@ -16,5 +16,10 @@ namespace Battle.Enemy.State
         {
             return Vector3.Distance(EnemyBase.transform.position, target);
         }
+
+        protected bool HasTarget()
+        {
+            return EnemyBase.Target != null;
+        }
     }
 }

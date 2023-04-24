@@ -22,6 +22,13 @@ namespace Battle.Enemy.State
 
         public override void Tick(float deltaTime)
         {
+            if (!HasTarget() || EnemyBase.Target.IsDead)
+            {
+                EnemyBase.WeaponBase.EndAttack();
+                EnemyBase.StateMachine.SwitchState(new EnemyIdleState(EnemyBase));
+                return;
+            }
+
             EnemyBase.AIMoveComponent.Move(Vector3.zero, deltaTime);
             if (GetDistance(EnemyBase.Target.transform.position) > EnemyBase.CharacterData.AttackDistance)
             {
@@ -38,12 +45,6 @@ namespace Battle.Enemy.State
             if (normalizedTime >= _attackData.AttackEnd)
             {
                 EnemyBase.WeaponBase.EndAttack();
-            }
-
-            if (EnemyBase.Target.IsDead)
-            {
-                EnemyBase.StateMachine.SwitchState(new EnemyIdleState(EnemyBase));
-                return;
             }
         }
 
