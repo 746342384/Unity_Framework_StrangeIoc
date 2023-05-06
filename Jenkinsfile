@@ -6,11 +6,6 @@ pipeline {
         }
     }
     stages {
-        stage('Check Docker Access') {
-            steps {
-                sh "docker version"
-            }
-        }
         stage('Build Unity Project') {
             steps {
                 script {
@@ -19,8 +14,5 @@ pipeline {
                 }
             }
         }
-    }
-    options {
-            user 'winjet'
     }
 }
