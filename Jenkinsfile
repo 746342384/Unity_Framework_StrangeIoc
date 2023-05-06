@@ -1,25 +1,12 @@
 pipeline {
     agent any
-
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-        stage('Build') {
+        stage('Build Unity Project') {
             steps {
                 script {
-                    if (isUnix())
-                    {
-                        sh 'echo Building Unity project...'
-                    }
-                    else 
-                    {
-                        bat 'echo Building Unity project...'
-                    }
+                    def unityPath = tool 'Unity2021'
+                    sh "${unityPath}/Editor/Unity -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod YourClass.YourStaticMethod -logfile"
                 }
-                unity3d command: 'build', platforms: 'Windows', installation: 'D:\\Unity\\2021.3.6f1c1\\Editor\\<2021.3.6f1c1>'
             }
         }
     }
