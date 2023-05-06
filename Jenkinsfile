@@ -20,4 +20,7 @@ pipeline {
             }
         }
     }
+    options {
+            user 'root'
+    }
 }
