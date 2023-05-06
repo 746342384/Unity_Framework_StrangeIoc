@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker{
-            image 'great_kare'
+            image 'jenkins/jenkins:lts'
         }
     }
     stages {
