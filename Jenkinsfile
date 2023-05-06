@@ -1,15 +1,15 @@
 pipeline {
     agent {
         docker{
-            image 'jenkins/jenkins:lts'
+            image 'jenkins/jenkins:latest'
         }
     }
     stages {
         stage('Build Unity Project') {
             steps {
                 script {
-                    def unityPath = "D:\\Unity\\2021.3.6f1c1\\Editor\\Unity.exe"
-                    sh "\"${unityPath}\" -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile"
+                    def unityPath = "/unity/unity-installation/2021.3.6f1c1/Editor/Unity.exe"
+                    sh "${unityPath} -quit -batchmode -projectPath unity/project -executeMethod BuildScript.PerformBuild -logfile"
                 }
             }
         }
