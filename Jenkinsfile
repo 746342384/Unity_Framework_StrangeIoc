@@ -1,5 +1,11 @@
 pipeline {
-    agent any
+    agent 
+    {
+    docker{
+    image 'unity:2021.3.6f1c1'
+    args '-v E:\\Project\\StrangeIoc:\\unity\\project'
+    }
+    }
     stages {
         stage('Build Unity Project') {
             steps {
