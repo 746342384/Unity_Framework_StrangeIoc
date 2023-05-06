@@ -5,6 +5,11 @@ pipeline {
             args '-v /var/run/docker.sock:/var/run/docker.sock -v /usr/bin/docker:/usr/bin/docker'
         }
     }
+    stage('Check Docker Access') {
+        steps {
+            sh "docker version"
+        }
+    }
     stages {
         stage('Build Unity Project') {
             steps {
