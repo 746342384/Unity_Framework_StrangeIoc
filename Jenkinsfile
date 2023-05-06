@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker{
-            image 'youthful_volhard'
+            image 'jenkins/jenkins:lts'
         }
     }
     stages {
