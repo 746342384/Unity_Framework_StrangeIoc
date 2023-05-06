@@ -1,8 +1,5 @@
 pipeline {
-    agent {
-        docker{
-            image 'jenkins/jenkins:latest'
-        }
+    agent any
     }
     stages {
         stage('Build Unity Project') {
