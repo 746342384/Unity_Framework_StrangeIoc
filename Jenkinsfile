@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     def unityPath = tool 'Unity2021'
-                    sh '"${unityPath} -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild"'
+                    sh "${unityPath} -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile"
                 }
             }
         }
