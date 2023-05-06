@@ -6,6 +6,13 @@ pipeline {
         }
     }
     stages {
+        stage('Checkout') {
+            steps {
+                    dir('https://github.com/746342384/Unity_Framework_StrangeIoc.git') {
+                        checkout scm
+                    }
+                }
+            }
         stage('Build Unity Project') {
             steps {
                 script {
