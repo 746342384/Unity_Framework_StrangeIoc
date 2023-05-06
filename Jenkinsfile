@@ -21,6 +21,6 @@ pipeline {
         }
     }
     options {
-            user 'root'
+            user 'winjet'
     }
 }
