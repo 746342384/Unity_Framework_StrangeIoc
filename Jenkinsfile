@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     def unityPath = tool 'Unity2021'
-                    sh "${unityPath}/Editor/Unity -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod YourClass.YourStaticMethod -logfile"
+                    sh "${unityPath}/Editor/Unity -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile"
                 }
             }
         }
