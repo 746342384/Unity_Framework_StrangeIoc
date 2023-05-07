@@ -31,7 +31,7 @@ pipeline {
                                 Invoke-Expression \$Command
                             } -ArgumentList \$Command
                         """
-                        powershell(returnStdout: true, script: psCommand)
+                        pwsh(returnStdout: true, script: psCommand)
                     }
                 }
             }
