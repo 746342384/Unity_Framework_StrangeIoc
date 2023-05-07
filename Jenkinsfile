@@ -17,7 +17,7 @@ pipeline {
                             # Build the Unity project using PowerShell on the remote Windows host
                             ssh $user@$host pwsh.exe -Command \"
                                 \$command = '${unityPath} -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile E:\\Project\\StrangeIoc\\Build\\build.log -verbose'
-                                & $command
+                                & \$command
                             \"
                         """
                     }
