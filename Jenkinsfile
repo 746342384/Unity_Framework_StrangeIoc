@@ -5,7 +5,10 @@ pipeline {
             steps {
                 script {
                     def unityPath = tool 'unity'
-                    sshpass -p '989766' ssh Administrator@192.168.3.134 "${unityPath} -quit -batchmode -nographics -silent -crashes -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile"
+                    def password = "989766"
+                    def user = "Administrator"
+                    def host = "192.168.3.134"
+                    sshpass -p '${password}' ssh ${user}@${host} "${unityPath} -quit -batchmode -nographics -silent -crashes -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile"
                 }
             }
         }
