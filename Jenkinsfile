@@ -7,7 +7,7 @@ pipeline {
         stage('Build Unity Project') {
             steps {
                 script {
-                    def password = 'password'
+                    def password = '989766'
                     def user = 'Administrator'
                     def host = '192.168.3.134'
                     def unityPath = tool 'unity'
