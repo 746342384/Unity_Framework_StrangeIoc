@@ -15,9 +15,9 @@ pipeline {
           steps {
             script {
               def unityPath = tool 'unity'
-              def password = '989766'
-              def user = 'Administrator'
-              def host = '192.168.3.134'
+              def password = "989766"
+              def user = "Administrator"
+              def host = "Winjet"
               env.PATH = "/opt/microsoft/powershell:${env.PATH}"
               pwsh """
                 \$Username = '${user}'
