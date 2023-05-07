@@ -17,7 +17,7 @@ pipeline {
               def unityPath = tool 'unity'
               def password = "989766"
               def user = "Administrator"
-              def host = "Winjet"
+              def host = "192.168.3.134"
               env.PATH = "/opt/microsoft/powershell:${env.PATH}"
               pwsh """
                 \$Username = '${user}'
