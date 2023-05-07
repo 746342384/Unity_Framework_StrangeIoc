@@ -23,6 +23,7 @@ pipeline {
                 \$Username = '${user}'
                 \$Password = '${password}' | ConvertTo-SecureString -AsPlainText -Force
                 \$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList \$Username, \$Password
+                Test-WSMan -ComputerName '${host}' -Credential \$Credential
                 \$Command = '${unityPath} -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile E:\\Project\\StrangeIoc\\Build\\build.log -verbose'
                 Invoke-Command -ComputerName '${host}' -Credential \$Credential -ScriptBlock {
                   param(\$Command)
