@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    environment {
+            PATH_POWERSHELL = "/opt/microsoft/powershell"
+        }
     stages {
         stage('Build Unity Project') {
             steps {
@@ -8,7 +11,7 @@ pipeline {
                     def password = '989766'
                     def user = 'Administrator'
                     def host = '192.168.3.134'
-                    withEnv(['PATH+POWERSHELL' : '/opt/microsoft/powershell']) {
+                    withEnv(['PATH+POWERSHELL=${PATH_POWERSHELL}']) {
                         powershell """
                             \$Username = '${user}'
                             \$Password = '${password}' | ConvertTo-SecureString -AsPlainText -Force
