@@ -8,7 +8,7 @@ pipeline {
             steps {
                 script {
                     def password = 'password'
-                    def user = 'user'
+                    def user = 'Administrator'
                     def host = '192.168.3.134'
                     def unityPath = tool 'unity'
 
