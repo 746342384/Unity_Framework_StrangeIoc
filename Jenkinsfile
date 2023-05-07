@@ -4,6 +4,13 @@ pipeline {
             PATH_POWERSHELL = "/opt/microsoft/powershell"
         }
     stages {
+        stage('Set PowerShell Path') {
+            steps {
+                script {
+                    env.PATH = "/opt/microsoft/powershell:${env.PATH}"
+                }
+            }
+        }
         stage('Build Unity Project') {
             steps {
                 script {
