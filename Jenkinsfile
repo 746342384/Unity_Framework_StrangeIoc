@@ -28,7 +28,7 @@ pipeline {
                         Set-Item -Path WSMan:\\localhost\\Client\\TrustedHosts -Value $host -Force
                     
                         \$securePassword = ConvertTo-SecureString $password -AsPlainText -Force
-                        \$credential = New-Object System.Management.Automation.PSCredential ($user, \$securePassword)
+                        \$credential = New-Object System.Management.Automation.PSCredential ('$user', \$securePassword)
                     
                         Test-WSMan -ComputerName $host -Credential \$credential
                     
