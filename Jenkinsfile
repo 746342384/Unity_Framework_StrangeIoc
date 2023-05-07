@@ -10,7 +10,7 @@ pipeline {
             steps {
                 script {
                     def unityPath = tool 'unity'
-                    sh "${unityPath} -quit -batchmode -projectPath unity/project -executeMethod BuildScript.PerformBuild -logfile"
+                    sh "${unityPath} -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile"
                 }
             }
         }
