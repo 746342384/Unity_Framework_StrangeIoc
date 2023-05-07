@@ -41,13 +41,15 @@ pipeline {
                     def host = '192.168.3.134'
                     def unityPath = tool 'unity'
 
-                    sh """
-                        # Build the Unity project using PowerShell on the remote Windows host
-                        sshpass -p $password ssh $user@$host pwsh.exe -Command \"
-                            \$command = '${unityPath} -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile E:\\Project\\StrangeIoc\\Build\\build.log -verbose'
-                            & \$command
-                        \"
-                    """
+                    sshagent(credentials: ['winjet']) {
+                                            sh """
+                                                # Build the Unity project using PowerShell on the remote Windows host
+                                                sshpass -p $password ssh $user@$host pwsh.exe -Command \"
+                                                    \$command = '${unityPath} -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile E:\\Project\\StrangeIoc\\Build\\build.log -verbose'
+                                                    & \$command
+                                                \"
+                                            """
+                                        }
                 }
             }
         }
