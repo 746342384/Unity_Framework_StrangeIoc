@@ -13,7 +13,7 @@ pipeline {
                     def unityPath = tool 'unity'
                     
                     // Import the WSMan.Management module and create the WSMan drive
-                    Import-Module Microsoft.WSMan.Management
+                    Import-Module Microsoft.WSMan.Management;
                     New-Item -Path WSMan:\localhost\Service -Name AllowUnencrypted -Value $true -Force | Out-Null
                     
                     // Set the TrustedHosts value
