@@ -2,8 +2,16 @@ pipeline {
     agent any
     environment {
         PATH = "${tool 'unity'}/Editor:${env.PATH}"
+        PATH_POWERSHELL = "/opt/microsoft/powershell"
     }
     stages {
+        stage('Set PowerShell Path') {
+            steps {
+                script {
+                        env.PATH = "/opt/microsoft/powershell:${env.PATH}"
+                    }
+                }
+            }
         stage('Build Unity Project') {
             steps {
                 script {
@@ -12,7 +20,8 @@ pipeline {
                     def host = '192.168.3.134'
                     def unityPath = tool 'unity'
 
-                    powershell """
+                    env.PATH = "/opt/microsoft/powershell:${env.PATH}"
+                    pwsh """
                         Import-Module Microsoft.WSMan.Management;
                         New-Item -Path WSMan:\\localhost\\Service -Name AllowUnencrypted -Value \$true -Force | Out-Null
                     
