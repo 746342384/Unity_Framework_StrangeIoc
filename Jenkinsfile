@@ -1,38 +1,40 @@
 pipeline {
     agent any
     environment {
-            PATH_POWERSHELL = "/opt/microsoft/powershell"
-        }
+        REMOTE_HOST = "192.168.3.134"
+        REMOTE_USER = "Administrator"
+        REMOTE_PASSWORD = "989766"
+        POWERSHELL_PATH = "/opt/microsoft/powershell/7/pwsh"
+    }
     stages {
-        stage('Set PowerShell Path') {
+        stage('Build Unity Project') {
             steps {
-                script {
-                    env.PATH = "/opt/microsoft/powershell:${env.PATH}"
+                withEnv(["PATH+POWERSHELL=${POWERSHELL_PATH}"]) {
+                    script {
+                        def unityPath = tool 'unity'
+                        def psCommand = """
+                            \$Username = '${env.REMOTE_USER}'
+                            \$Password = '${env.REMOTE_PASSWORD}' | ConvertTo-SecureString -AsPlainText -Force
+                            \$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList \$Username, \$Password
+
+                            # configure winrm
+                            Set-Item -Path WSMan:\\localhost\\Service\\AllowUnencrypted -Value \$true -Force
+                            Set-Item -Path WSMan:\\localhost\\Client\\TrustedHosts -Value ${env.REMOTE_HOST} -Force
+
+                            # test winrm
+                            Test-WSMan -ComputerName ${env.REMOTE_HOST} -Credential \$Credential
+
+                            # run unity build
+                            \$Command = '${unityPath} -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile E:\\Project\\StrangeIoc\\Build\\build.log -verbose'
+                            Invoke-Command -ComputerName ${env.REMOTE_HOST} -Credential \$Credential -ScriptBlock {
+                                param(\$Command)
+                                Invoke-Expression \$Command
+                            } -ArgumentList \$Command
+                        """
+                        powershell(returnStdout: true, script: psCommand)
+                    }
                 }
             }
         }
-        stage('Build Unity Project') {
-          steps {
-            script {
-              def unityPath = tool 'unity'
-              def password = "989766"
-              def user = "Administrator"
-              def host = "192.168.3.134"
-              env.PATH = "/opt/microsoft/powershell:${env.PATH}"
-              pwsh """
-                \$Username = '${user}'
-                \$Password = '${password}' | ConvertTo-SecureString -AsPlainText -Force
-                \$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList \$Username, \$Password
-                Test-WSMan -ComputerName '${host}' -Credential \$Credential
-                \$Command = '${unityPath} -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile E:\\Project\\StrangeIoc\\Build\\build.log -verbose'
-                Invoke-Command -ComputerName '${host}' -Credential \$Credential -ScriptBlock {
-                  param(\$Command)
-                  Invoke-Expression \$Command
-                } -ArgumentList \$Command
-              """
-            }
-          }
-        }
     }
 }
-
