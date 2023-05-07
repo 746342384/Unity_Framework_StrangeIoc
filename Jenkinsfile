@@ -5,7 +5,7 @@ pipeline {
             steps {
                 script {
                     def unityPath = tool 'unity'
-                    sh "${unityPath} -quit -batchmode -nographics -silent -crashes -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile"
+                    sshpass -p '989766' ssh Administrator@192.168.3.134 "${unityPath} -quit -batchmode -nographics -silent -crashes -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile"
                 }
             }
         }
