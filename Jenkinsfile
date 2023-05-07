@@ -50,8 +50,7 @@ pipeline {
                     env.PATH = "/opt/microsoft/powershell:${env.PATH}"
 
                     sshagent(credentials: ['winjet']) {
-                                            sh """
-                                                # Build the Unity project using PowerShell on the remote Windows host
+                                            pwsh """
                                                 sshpass -p $password ssh $user@$host pwsh.exe -Command \"
                                                     \$command = '${unityPath} -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile E:\\Project\\StrangeIoc\\Build\\build.log -verbose'
                                                     & \$command
