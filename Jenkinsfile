@@ -51,10 +51,7 @@ pipeline {
 
                     sshagent(credentials: ['winjet']) {
                                             pwsh """
-                                                sshpass -p $password ssh $user@$host pwsh.exe -Command \"
-                                                    \$command = '${unityPath} -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile E:\\Project\\StrangeIoc\\Build\\build.log -verbose'
-                                                    & \$command
-                                                \"
+                                                sshpass -p $password ssh $user@$host pwsh.exe '${unityPath} -quit -batchmode -projectPath E:\\Project\\StrangeIoc -executeMethod BuildScript.PerformBuild -logfile E:\\Project\\StrangeIoc\\Build\\build.log -verbose' 
                                             """
                                         }
                 }
