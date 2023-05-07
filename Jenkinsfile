@@ -33,6 +33,13 @@ pipeline {
         PATH = "${tool 'unity'}/Editor:${env.PATH}"
     }
     stages {
+    stage('Set PowerShell Path') {
+                steps {
+                    script {
+                            env.PATH = "/opt/microsoft/powershell:${env.PATH}"
+                        }
+                    }
+                }
         stage('Build Unity Project') {
             steps {
                 script {
@@ -40,6 +47,7 @@ pipeline {
                     def user = 'Administrator'
                     def host = '192.168.3.134'
                     def unityPath = tool 'unity'
+                    env.PATH = "/opt/microsoft/powershell:${env.PATH}"
 
                     sshagent(credentials: ['winjet']) {
                                             sh """
